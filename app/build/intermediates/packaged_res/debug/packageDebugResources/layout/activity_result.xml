@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".ResultActivity">
+
+    <TextView
+        android:id="@+id/winnerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="市民チームの勝利！"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/votedPlayerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="追放されたのは... 〇〇さん"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/voteCountsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="#F0F0F0"
+        android:padding="8dp"
+        android:text="投票結果:\nプレイヤーA: 2票\nプレイヤーB: 1票"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/rolesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#E0F7FA"
+        android:padding="8dp"
+        android:text="役職一覧:\n人狼: プレイヤーA\n市民: プレイヤーB, C"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/playAgainButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="もう一度遊ぶ"
+        android:textSize="18sp" />
+
+</LinearLayout>
