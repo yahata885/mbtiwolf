@@ -1,0 +1,66 @@
+package com.yahata.mbtiwolf;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+import java.util.ArrayList;
+
+public class SetupActivity extends AppCompatActivity {
+
+    private final ArrayList<String> playerList = new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setup);
+
+        EditText playerNameEditText = findViewById(R.id.playerNameEditText);
+        Button addPlayerButton = findViewById(R.id.addPlayerButton);
+        TextView playerListTextView = findViewById(R.id.playerListTextView);
+        Button confirmButton = findViewById(R.id.confirmButton);
+
+        addPlayerButton.setOnClickListener(v -> {
+            String playerName = playerNameEditText.getText().toString().trim();
+            if (!playerName.isEmpty()) {
+                playerList.add(playerName);
+                updatePlayerListView(playerListTextView);
+                playerNameEditText.setText("");
+            } else {
+                Toast.makeText(SetupActivity.this, "名前を入力してください", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        confirmButton.setOnClickListener(v -> {
+            if (playerList.size() >= 2) {
+                String theme = getIntent().getStringExtra("GAME_THEME");
+                int mode = getIntent().getIntExtra("GAME_MODE", 1);
+
+                Intent intent;
+                if (mode == 1) {
+                    intent = new Intent(SetupActivity.this, Mode1InputActivity.class);
+                } else {
+                    intent = new Intent(SetupActivity.this, RoleRevealActivity.class);
+                }
+                intent.putExtra("GAME_THEME", theme);
+                intent.putExtra("GAME_MODE", mode);
+                intent.putStringArrayListExtra("PLAYER_LIST", playerList);
+                startActivity(intent);
+
+            } else {
+                Toast.makeText(SetupActivity.this, "プレイヤーを2人以上追加してください", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updatePlayerListView(TextView playerListTextView) {
+        StringBuilder text = new StringBuilder();
+        for (String player : playerList) {
+            text.append(player).append("\n");
+        }
+        playerListTextView.setText(text.toString());
+    }
+}

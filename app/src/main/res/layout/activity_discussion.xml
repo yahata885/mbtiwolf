@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".DiscussionActivity">
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="00:00"
+        android:textSize="60sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/participantsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timerTextView"
+        android:layout_marginTop="32dp"
+        android:text="参加者リスト"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/playerListTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/participantsLabel"
+        android:layout_marginTop="8dp"
+        android:background="#F0F0F0"
+        android:padding="8dp"
+        android:textSize="16sp"
+        tools:text="プレイヤーA\nプレイヤーB\nプレイヤーC" />
+
+    <Button
+        android:id="@+id/goToVoteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="議論終了（投票へ進む）"
+        android:textSize="18sp"
+        android:enabled="false" />
+
+</RelativeLayout>
