@@ -25,7 +25,6 @@ public class Mode1InputActivity extends AppCompatActivity {
     private String theme;
     private int currentPlayerIndex = 0;
 
-    // Key: プレイヤー名, Value: 選択されたタイプの名前(String) を保存するマップ
     private HashMap<String, String> playerSelections = new HashMap<>();
 
     @Override
@@ -44,7 +43,7 @@ public class Mode1InputActivity extends AppCompatActivity {
         updateTurnView();
 
         confirmTypeButton.setOnClickListener(v -> {
-            // 現在のプレイヤーの選択を保存
+
             String selectedType = typeSpinner.getSelectedItem().toString();
             String currentPlayer = playerList.get(currentPlayerIndex);
             playerSelections.put(currentPlayer, selectedType);
@@ -63,14 +62,14 @@ public class Mode1InputActivity extends AppCompatActivity {
     private void goToDiscussionScreen() {
         Toast.makeText(this, "全員の入力が完了しました！", Toast.LENGTH_SHORT).show();
 
-        // ★★★ これから先の画面で使えるように「正解データ」を作成する ★★★
+
         HashMap<String, GameRole> assignments = createAssignmentsFromSelections();
 
         Intent intent = new Intent(Mode1InputActivity.this, DiscussionActivity.class);
         intent.putStringArrayListExtra("PLAYER_LIST", playerList);
         intent.putExtra("GAME_THEME", theme);
-        intent.putExtra("GAME_MODE", 1); // モード1であることを明記
-        intent.putExtra("ASSIGNMENTS", assignments); // ★★★ 作成した「正解データ」を渡す ★★★
+        intent.putExtra("GAME_MODE", 1);
+        intent.putExtra("ASSIGNMENTS", assignments);
 
         startActivity(intent);
         finish();

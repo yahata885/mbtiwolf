@@ -23,18 +23,25 @@ public class SetupActivity extends AppCompatActivity {
         TextView playerListTextView = findViewById(R.id.playerListTextView);
         Button confirmButton = findViewById(R.id.confirmButton);
 
+
+        //名前の入力処理
         addPlayerButton.setOnClickListener(v -> {
+            //入力された名前をゲット
             String playerName = playerNameEditText.getText().toString().trim();
+            //名前が空白以外の場合
             if (!playerName.isEmpty()) {
                 playerList.add(playerName);
                 updatePlayerListView(playerListTextView);
                 playerNameEditText.setText("");
+            //その他
             } else {
                 Toast.makeText(SetupActivity.this, "名前を入力してください", Toast.LENGTH_SHORT).show();
             }
         });
 
+        //確定ボタン
         confirmButton.setOnClickListener(v -> {
+            //プレイヤー数に応じる
             if (playerList.size() >= 2) {
                 String theme = getIntent().getStringExtra("GAME_THEME");
                 int mode = getIntent().getIntExtra("GAME_MODE", 1);
