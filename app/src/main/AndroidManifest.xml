@@ -22,10 +22,10 @@
         </activity>
         <activity android:name=".SetupActivity" />
         <activity android:name=".Mode1InputActivity" />
-        <activity android:name=".RoleRevealActivity" />
+        <activity android:name=".Mode23InputActivity" />
         <activity android:name=".DiscussionActivity" />
         <activity android:name=".VoteActivity" />
-        <activity android:name=".ResultActivity" />
+        <activity android:name=".ResultMode1Activity" />
         <activity android:name=".ResultMode2Activity" />
         <activity android:name=".ResultMode3Activity" />
         <activity android:name=".AnswerInputActivity" />

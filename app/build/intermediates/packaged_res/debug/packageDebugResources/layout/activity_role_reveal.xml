@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".RoleRevealActivity">
+    tools:context=".Mode23InputActivity">
 
     <TextView
         android:id="@+id/playerNameTextView"

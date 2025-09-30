@@ -38,10 +38,10 @@
         </activity>
         <activity android:name="com.yahata.mbtiwolf.SetupActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode1InputActivity" />
-        <activity android:name="com.yahata.mbtiwolf.RoleRevealActivity" />
+        <activity android:name="com.yahata.mbtiwolf.Mode23InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.DiscussionActivity" />
         <activity android:name="com.yahata.mbtiwolf.VoteActivity" />
-        <activity android:name="com.yahata.mbtiwolf.ResultActivity" />
+        <activity android:name="com.yahata.mbtiwolf.ResultMode1Activity" />
         <activity android:name="com.yahata.mbtiwolf.ResultMode2Activity" />
         <activity android:name="com.yahata.mbtiwolf.ResultMode3Activity" />
         <activity android:name="com.yahata.mbtiwolf.AnswerInputActivity" />

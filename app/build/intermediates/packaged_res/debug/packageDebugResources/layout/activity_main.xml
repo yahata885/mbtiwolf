@@ -32,7 +32,7 @@
             android:id="@+id/loveTypeRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="恋愛タイプ"/>
+            android:text="ラブタイプ"/>
     </RadioGroup>
 
     <TextView
@@ -47,18 +47,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="モード1: 協力して推測"/>
+        android:text="モード1: 協力"/>
 
     <Button
         android:id="@+id/mode2Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="モード2: 演じて推測"/>
+        android:text="モード2: 演じて"/>
 
     <Button
         android:id="@+id/mode3Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="モード3: 人狼モード"/>
+        android:text="モード3: 人狼"/>
 
 </LinearLayout>

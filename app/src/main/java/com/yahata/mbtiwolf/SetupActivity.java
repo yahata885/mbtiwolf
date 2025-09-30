@@ -50,7 +50,7 @@ public class SetupActivity extends AppCompatActivity {
                 if (mode == 1) {
                     intent = new Intent(SetupActivity.this, Mode1InputActivity.class);
                 } else {
-                    intent = new Intent(SetupActivity.this, RoleRevealActivity.class);
+                    intent = new Intent(SetupActivity.this, Mode23InputActivity.class);
                 }
                 intent.putExtra("GAME_THEME", theme);
                 intent.putExtra("GAME_MODE", mode);
