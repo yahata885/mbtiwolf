@@ -75,7 +75,7 @@ public class Mode1InputActivity extends AppCompatActivity {
         finish();
     }
 
-    // ★★★ プレイヤーの選択(String)から、役職データ(GameRole)のマップを作成するメソッド ★★★
+    // ★★ プレイヤーの選択(String)から、役職データ(GameRole)のマップを作成するメソッド ★★
     private HashMap<String, GameRole> createAssignmentsFromSelections() {
         HashMap<String, GameRole> assignmentsMap = new HashMap<>();
         List<GameRole> allRoles = "MBTI".equals(theme) ? DataSource.getMbtiRoles() : DataSource.getLoveTypeRoles();
