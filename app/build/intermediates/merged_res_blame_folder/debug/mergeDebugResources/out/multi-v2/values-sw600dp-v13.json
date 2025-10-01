@@ -4,7 +4,7 @@
             "outputFile": "com.yahata.mbtiwolf.app-mergeDebugResources-29:/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/yahatakensuke/.gradle/caches/8.13/transforms/9193172717a5ca3eb1d6453fe3e6bfa7/transformed/appcompat-1.6.1/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\teruk\\.gradle\\caches\\8.13\\transforms\\9193172717a5ca3eb1d6453fe3e6bfa7\\transformed\\appcompat-1.6.1\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/yahatakensuke/.gradle/caches/8.13/transforms/ed657c2504032b7a94cb05d64bda34d5/transformed/material-1.10.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "C:\\Users\\teruk\\.gradle\\caches\\8.13\\transforms\\ed657c2504032b7a94cb05d64bda34d5\\transformed\\material-1.10.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

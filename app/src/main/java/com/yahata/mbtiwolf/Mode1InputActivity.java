@@ -53,7 +53,7 @@ public class Mode1InputActivity extends AppCompatActivity {
             if (currentPlayerIndex < playerList.size()) {
                 updateTurnView();
             } else {
-                // 全員の入力が終わったら、次の画面へ
+
                 goToDiscussionScreen();
             }
         });
