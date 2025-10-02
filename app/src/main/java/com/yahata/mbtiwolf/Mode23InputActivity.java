@@ -36,7 +36,7 @@ public class Mode23InputActivity extends AppCompatActivity {
         int mode = getIntent().getIntExtra("GAME_MODE", 2);
         //モード3なら人狼を1人割り当てる、他モードは0人
         int wolfCount = (mode == 3) ? 1 : 0;
-        assignments = GameLogic.assignRoles(playerList, theme, wolfCount);
+        assignments = GameLogic.assignRoles(playerList, theme, wolfCount, mode);
 
         updateTurnView();
 
