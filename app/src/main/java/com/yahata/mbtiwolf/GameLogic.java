@@ -8,7 +8,14 @@ import java.util.Map;
 
 public class GameLogic {
 
-    public static Map<String, GameRole> assignRoles(List<String> players, String theme, int wolfCount) {
+    /**
+     * @param players   プレイヤー名リスト
+     * @param theme     "MBTI" またはそれ以外
+     * @param wolfCount 人狼の人数
+     * @param mode      ゲームモード（Mode3 のときは市民を1種類で固定する） -- int で 3 を Mode3 と扱う
+     * @return プレイヤー名 -> GameRole の割り当てマップ
+     */
+    public static Map<String, GameRole> assignRoles(List<String> players, String theme, int wolfCount, int mode) {
         // テーマに応じた役職リスト取得
         List<GameRole> roles;
         if ("MBTI".equals(theme)) {
@@ -17,30 +24,30 @@ public class GameLogic {
             roles = DataSource.getLoveTypeRoles();
         }
 
-        if (players == null) {
+        // 基本チェック
+        if (players == null || players.isEmpty()) {
             throw new IllegalArgumentException("プレイヤーを追加してください。");
         }
         int totalPlayers = players.size();
         if (wolfCount < 0 || wolfCount > totalPlayers) {
-            throw new IllegalArgumentException("人狼がいません。");
+            throw new IllegalArgumentException("人狼の数が不正です。");
         }
         if (roles == null || roles.isEmpty()) {
             throw new IllegalArgumentException("市民用の役職が用意されていません。");
         }
 
-        // 役職リストをシャッフルして、"1つ選ぶ" 形にする
+        // シャッフルしてランダム化
         List<GameRole> shuffledRoles = new ArrayList<>(roles);
         Collections.shuffle(shuffledRoles);
 
-        int citizenCount = totalPlayers - wolfCount;
-
-        // プレイヤーをシャッフル
         List<String> shuffledPlayers = new ArrayList<>(players);
         Collections.shuffle(shuffledPlayers);
 
         Map<String, GameRole> assignments = new HashMap<>();
 
-        // まず人狼を割り当てる（最初の wolfCount 人）
+        int citizenCount = totalPlayers - wolfCount;
+
+        // 人狼を割り当て
         for (int i = 0; i < wolfCount; i++) {
             assignments.put(
                     shuffledPlayers.get(i),
@@ -48,17 +55,30 @@ public class GameLogic {
             );
         }
 
-        // 市民がいなければ終了
+        // 市民がいなければ返す
         if (citizenCount <= 0) {
             return assignments;
         }
 
-        // 市民用の役職を「ランダムに1つ」選び、残りの全員にその役職を割り当てる
-        GameRole chosenCitizenRole = shuffledRoles.get(0);
+        // Mode3 の場合：市民は同じ役職（ランダムに1つ選ぶ）を全員に割り当てる
+        if (mode == 3) {
+            GameRole chosenCitizenRole = shuffledRoles.get(0); // シャッフル済みの先頭を採用
+            // GameRole がミュータブルならコピーして割り当てることを検討
+            for (int i = 0; i < citizenCount; i++) {
+                String player = shuffledPlayers.get(wolfCount + i);
+                assignments.put(player, chosenCitizenRole);
+            }
+            return assignments;
+        }
 
+        // Mode3 以外：市民それぞれにランダムな役職を割り当てる（元の振る舞い）
+        if (shuffledRoles.size() < citizenCount) {
+            throw new IllegalArgumentException("役割の数がプレイヤー数に対して不足しています。");
+        }
         for (int i = 0; i < citizenCount; i++) {
             String player = shuffledPlayers.get(wolfCount + i);
-            assignments.put(player, chosenCitizenRole);
+            GameRole role = shuffledRoles.get(i);
+            assignments.put(player, role);
         }
 
         return assignments;
