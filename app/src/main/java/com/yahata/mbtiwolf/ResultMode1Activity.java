@@ -8,7 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ResultMode1Activity extends AppCompatActivity {
 
@@ -25,8 +27,9 @@ public class ResultMode1Activity extends AppCompatActivity {
         HashMap<String, GameRole> assignments = (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS");
         HashMap<String, HashMap<String, String>> allAnswers = (HashMap<String, HashMap<String, String>>) getIntent().getSerializableExtra("ALL_ANSWERS");
 
-        int maxScore = -1;
-        String topPlayer = "";
+        // 変更点1：最高スコアとトッププレイヤーを特定するロジックを修正するため、
+        // スコアを格納するマップを新しく作成
+        HashMap<String, Integer> playerScores = new HashMap<>();
 
         // 各プレイヤーの結果を表示
         for (String guesser : playerList) {
@@ -57,19 +60,50 @@ public class ResultMode1Activity extends AppCompatActivity {
                 resultsLayout.addView(resultLine);
             }
 
+            // 変更点2：ループ内でスコアをマップに保存
+            playerScores.put(guesser, score);
+
             TextView scoreText = new TextView(this);
             scoreText.setText("正解数: " + score + "/" + guesses.size());
             scoreText.setTextSize(18);
             scoreText.setPadding(0, 8, 0, 0);
             resultsLayout.addView(scoreText);
 
+            // 変更点3：従来の最高スコア判定ロジックを削除
+            /*
             if (score > maxScore) {
                 maxScore = score;
                 topPlayer = guesser;
             }
+            */
         }
 
-        topPlayerTextView.setText("最も成績が良かったのは " + topPlayer + " さんです！");
+        // 変更点4：playerScoresマップから最高スコアを特定
+        int maxScore = playerScores.values().stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
+
+        // 変更点5：最高スコアに一致するすべてのプレイヤーをリストに集める
+        List<String> topPlayers = playerScores.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxScore)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        // 変更点6：同率1位、全員同点、正解者なしの場合を考慮した表示ロジックに修正
+        if (maxScore == 0) {
+            topPlayerTextView.setText("正解者はいませんでした！");
+        } else if (topPlayers.size() == playerList.size()) {
+            topPlayerTextView.setText("全員同点です！");
+        } else if (topPlayers.size() > 1) {
+            String topPlayersText = String.join("さん、", topPlayers) + "さん";
+            topPlayerTextView.setText("最も成績が良かったのは " + topPlayersText + " です！");
+        } else {
+            topPlayerTextView.setText("最も成績が良かったのは " + topPlayers.get(0) + " さんです！");
+        }
+
+        // 変更点7：従来のトッププレイヤー表示を削除
+        // topPlayerTextView.setText("最も成績が良かったのは " + topPlayer + " さんです！");
 
         playAgainButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
