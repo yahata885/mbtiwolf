@@ -1,4 +1,5 @@
 package com.yahata.mbtiwolf;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ResultMode2Activity extends AppCompatActivity {
 
@@ -24,10 +27,8 @@ public class ResultMode2Activity extends AppCompatActivity {
         HashMap<String, GameRole> assignments = (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS");
         HashMap<String, HashMap<String, String>> allAnswers = (HashMap<String, HashMap<String, String>>) getIntent().getSerializableExtra("ALL_ANSWERS");
 
-        int maxScore = -1;
-        String topPlayer = "";
+        HashMap<String, Integer> playerScores = new HashMap<>();
 
-        // 各プレイヤーの結果を表示
         for (String guesser : playerList) {
             TextView guesserTitle = new TextView(this);
             guesserTitle.setText("▼ " + guesser + "さんの回答結果");
@@ -56,19 +57,35 @@ public class ResultMode2Activity extends AppCompatActivity {
                 resultsLayout.addView(resultLine);
             }
 
+            playerScores.put(guesser, score);
+
             TextView scoreText = new TextView(this);
             scoreText.setText("正解数: " + score + "/" + guesses.size());
             scoreText.setTextSize(18);
             scoreText.setPadding(0, 8, 0, 0);
             resultsLayout.addView(scoreText);
-
-            if (score > maxScore) {
-                maxScore = score;
-                topPlayer = guesser;
-            }
         }
 
-        topPlayerTextView.setText("最も成績が良かったのは " + topPlayer + " さんです！");
+        int maxScore = playerScores.values().stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
+
+        List<String> topPlayers = playerScores.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxScore)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        if (maxScore == 0) {
+            topPlayerTextView.setText("正解者はいませんでした！");
+        } else if (topPlayers.size() == playerList.size()) {
+            topPlayerTextView.setText("全員同点です！");
+        } else if (topPlayers.size() > 1) {
+            String topPlayersText = String.join("さん、", topPlayers) + "さん";
+            topPlayerTextView.setText("最も成績が良かったのは " + topPlayersText + " です！");
+        } else {
+            topPlayerTextView.setText("最も成績が良かったのは " + topPlayers.get(0) + " さんです！");
+        }
 
         playAgainButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
