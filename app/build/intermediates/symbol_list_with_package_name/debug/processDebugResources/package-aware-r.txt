@@ -3112,6 +3112,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addMinuteButton
 id addPlayerButton
 id alertTitle
 id aligned
@@ -3397,7 +3398,6 @@ id parent
 id parentPanel
 id parentRelative
 id parent_matrix
-id participantsLabel
 id password_toggle
 id path
 id pathRelative
@@ -3483,6 +3483,7 @@ id src_in
 id src_over
 id standard
 id start
+id startButton
 id startHorizontal
 id startToEnd
 id startVertical
@@ -3492,6 +3493,7 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id subtractMinuteButton
 id supportScrollUp
 id tabMode
 id tag_accessibility_actions

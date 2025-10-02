@@ -4,6 +4,7 @@ color black
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id addMinuteButton
 id addPlayerButton
 id answerFieldsLayout
 id confirmAnswersButton
@@ -18,7 +19,6 @@ id mode1Button
 id mode2Button
 id mode3Button
 id nextPlayerButton
-id participantsLabel
 id playAgainButton
 id playerListTextView
 id playerNameEditText
@@ -31,6 +31,8 @@ id roleDescriptionTextView
 id roleGuessResultsLayout
 id roleNameTextView
 id rolesTextView
+id startButton
+id subtractMinuteButton
 id themeRadioGroup
 id timerTextView
 id topPlayerTextView
