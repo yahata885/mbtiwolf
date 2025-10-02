@@ -8,7 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ResultMode3Activity extends AppCompatActivity {
 
@@ -57,28 +59,45 @@ public class ResultMode3Activity extends AppCompatActivity {
             }
         }
 
-        // Find the player with the most votes for "Werewolf"
-        String mostSuspectedPlayer = "";
-        int maxVotes = 0;
-        for (Map.Entry<String, Integer> entry : wolfVoteCounts.entrySet()) {
-            if (entry.getValue() > maxVotes) {
-                maxVotes = entry.getValue();
-                mostSuspectedPlayer = entry.getKey();
-            }
-        }
+        // Find the player(s) with the most votes
+        int maxVotes = wolfVoteCounts.values().stream()
+                .mapToInt(Integer::intValue)
+                .max()
+                .orElse(0);
 
-        if (mostSuspectedPlayer.isEmpty()) {
+        // 投票が全くない場合は人狼の勝利
+        if (maxVotes == 0) {
             voteResultView.setText("誰も人狼だと疑われませんでした。");
             winnerView.setText("人狼チームの勝利！");
             return;
         }
 
-        GameRole suspectedRole = assignments.get(mostSuspectedPlayer);
-        boolean wasWolf = suspectedRole != null && suspectedRole.getName().equals("人狼");
+        // 最多票を獲得したプレイヤーをすべて取得
+        List<String> mostSuspectedPlayers = wolfVoteCounts.entrySet().stream()
+                .filter(entry -> entry.getValue() == maxVotes)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
 
-        voteResultView.setText("最も疑われたのは " + mostSuspectedPlayer + " さんでした。\nその正体は... " + (wasWolf ? "人狼" : "市民") + "！");
+        // 勝敗判定ロジック
+        boolean wasWolfFound = false;
+        for (String player : mostSuspectedPlayers) {
+            GameRole role = assignments.get(player);
+            if (role != null && role.getName().equals("人狼")) {
+                wasWolfFound = true;
+                break;
+            }
+        }
 
-        if (wasWolf) {
+        // 結果表示
+        if (mostSuspectedPlayers.size() > 1) {
+            String playersText = String.join("さん、", mostSuspectedPlayers) + "さん";
+            voteResultView.setText("最も疑われたのは " + playersText + " でした。\nその中に人狼は" + (wasWolfFound ? "いました" : "いませんでした") + "！");
+        } else {
+            String mostSuspectedPlayer = mostSuspectedPlayers.get(0);
+            voteResultView.setText("最も疑われたのは " + mostSuspectedPlayer + " さんでした。\nその正体は... " + (wasWolfFound ? "人狼" : "市民") + "！");
+        }
+
+        if (wasWolfFound) {
             winnerView.setText("市民チームの勝利！");
         } else {
             winnerView.setText("人狼チームの勝利！");
