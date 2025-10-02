@@ -31,18 +31,14 @@ public class AnswerInputActivity extends AppCompatActivity {
     private int currentPlayerIndex = 0;
     private List<Spinner> currentSpinnersForMode1 = new ArrayList<>();
 
-    // --- モード2, 3で使う変数 ---
-    // HashMap<回答者名, HashMap<対象者名, スピナー>>
-    private HashMap<String, HashMap<String, Spinner>> allSpinnersForMode23 = new HashMap<>();
+    // --- モード2で使う変数 ---
+    private HashMap<String, HashMap<String, Spinner>> allSpinnersForMode2 = new HashMap<>();
 
-    // 変更点1：mode3用のスピナーリストを追加
+    // --- モード3で使う変数 ---
     private HashMap<String, Spinner> allSpinnersForMode3 = new HashMap<>();
 
     // このActivityの成果物
     private HashMap<String, HashMap<String, String>> allAnswers = new HashMap<>();
-
-    // 変更点2：mode3用の成果物を追加
-    private HashMap<String, String> finalVoteForMode3 = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,32 +49,22 @@ public class AnswerInputActivity extends AppCompatActivity {
         answerFieldsLayout = findViewById(R.id.answerFieldsLayout);
         confirmAnswersButton = findViewById(R.id.confirmAnswersButton);
 
-        // Intentからデータを取得
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
         assignments = (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS");
-        mode = getIntent().getIntExtra("GAME_MODE", 1); // デフォルトを1に変更
+        mode = getIntent().getIntExtra("GAME_MODE", 1);
         theme = getIntent().getStringExtra("GAME_THEME");
 
-        // ★★★ 修正点：モードごとに明確に分岐する ★★★
+        // ★★★ モードごとに処理を明確に分岐 ★★★
         if (mode == 1) {
             setupTurnForMode1();
             confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode1());
-        } else if (mode == 2) { // モード2の場合
-            setupAllInOneScreenForMode23();
-            confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode23());
-        } else { // mode == 3の場合
+        } else if (mode == 2) {
+            setupAllInOneScreenForMode2();
+            confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode2());
+        } else if (mode == 3) {
             setupSingleVoteScreenForMode3();
             confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode3());
         }
-
-//        // ★★★ モードによってUIの生成方法とボタンの動作を分岐 ★★★
-//        if (mode == 1) {
-//            setupTurnForMode1(); // モード1：一人ずつ入力する画面を準備
-//            confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode1());
-//        } else { // モード2, 3
-//            setupAllInOneScreenForMode23(); // モード2, 3：全員分を一度に入力する画面を準備
-//            confirmAnswersButton.setOnClickListener(v -> handleConfirmForMode23());
-//        }
     }
 
     // =================================================================
@@ -141,81 +127,10 @@ public class AnswerInputActivity extends AppCompatActivity {
     }
 
     // =================================================================
-    // ★★★ モード2, 3用のロジック (全員分を一度に入力) ★★★
-    // =================================================================
-
-//    private void setupAllInOneScreenForMode23() {
-//        guesserNameTextView.setText("全員の役職を予想してください");
-//        confirmAnswersButton.setText("全員の回答を確定し結果を見る");
-//        List<String> roleNames = getRoleOptions();
-//
-//        // 回答者ごとにループ
-//        for (String guesser : playerList) {
-//            // 「〇〇さんの予想」という見出しを追加
-//            TextView guesserHeader = new TextView(this);
-//            guesserHeader.setText(guesser + "さんの予想");
-//            guesserHeader.setTextSize(20);
-//            guesserHeader.setTypeface(null, android.graphics.Typeface.BOLD);
-//            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-//            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//            params.setMargins(0, 24, 0, 8); // 上にマージン
-//            guesserHeader.setLayoutParams(params);
-//            answerFieldsLayout.addView(guesserHeader);
-//
-//            HashMap<String, Spinner> targetSpinners = new HashMap<>();
-//
-//            // 予想対象者ごとにループ
-//            for (String target : playerList) {
-//                if (guesser.equals(target)) continue; // 自分は予想しない
-//
-//                // レイアウトを行にするためのLinearLayout
-//                LinearLayout rowLayout = new LinearLayout(this);
-//                rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-//
-//                TextView targetName = new TextView(this);
-//                targetName.setText(target + "：");
-//                targetName.setTextSize(18);
-//
-//                Spinner roleSpinner = new Spinner(this);
-//                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
-//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                roleSpinner.setAdapter(adapter);
-//
-//                rowLayout.addView(targetName);
-//                rowLayout.addView(roleSpinner);
-//                answerFieldsLayout.addView(rowLayout);
-//
-//                targetSpinners.put(target, roleSpinner);
-//            }
-//            allSpinnersForMode23.put(guesser, targetSpinners);
-//        }
-//    }
-//
-//    private void handleConfirmForMode23() {
-//        saveAllAnswersFromScreen();
-//        goToResultScreen();
-//    }
-//
-//    private void saveAllAnswersFromScreen() {
-//        // allSpinnersForMode23 から全ての回答を読み取って allAnswers を構築
-//        for (String guesser : allSpinnersForMode23.keySet()) {
-//            HashMap<String, String> currentGuesses = new HashMap<>();
-//            HashMap<String, Spinner> targetSpinners = allSpinnersForMode23.get(guesser);
-//
-//            for (String target : targetSpinners.keySet()) {
-//                Spinner spinner = targetSpinners.get(target);
-//                String guess = spinner.getSelectedItem().toString();
-//                currentGuesses.put(target, guess);
-//            }
-//            allAnswers.put(guesser, currentGuesses);
-//        }
-//    }
-
-// =================================================================
     // ★★★ モード2用のロジック (全員分を一度に入力) ★★★
     // =================================================================
 
-    private void setupAllInOneScreenForMode23() {
+    private void setupAllInOneScreenForMode2() {
         guesserNameTextView.setText("全員の役職を予想してください");
         confirmAnswersButton.setText("全員の回答を確定し結果を見る");
         List<String> roleNames = getRoleOptions();
@@ -254,19 +169,19 @@ public class AnswerInputActivity extends AppCompatActivity {
 
                 targetSpinners.put(target, roleSpinner);
             }
-            allSpinnersForMode23.put(guesser, targetSpinners);
+            allSpinnersForMode2.put(guesser, targetSpinners);
         }
     }
 
-    private void handleConfirmForMode23() {
-        saveAllAnswersFromScreen();
+    private void handleConfirmForMode2() {
+        saveAllAnswersFromScreenForMode2();
         goToResultScreen();
     }
 
-    private void saveAllAnswersFromScreen() {
-        for (String guesser : allSpinnersForMode23.keySet()) {
+    private void saveAllAnswersFromScreenForMode2() {
+        for (String guesser : allSpinnersForMode2.keySet()) {
             HashMap<String, String> currentGuesses = new HashMap<>();
-            HashMap<String, Spinner> targetSpinners = allSpinnersForMode23.get(guesser);
+            HashMap<String, Spinner> targetSpinners = allSpinnersForMode2.get(guesser);
 
             for (String target : targetSpinners.keySet()) {
                 Spinner spinner = targetSpinners.get(target);
@@ -277,53 +192,44 @@ public class AnswerInputActivity extends AppCompatActivity {
         }
     }
 
-
     // =================================================================
-    // ★★★ 変更点3：モード3用のロジックを追加 (全員で一つの回答) ★★★
+    // ★★★ モード3用のロジック (人狼への投票) ★★★
     // =================================================================
 
     private void setupSingleVoteScreenForMode3() {
-        guesserNameTextView.setText("全員で相談して回答してください");
-        confirmAnswersButton.setText("回答を確定し結果を見る");
-        List<String> roleNames = getRoleOptions();
+        guesserNameTextView.setText("全員で相談して、人狼だと思う人に投票してください");
+        confirmAnswersButton.setText("投票を確定し結果を見る");
 
         answerFieldsLayout.removeAllViews();
         allSpinnersForMode3.clear();
 
-        for (String targetPlayer : playerList) {
-            TextView targetPlayerTextView = new TextView(this);
-            targetPlayerTextView.setText(targetPlayer + "さんの役割");
-            targetPlayerTextView.setTextSize(18);
-            targetPlayerTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            answerFieldsLayout.addView(targetPlayerTextView);
+        TextView questionTextView = new TextView(this);
+        questionTextView.setText("人狼だと思うのは誰？");
+        questionTextView.setTextSize(20);
+        answerFieldsLayout.addView(questionTextView);
 
-            Spinner roleSpinner = new Spinner(this);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            roleSpinner.setAdapter(adapter);
-            answerFieldsLayout.addView(roleSpinner);
+        Spinner playerSpinner = new Spinner(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, playerList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        playerSpinner.setAdapter(adapter);
+        answerFieldsLayout.addView(playerSpinner);
 
-            allSpinnersForMode3.put(targetPlayer, roleSpinner);
-        }
+        allSpinnersForMode3.put("vote", playerSpinner);
     }
 
     private void handleConfirmForMode3() {
-        saveSingleVote();
+        saveSingleVoteForMode3();
         goToResultScreen();
     }
 
-    private void saveSingleVote() {
-        // allSpinnersForMode3 から全ての回答を読み取って finalVoteForMode3 を構築
-        for (String target : allSpinnersForMode3.keySet()) {
-            Spinner spinner = allSpinnersForMode3.get(target);
-            String guess = spinner.getSelectedItem().toString();
-            finalVoteForMode3.put(target, guess);
-        }
+    private void saveSingleVoteForMode3() {
+        String votedPlayer = allSpinnersForMode3.get("vote").getSelectedItem().toString();
 
-        // 変更点4：一つの回答を全員の回答として allAnswers に格納
+        HashMap<String, String> voteResult = new HashMap<>();
+        voteResult.put(votedPlayer, "人狼");
+
         for (String player : playerList) {
-            allAnswers.put(player, finalVoteForMode3);
+            allAnswers.put(player, voteResult);
         }
     }
 
@@ -344,13 +250,11 @@ public class AnswerInputActivity extends AppCompatActivity {
         Toast.makeText(this, "全員の回答が完了しました", Toast.LENGTH_SHORT).show();
 
         Intent intent;
-        if (mode == 1 ) { // モード1もモード2も同じ結果画面を使う場合
+        if (mode == 1) {
             intent = new Intent(this, ResultMode1Activity.class);
-        }
-        else if(mode == 2){
+        } else if (mode == 2) {
             intent = new Intent(this, ResultMode2Activity.class);
-        }
-        else { // mode == 3
+        } else { // mode == 3
             intent = new Intent(this, ResultMode3Activity.class);
         }
 
