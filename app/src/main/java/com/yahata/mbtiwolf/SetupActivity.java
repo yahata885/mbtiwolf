@@ -46,6 +46,13 @@ public class SetupActivity extends AppCompatActivity {
                 String theme = getIntent().getStringExtra("GAME_THEME");
                 int mode = getIntent().getIntExtra("GAME_MODE", 1);
 
+                java.util.List<GameRole> rolesToShow;
+                if ("MBTI".equals(theme)) {
+                    rolesToShow = DataSource.getMbtiRoles();
+                } else {
+                    rolesToShow = DataSource.getLoveTypeRoles();
+                }
+
                 Intent intent;
                 if (mode == 1) {
                     intent = new Intent(SetupActivity.this, Mode1InputActivity.class);
@@ -55,6 +62,7 @@ public class SetupActivity extends AppCompatActivity {
                 intent.putExtra("GAME_THEME", theme);
                 intent.putExtra("GAME_MODE", mode);
                 intent.putStringArrayListExtra("PLAYER_LIST", playerList);
+                intent.putExtra("ROLE_LIST", new ArrayList<>(rolesToShow));
                 startActivity(intent);
 
             } else {

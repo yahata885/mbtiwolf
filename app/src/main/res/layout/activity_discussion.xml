@@ -57,17 +57,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="参加者リスト"
+        android:text="役職リスト"
         android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/playerListTextView"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"
-        tools:text="プレイヤー1\nプレイヤー2\nプレイヤー3" />
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:id="@+id/roleListLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/goToVoteButton"

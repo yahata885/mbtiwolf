@@ -1,5 +1,6 @@
 package com.yahata.mbtiwolf;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.EditText;
@@ -21,6 +23,9 @@ public class DiscussionActivity extends AppCompatActivity {
     private Button addMinuteButton;
     private Button subtractMinuteButton;
     private Button startButton;
+
+    //役職リスト表示用
+    private LinearLayout roleListLayout;
 
     private TextView timerTextView;
     private TextView playerListTextView;
@@ -61,8 +66,13 @@ public class DiscussionActivity extends AppCompatActivity {
         subtractMinuteButton = findViewById(R.id.subtractMinuteButton);
         startButton = findViewById(R.id.startButton);
         timerTextView = findViewById(R.id.timerTextView);
-        playerListTextView = findViewById(R.id.playerListTextView);
+//        playerListTextView = findViewById(R.id.playerListTextView);
         goToVoteButton = findViewById(R.id.goToVoteButton);
+
+
+        roleListLayout = findViewById(R.id.roleListLayout);
+        ArrayList<GameRole> roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
+        displayRoleList(roleList);
 
         goToVoteButton.setEnabled(true);
 
@@ -70,7 +80,7 @@ public class DiscussionActivity extends AppCompatActivity {
         updateTimerDisplay();
 
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
-        displayPlayerList(playerList);
+//        displayPlayerList(playerList);
 
         //  「+1分」ボタンの処理
         addMinuteButton.setOnClickListener(v -> {
@@ -118,13 +128,33 @@ public class DiscussionActivity extends AppCompatActivity {
         timerTextView.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
     }
 
-    private void displayPlayerList(ArrayList<String> players) {
-        if (players != null) {
-            StringBuilder text = new StringBuilder();
-            for (String player : players) {
-                text.append(player).append("\n");
-            }
-            playerListTextView.setText(text.toString());
+    private void displayRoleList(ArrayList<GameRole> roles) {
+        if (roles == null || roles.isEmpty()) {
+            return;
+        }
+
+        // 既存の表示をクリア
+        roleListLayout.removeAllViews();
+
+        for (GameRole role : roles) {
+            // 役職名を表示するTextViewを動的に作成
+            TextView roleNameTextView = new TextView(this);
+            roleNameTextView.setText("・" + role.getName());
+            roleNameTextView.setTextSize(20);
+            roleNameTextView.setPadding(8, 16, 8, 16);
+
+            // タップされた時の処理を設定
+            roleNameTextView.setOnClickListener(v -> {
+                // ポップアップ（AlertDialog）で説明文を表示
+                new AlertDialog.Builder(this)
+                        .setTitle(role.getName()) // ポップアップのタイトル
+                        .setMessage(role.getDescription()) // ポップアップの本文
+                        .setPositiveButton("OK", null) // OKボタン
+                        .show();
+            });
+
+            // レイアウトに作成したTextViewを追加
+            roleListLayout.addView(roleNameTextView);
         }
     }
 

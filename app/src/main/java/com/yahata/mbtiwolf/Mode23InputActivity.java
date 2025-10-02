@@ -1,5 +1,6 @@
 package com.yahata.mbtiwolf;
 
+import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class Mode23InputActivity extends AppCompatActivity {
     private Map<String, GameRole> assignments;
     private ArrayList<String> playerList;
     private int currentPlayerIndex = 0;
+    private ArrayList<GameRole> roleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class Mode23InputActivity extends AppCompatActivity {
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
         String theme = getIntent().getStringExtra("GAME_THEME");
         int mode = getIntent().getIntExtra("GAME_MODE", 2);
+        roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
         //モード3なら人狼を1人割り当てる、他モードは0人
         int wolfCount = (mode == 3) ? 1 : 0;
         assignments = GameLogic.assignRoles(playerList, theme, wolfCount, mode);
@@ -55,6 +58,7 @@ public class Mode23InputActivity extends AppCompatActivity {
                 intent.putExtra("GAME_MODE", mode);
                 // ★★★ 「正解データ」を次の画面に渡す ★★★
                 intent.putExtra("ASSIGNMENTS", (HashMap<String, GameRole>) assignments);
+                intent.putExtra("ROLE_LIST", roleList);
 
                 startActivity(intent);
                 finish();

@@ -1,5 +1,6 @@
 package com.yahata.mbtiwolf;
 
+import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ public class Mode1InputActivity extends AppCompatActivity {
     private ArrayList<String> playerList;
     private String theme;
     private int currentPlayerIndex = 0;
+    private ArrayList<GameRole> roleList;
 
     private HashMap<String, String> playerSelections = new HashMap<>();
 
@@ -38,6 +40,8 @@ public class Mode1InputActivity extends AppCompatActivity {
 
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
         theme = getIntent().getStringExtra("GAME_THEME");
+
+        roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
 
         setupSpinner(theme);
         updateTurnView();
@@ -70,6 +74,7 @@ public class Mode1InputActivity extends AppCompatActivity {
         intent.putExtra("GAME_THEME", theme);
         intent.putExtra("GAME_MODE", 1);
         intent.putExtra("ASSIGNMENTS", assignments);
+        intent.putExtra("ROLE_LIST", roleList);
 
         startActivity(intent);
         finish();
