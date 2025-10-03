@@ -3,8 +3,10 @@ package com.yahata.mbtiwolf;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -12,62 +14,112 @@ import java.util.ArrayList;
 public class SetupActivity extends AppCompatActivity {
 
     private final ArrayList<String> playerList = new ArrayList<>();
+    // 人狼の人数を管理する変数。モード3のデフォルトは1人
+    private int wolfCount = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
+        // --- UI要素の取得 ---
         EditText playerNameEditText = findViewById(R.id.playerNameEditText);
         Button addPlayerButton = findViewById(R.id.addPlayerButton);
         TextView playerListTextView = findViewById(R.id.playerListTextView);
         Button confirmButton = findViewById(R.id.confirmButton);
 
+        // 新しいUI要素を取得
+        LinearLayout wolfCountLayout = findViewById(R.id.wolfCountLayout);
+        Button minusButton = findViewById(R.id.minusButton);
+        Button plusButton = findViewById(R.id.plusButton);
+        TextView wolfCountTextView = findViewById(R.id.wolfCountTextView);
 
-        //名前の入力処理
+        // --- モードに応じて人狼設定UIの表示を切り替え ---
+        int mode = getIntent().getIntExtra("GAME_MODE", 1);
+        if (mode == 3) {
+            wolfCountLayout.setVisibility(View.VISIBLE);
+        } else {
+            wolfCountLayout.setVisibility(View.GONE);
+            wolfCount = 0; // モード3以外は人狼0人で確定
+        }
+
+        // 人数表示を初期化
+        wolfCountTextView.setText(String.valueOf(wolfCount));
+
+        // --- ボタンのクリックリスナー設定 ---
+
+        // (変更なし) 名前入力処理
         addPlayerButton.setOnClickListener(v -> {
-            //入力された名前をゲット
             String playerName = playerNameEditText.getText().toString().trim();
-            //名前が空白以外の場合
             if (!playerName.isEmpty()) {
                 playerList.add(playerName);
                 updatePlayerListView(playerListTextView);
                 playerNameEditText.setText("");
-            //その他
             } else {
                 Toast.makeText(SetupActivity.this, "名前を入力してください", Toast.LENGTH_SHORT).show();
             }
         });
 
-        //確定ボタン
-        confirmButton.setOnClickListener(v -> {
-            //プレイヤー数に応じる
-            if (playerList.size() >= 2) {
-                String theme = getIntent().getStringExtra("GAME_THEME");
-                int mode = getIntent().getIntExtra("GAME_MODE", 1);
-
-                java.util.List<GameRole> rolesToShow;
-                if ("MBTI".equals(theme)) {
-                    rolesToShow = DataSource.getMbtiRoles();
-                } else {
-                    rolesToShow = DataSource.getLoveTypeRoles();
-                }
-
-                Intent intent;
-                if (mode == 1) {
-                    intent = new Intent(SetupActivity.this, Mode1InputActivity.class);
-                } else {
-                    intent = new Intent(SetupActivity.this, Mode23InputActivity.class);
-                }
-                intent.putExtra("GAME_THEME", theme);
-                intent.putExtra("GAME_MODE", mode);
-                intent.putStringArrayListExtra("PLAYER_LIST", playerList);
-                intent.putExtra("ROLE_LIST", new ArrayList<>(rolesToShow));
-                startActivity(intent);
-
-            } else {
-                Toast.makeText(SetupActivity.this, "プレイヤーを2人以上追加してください", Toast.LENGTH_SHORT).show();
+        // 「+」ボタンの処理
+        plusButton.setOnClickListener(v -> {
+            // 人狼の数は「プレイヤー数 - 1」まで
+            if (playerList.size() < 2) {
+                Toast.makeText(SetupActivity.this, "先にプレイヤーを追加してください", Toast.LENGTH_SHORT).show();
+                return;
             }
+            if (wolfCount < playerList.size() - 1) {
+                wolfCount++;
+                wolfCountTextView.setText(String.valueOf(wolfCount));
+            } else {
+                Toast.makeText(SetupActivity.this, "人狼が多すぎます", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 「-」ボタンの処理
+        minusButton.setOnClickListener(v -> {
+            // 人狼は最低1人
+            if (wolfCount > 1) {
+                wolfCount--;
+                wolfCountTextView.setText(String.valueOf(wolfCount));
+            } else {
+                Toast.makeText(SetupActivity.this, "人狼は最低1人です", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // 確定ボタンの処理
+        confirmButton.setOnClickListener(v -> {
+            if (playerList.size() < 2) {
+                Toast.makeText(SetupActivity.this, "プレイヤーを2人以上追加してください", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // モード3の場合、プレイヤー数が人狼の数より多いか最終チェック
+            if (mode == 3 && playerList.size() <= wolfCount) {
+                Toast.makeText(SetupActivity.this, "プレイヤー数が人狼の数より多くなるようにしてください", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // --- Intentの準備 (以前のコードから流用) ---
+            String theme = getIntent().getStringExtra("GAME_THEME");
+            java.util.List<GameRole> rolesToShow;
+            if ("MBTI".equals(theme)) {
+                rolesToShow = DataSource.getMbtiRoles();
+            } else {
+                rolesToShow = DataSource.getLoveTypeRoles();
+            }
+
+            Intent intent;
+            if (mode == 1) {
+                intent = new Intent(SetupActivity.this, Mode1InputActivity.class);
+            } else {
+                intent = new Intent(SetupActivity.this, Mode23InputActivity.class);
+            }
+            intent.putExtra("GAME_THEME", theme);
+            intent.putExtra("GAME_MODE", mode);
+            intent.putStringArrayListExtra("PLAYER_LIST", playerList);
+            intent.putExtra("ROLE_LIST", new ArrayList<>(rolesToShow));
+            // ★★★ メンバ変数のwolfCountをIntentに追加 ★★★
+            intent.putExtra("WOLF_COUNT", wolfCount);
+            startActivity(intent);
         });
     }
 

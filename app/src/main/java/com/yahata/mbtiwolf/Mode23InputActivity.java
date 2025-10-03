@@ -1,6 +1,5 @@
 package com.yahata.mbtiwolf;
 
-import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,8 +36,10 @@ public class Mode23InputActivity extends AppCompatActivity {
         String theme = getIntent().getStringExtra("GAME_THEME");
         int mode = getIntent().getIntExtra("GAME_MODE", 2);
         roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
-        //モード3なら人狼を1人割り当てる、他モードは0人
-        int wolfCount = (mode == 3) ? 1 : 0;
+
+        // SetupActivityから渡された人狼の人数を受け取る (デフォルトは0人)
+        int wolfCount = getIntent().getIntExtra("WOLF_COUNT", 0);
+
         assignments = GameLogic.assignRoles(playerList, theme, wolfCount, mode);
 
         updateTurnView();
@@ -56,7 +57,7 @@ public class Mode23InputActivity extends AppCompatActivity {
                 intent.putStringArrayListExtra("PLAYER_LIST", playerList);
                 intent.putExtra("GAME_THEME", theme);
                 intent.putExtra("GAME_MODE", mode);
-                // ★★★ 「正解データ」を次の画面に渡す ★★★
+                // 「正解データ」を次の画面に渡す
                 intent.putExtra("ASSIGNMENTS", (HashMap<String, GameRole>) assignments);
                 intent.putExtra("ROLE_LIST", roleList);
 
