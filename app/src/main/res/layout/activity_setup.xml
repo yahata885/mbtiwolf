@@ -72,10 +72,11 @@
 
             <Button
                 android:id="@+id/minusButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="-"
-                android:textSize="18sp"/>
+                android:textSize="24sp"
+                android:textColor="@android:color/white"/>
 
             <TextView
                 android:id="@+id/wolfCountTextView"
@@ -89,10 +90,11 @@
 
             <Button
                 android:id="@+id/plusButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="+"
-                android:textSize="18sp"/>
+                android:textSize="24sp"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
     </LinearLayout>
 
