@@ -34,7 +34,7 @@ public class DiscussionActivity extends AppCompatActivity {
 //    private long startTime = 0;
     private ArrayList<String> playerList;
     private long timeRemainingInMillis = 0;
-
+    private int wolfCount;
     private Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
@@ -81,7 +81,7 @@ public class DiscussionActivity extends AppCompatActivity {
 
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
 //        displayPlayerList(playerList);
-
+        wolfCount = getIntent().getIntExtra("WOLF_COUNT", 1);
         //  「+1分」ボタンの処理
         addMinuteButton.setOnClickListener(v -> {
             timeRemainingInMillis += 60 * 1000;
@@ -115,6 +115,7 @@ public class DiscussionActivity extends AppCompatActivity {
             intent.putExtra("GAME_THEME", getIntent().getStringExtra("GAME_THEME"));
             intent.putExtra("GAME_MODE", getIntent().getIntExtra("GAME_MODE", 2));
             intent.putExtra("ASSIGNMENTS", (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS"));
+            intent.putExtra("WOLF_COUNT", wolfCount);
             startActivity(intent);
             finish();
         });

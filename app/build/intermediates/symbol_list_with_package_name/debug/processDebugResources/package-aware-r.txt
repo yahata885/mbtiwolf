@@ -3163,6 +3163,7 @@ id clear_text
 id clip_horizontal
 id clip_vertical
 id clockwise
+id closeHintButton
 id closest
 id collapseActionView
 id compress
@@ -3257,7 +3258,13 @@ id grouping
 id groups
 id guesserNameTextView
 id header_title
+id helpButton
 id hideable
+id hint1TextView
+id hint2TextView
+id hint3TextView
+id hintCard
+id hintOverlayLayout
 id home
 id homeAsUp
 id honorRequest
@@ -3319,6 +3326,7 @@ id mbtiRadioButton
 id message
 id middle
 id mini
+id minusButton
 id mode1Button
 id mode2Button
 id mode3Button
@@ -3409,6 +3417,7 @@ id playerListTextView
 id playerNameEditText
 id playerNameTextView
 id playerTurnTextView
+id plusButton
 id position
 id postLayout
 id pressed
@@ -3428,6 +3437,8 @@ id right_side
 id roleCardView
 id roleDescriptionTextView
 id roleGuessResultsLayout
+id roleListLayout
+id roleListTitle
 id roleNameTextView
 id rolesTextView
 id rounded
@@ -3459,6 +3470,9 @@ id sharedValueSet
 id sharedValueUnset
 id shortcut
 id showCustom
+id showHint1Button
+id showHint2Button
+id showHint3Button
 id showHome
 id showTitle
 id sin
@@ -3527,9 +3541,11 @@ id textinput_prefix_text
 id textinput_suffix_text
 id themeRadioGroup
 id time
+id timeButtonsLayout
 id timerTextView
 id title
 id titleDividerNoCustom
+id titleTextView
 id title_template
 id toggle
 id top
@@ -3568,6 +3584,8 @@ id winnerTextView
 id withText
 id with_icon
 id withinBounds
+id wolfCountLayout
+id wolfCountTextView
 id wolfVoteResultTextView
 id wrap
 id wrap_content

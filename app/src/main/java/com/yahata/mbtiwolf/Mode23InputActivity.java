@@ -20,6 +20,7 @@ public class Mode23InputActivity extends AppCompatActivity {
     private ArrayList<String> playerList;
     private int currentPlayerIndex = 0;
     private ArrayList<GameRole> roleList;
+    private int wolfCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class Mode23InputActivity extends AppCompatActivity {
                 // 「正解データ」を次の画面に渡す
                 intent.putExtra("ASSIGNMENTS", (HashMap<String, GameRole>) assignments);
                 intent.putExtra("ROLE_LIST", roleList);
-
+                intent.putExtra("WOLF_COUNT", wolfCount);
                 startActivity(intent);
                 finish();
             }

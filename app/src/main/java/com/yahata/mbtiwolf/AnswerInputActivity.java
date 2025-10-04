@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.HashSet;
+import java.util.Set;
 public class AnswerInputActivity extends AppCompatActivity {
 
     private TextView guesserNameTextView;
@@ -26,7 +27,7 @@ public class AnswerInputActivity extends AppCompatActivity {
     private HashMap<String, GameRole> assignments;
     private int mode;
     private String theme;
-
+    private int wolfCount;
     // --- モード1で使う変数 ---
     private int currentPlayerIndex = 0;
     private List<Spinner> currentSpinnersForMode1 = new ArrayList<>();
@@ -35,8 +36,8 @@ public class AnswerInputActivity extends AppCompatActivity {
     private HashMap<String, HashMap<String, Spinner>> allSpinnersForMode2 = new HashMap<>();
 
     // --- モード3で使う変数 ---
-    private HashMap<String, Spinner> allSpinnersForMode3 = new HashMap<>();
-
+//    private HashMap<String, Spinner> allSpinnersForMode3 = new HashMap<>();
+    private final List<Spinner> allSpinnersForMode3 = new ArrayList<>();
     // このActivityの成果物
     private HashMap<String, HashMap<String, String>> allAnswers = new HashMap<>();
 
@@ -53,7 +54,7 @@ public class AnswerInputActivity extends AppCompatActivity {
         assignments = (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS");
         mode = getIntent().getIntExtra("GAME_MODE", 1);
         theme = getIntent().getStringExtra("GAME_THEME");
-
+        wolfCount = getIntent().getIntExtra("WOLF_COUNT", 1);
         // ★★★ モードごとに処理を明確に分岐 ★★★
         if (mode == 1) {
             setupTurnForMode1();
@@ -196,15 +197,54 @@ public class AnswerInputActivity extends AppCompatActivity {
     // ★★★ モード3用のロジック (人狼への投票) ★★★
     // =================================================================
 
-    private void setupSingleVoteScreenForMode3() {
-        guesserNameTextView.setText("全員で相談して、人狼だと思う人に投票してください");
-        confirmAnswersButton.setText("投票を確定し結果を見る");
+//    private void setupSingleVoteScreenForMode3() {
+//        guesserNameTextView.setText("全員で相談して、人狼だと思う人に投票してください");
+//        confirmAnswersButton.setText("投票を確定し結果を見る");
+//
+//        answerFieldsLayout.removeAllViews();
+//        allSpinnersForMode3.clear();
+//
+//        TextView questionTextView = new TextView(this);
+//        questionTextView.setText("人狼だと思うのは誰？");
+//        questionTextView.setTextSize(20);
+//        answerFieldsLayout.addView(questionTextView);
+//
+//        Spinner playerSpinner = new Spinner(this);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, playerList);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        playerSpinner.setAdapter(adapter);
+//        answerFieldsLayout.addView(playerSpinner);
+//
+//        allSpinnersForMode3.put("vote", playerSpinner);
+//    }
+//
+//    private void handleConfirmForMode3() {
+//        saveSingleVoteForMode3();
+//        goToResultScreen();
+//    }
+//
+//    private void saveSingleVoteForMode3() {
+//        String votedPlayer = allSpinnersForMode3.get("vote").getSelectedItem().toString();
+//
+//        HashMap<String, String> voteResult = new HashMap<>();
+//        voteResult.put(votedPlayer, "人狼");
+//
+//        for (String player : playerList) {
+//            allAnswers.put(player, voteResult);
+//        }
+//    }
+private void setupSingleVoteScreenForMode3() {
+    guesserNameTextView.setText("全員で相談して、人狼だと思う人に投票してください");
+    confirmAnswersButton.setText("投票を確定し結果を見る");
 
-        answerFieldsLayout.removeAllViews();
-        allSpinnersForMode3.clear();
+    answerFieldsLayout.removeAllViews();
+    allSpinnersForMode3.clear();
 
+    // wolfCountの数だけ投票欄を作成する
+    for (int i = 0; i < wolfCount; i++) {
         TextView questionTextView = new TextView(this);
-        questionTextView.setText("人狼だと思うのは誰？");
+        // 何人目の投票かを表示
+        questionTextView.setText(String.format("人狼だと思うのは誰？ (%d人目)", i + 1));
         questionTextView.setTextSize(20);
         answerFieldsLayout.addView(questionTextView);
 
@@ -214,25 +254,43 @@ public class AnswerInputActivity extends AppCompatActivity {
         playerSpinner.setAdapter(adapter);
         answerFieldsLayout.addView(playerSpinner);
 
-        allSpinnersForMode3.put("vote", playerSpinner);
+        // 作成したSpinnerをリストに追加して管理
+        allSpinnersForMode3.add(playerSpinner);
     }
+}
 
     private void handleConfirmForMode3() {
-        saveSingleVoteForMode3();
-        goToResultScreen();
-    }
-
-    private void saveSingleVoteForMode3() {
-        String votedPlayer = allSpinnersForMode3.get("vote").getSelectedItem().toString();
-
-        HashMap<String, String> voteResult = new HashMap<>();
-        voteResult.put(votedPlayer, "人狼");
-
-        for (String player : playerList) {
-            allAnswers.put(player, voteResult);
+        if (saveSingleVoteForMode3()) { // 保存処理が成功した場合のみ次に進む
+            goToResultScreen();
         }
     }
 
+    private boolean saveSingleVoteForMode3() {
+        Set<String> votedPlayers = new HashSet<>();
+        // 複数の投票結果を一時的に保持する
+        for (Spinner spinner : allSpinnersForMode3) {
+            votedPlayers.add(spinner.getSelectedItem().toString());
+        }
+
+        // 重複チェック：投票された人数が、設定された人狼の人数より少ない場合
+        // (例: 2人投票のはずが、同じ人を2回選んでいる場合)
+        if (votedPlayers.size() < wolfCount) {
+            Toast.makeText(this, "同じプレイヤーを重複して投票することはできません", Toast.LENGTH_SHORT).show();
+            return false; // 処理を中断
+        }
+
+        HashMap<String, String> voteResult = new HashMap<>();
+        // 投票されたプレイヤーをすべて結果マップに入れる
+        for (String votedPlayer : votedPlayers) {
+            voteResult.put(votedPlayer, "人狼");
+        }
+
+        // 全プレイヤーの回答として、この投票結果を保存する
+        for (String player : playerList) {
+            allAnswers.put(player, voteResult);
+        }
+        return true; // 成功
+    }
     // =================================================================
     // ★★★ 共通のヘルパーメソッドと画面遷移 ★★★
     // =================================================================
