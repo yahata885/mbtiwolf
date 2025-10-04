@@ -16,6 +16,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.List;
+import java.util.Collections;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DiscussionActivity extends AppCompatActivity {
 
@@ -26,6 +30,18 @@ public class DiscussionActivity extends AppCompatActivity {
 
     //役職リスト表示用
     private LinearLayout roleListLayout;
+
+    // --- ヒント機能 ---
+    private Button hintButton1, hintButton2, hintButton3;
+    private List<String> masterHintList = new ArrayList<>();
+    private List<String> selectedHints = new ArrayList<>();
+
+    // --- 役職説明画面 ---
+    private FloatingActionButton helpButton; // 「?」ボタン
+    private ConstraintLayout roleExplanationOverlayLayout; // 役職説明画面の全体
+    private TextView closeRoleExplanationButton; // 役職説明画面の「✖」ボタン
+
+
 
     private TextView timerTextView;
     private TextView playerListTextView;
@@ -70,9 +86,50 @@ public class DiscussionActivity extends AppCompatActivity {
         goToVoteButton = findViewById(R.id.goToVoteButton);
 
 
-        roleListLayout = findViewById(R.id.roleListLayout);
-        ArrayList<GameRole> roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
-        displayRoleList(roleList);
+//        roleListLayout = findViewById(R.id.roleListLayout);
+//        ArrayList<GameRole> roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
+//        displayRoleList(roleList);
+
+        // --- ヒント機能 ---
+        hintButton1 = findViewById(R.id.hintButton1);
+        hintButton2 = findViewById(R.id.hintButton2);
+        hintButton3 = findViewById(R.id.hintButton3);
+
+        // --- 役職説明画面 ---
+        helpButton = findViewById(R.id.helpButton);
+        roleExplanationOverlayLayout = findViewById(R.id.roleExplanationOverlayLayout);
+        closeRoleExplanationButton = findViewById(R.id.closeRoleExplanationButton);
+
+        // ヒントの初期設定を行う
+        initializeHints();
+
+        // ヒントボタンのクリック処理
+        hintButton1.setOnClickListener(v -> {
+            if (selectedHints.size() > 0) {
+                hintButton1.setText(selectedHints.get(0));
+                hintButton1.setClickable(false);
+            }
+        });
+        hintButton2.setOnClickListener(v -> {
+            if (selectedHints.size() > 1) {
+                hintButton2.setText(selectedHints.get(1));
+                hintButton2.setClickable(false);
+            }
+        });
+        hintButton3.setOnClickListener(v -> {
+            if (selectedHints.size() > 2) {
+                hintButton3.setText(selectedHints.get(2));
+                hintButton3.setClickable(false);
+            }
+        });
+
+        // 役職説明画面の表示・非表示処理
+        helpButton.setOnClickListener(v -> {
+            roleExplanationOverlayLayout.setVisibility(View.VISIBLE);
+        });
+        closeRoleExplanationButton.setOnClickListener(v -> {
+            roleExplanationOverlayLayout.setVisibility(View.GONE);
+        });
 
         goToVoteButton.setEnabled(true);
 
@@ -121,6 +178,38 @@ public class DiscussionActivity extends AppCompatActivity {
         });
     }
 
+    private void initializeHints() {
+        setupMasterHintList();
+        selectRandomHints();
+    }
+
+    private void setupMasterHintList() {
+        masterHintList.add("ウルフは嘘をついている可能性が高い。");
+        masterHintList.add("議論にあまり参加しない人は怪しいかもしれない。");
+        masterHintList.add("誰かを不自然にかばっている人はいないか？");
+        masterHintList.add("MBTIタイプだけで判断するのは危険だ。");
+        masterHintList.add("最初のテーマと話題がズレてきていないか注意しよう。");
+        masterHintList.add("他の人の意見にすぐに便乗する人は、自分の意見がないのかもしれない。");
+        masterHintList.add("矛盾した発言をしている人はいないか、よく思い出そう。");
+    }
+
+    private void selectRandomHints() {
+        // ボタンの状態を初期状態に戻す
+        hintButton1.setText("ヒント1を表示");
+        hintButton1.setClickable(true);
+        hintButton2.setText("ヒント2を表示");
+        hintButton2.setClickable(true);
+        hintButton3.setText("ヒント3を表示");
+        hintButton3.setClickable(true);
+
+        // ランダムにヒントを選ぶ処理
+        List<String> shuffledList = new ArrayList<>(masterHintList);
+        Collections.shuffle(shuffledList);
+        selectedHints.clear();
+        for (int i = 0; i < 3 && i < shuffledList.size(); i++) {
+            selectedHints.add(shuffledList.get(i));
+        }
+    }
 
     // ★ タイマー表示を更新する共通メソッド
     private void updateTimerDisplay() {
@@ -129,35 +218,35 @@ public class DiscussionActivity extends AppCompatActivity {
         timerTextView.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
     }
 
-    private void displayRoleList(ArrayList<GameRole> roles) {
-        if (roles == null || roles.isEmpty()) {
-            return;
-        }
-
-        // 既存の表示をクリア
-        roleListLayout.removeAllViews();
-
-        for (GameRole role : roles) {
-            // 役職名を表示するTextViewを動的に作成
-            TextView roleNameTextView = new TextView(this);
-            roleNameTextView.setText("・" + role.getName());
-            roleNameTextView.setTextSize(20);
-            roleNameTextView.setPadding(8, 16, 8, 16);
-
-            // タップされた時の処理を設定
-            roleNameTextView.setOnClickListener(v -> {
-                // ポップアップ（AlertDialog）で説明文を表示
-                new AlertDialog.Builder(this)
-                        .setTitle(role.getName()) // ポップアップのタイトル
-                        .setMessage(role.getDescription()) // ポップアップの本文
-                        .setPositiveButton("OK", null) // OKボタン
-                        .show();
-            });
-
-            // レイアウトに作成したTextViewを追加
-            roleListLayout.addView(roleNameTextView);
-        }
-    }
+//    private void displayRoleList(ArrayList<GameRole> roles) {
+//        if (roles == null || roles.isEmpty()) {
+//            return;
+//        }
+//
+//        // 既存の表示をクリア
+//        roleListLayout.removeAllViews();
+//
+//        for (GameRole role : roles) {
+//            // 役職名を表示するTextViewを動的に作成
+//            TextView roleNameTextView = new TextView(this);
+//            roleNameTextView.setText("・" + role.getName());
+//            roleNameTextView.setTextSize(20);
+//            roleNameTextView.setPadding(8, 16, 8, 16);
+//
+//            // タップされた時の処理を設定
+//            roleNameTextView.setOnClickListener(v -> {
+//                // ポップアップ（AlertDialog）で説明文を表示
+//                new AlertDialog.Builder(this)
+//                        .setTitle(role.getName()) // ポップアップのタイトル
+//                        .setMessage(role.getDescription()) // ポップアップの本文
+//                        .setPositiveButton("OK", null) // OKボタン
+//                        .show();
+//            });
+//
+//            // レイアウトに作成したTextViewを追加
+//            roleListLayout.addView(roleNameTextView);
+//        }
+//    }
 
     @Override
     protected void onDestroy() {
