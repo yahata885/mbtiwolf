@@ -1,7 +1,7 @@
-#Sat Oct 04 22:57:44 JST 2025
-base.0=/Users/ttanaka/StudioProjects/mbtiwolf/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/ttanaka/StudioProjects/mbtiwolf/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/ttanaka/StudioProjects/mbtiwolf/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+#Sun Oct 05 00:37:44 GMT+09:00 2025
+base.0=C\:\\Users\\teruk\\AndroidStudioProjects\\mbtiwolf_1004_3\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\teruk\\AndroidStudioProjects\\mbtiwolf_1004_3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=C\:\\Users\\teruk\\AndroidStudioProjects\\mbtiwolf_1004_3\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex

@@ -186,6 +186,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <ImageView
+                    android:id="@+id/role1_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
                 <TextView
                     android:id="@+id/role1_title"
                     android:layout_width="wrap_content"
@@ -212,6 +219,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
                 app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/role2_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
 
                 <TextView
                     android:id="@+id/role2_title"
@@ -240,6 +254,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
 
+                <ImageView
+                    android:id="@+id/role3_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
                 <TextView
                     android:id="@+id/role3_title"
                     android:layout_width="wrap_content"
@@ -266,6 +287,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
                 app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
+
+                <ImageView
+                    android:id="@+id/role4_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
 
                 <TextView
                     android:id="@+id/role4_title"

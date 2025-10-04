@@ -79,33 +79,52 @@
         app:layout_constraintTop_toBottomOf="@+id/timeButtonsLayout" />
 
     <TextView
-        android:id="@+id/roleListTitle"
+        android:id="@+id/hintTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="役職リスト"
+        android:layout_marginTop="64dp"
+        android:text="ヒント"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startButton" />
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <LinearLayout
+        android:id="@+id/hintButtonsLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/goToVoteButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roleListTitle">
+        app:layout_constraintTop_toBottomOf="@+id/hintTitle">
 
-        <LinearLayout
-            android:id="@+id/roleListLayout"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/hintButton1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_marginTop="16dp"
+            android:text="ヒント1を表示"
+            android:backgroundTint="#4CAF50"/>
 
-    </ScrollView>
+        <Button
+            android:id="@+id/hintButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ヒント2を表示"
+            android:backgroundTint="#4CAF50"/>
+
+        <Button
+            android:id="@+id/hintButton3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="ヒント3を表示"
+            android:backgroundTint="#4CAF50"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/goToVoteButton"
@@ -119,7 +138,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/hintOverlayLayout"
+        android:id="@+id/roleExplanationOverlayLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6000000"
@@ -130,82 +149,171 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:id="@+id/hintCard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/roleExplanationCard"
+            android:layout_width="339dp"
+            android:layout_height="554dp"
+            android:layout_margin="32dp"
             android:background="@android:color/white"
-            android:padding="24dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ヒント1"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <Button
-                android:id="@+id/showHint1Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="ヒントを表示"/>
-            <TextView
-                android:id="@+id/hint1TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="（ここにヒント1の内容が表示されます）"
-                android:visibility="gone"/>
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horizontal_guideline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="ヒント2"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <Button
-                android:id="@+id/showHint2Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="ヒントを表示"/>
-            <TextView
-                android:id="@+id/hint2TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="（ここにヒント2の内容が表示されます）"
-                android:visibility="gone"/>
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="ヒント3"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-            <Button
-                android:id="@+id/showHint3Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="ヒントを表示"/>
-            <TextView
-                android:id="@+id/hint3TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="（ここにヒント3の内容が表示されます）"
-                android:visibility="gone"/>
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/role1_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+                app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/role1_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
+                <TextView
+                    android:id="@+id/role1_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role1_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role2_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/role2_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
+                <TextView
+                    android:id="@+id/role2_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role2_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role3_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
+
+                <ImageView
+                    android:id="@+id/role3_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
+                <TextView
+                    android:id="@+id/role3_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role3_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role4_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
+
+                <ImageView
+                    android:id="@+id/role4_image"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginBottom="8dp"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
+                <TextView
+                    android:id="@+id/role4_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職4"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role4_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/closeHintButton"
+            android:id="@+id/closeRoleExplanationButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:text="✖"
@@ -213,8 +321,8 @@
             android:textColor="@android:color/black"
             android:gravity="center"
             android:layout_margin="8dp"
-            app:layout_constraintEnd_toEndOf="@id/hintCard"
-            app:layout_constraintTop_toTopOf="@id/hintCard" />
+            app:layout_constraintEnd_toEndOf="@id/roleExplanationCard"
+            app:layout_constraintTop_toTopOf="@id/roleExplanationCard" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
