@@ -1,6 +1,5 @@
 package com.yahata.mbtiwolf;
 
-import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,14 +39,12 @@ public class Mode1InputActivity extends AppCompatActivity {
 
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
         theme = getIntent().getStringExtra("GAME_THEME");
-
         roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
 
         setupSpinner(theme);
         updateTurnView();
 
         confirmTypeButton.setOnClickListener(v -> {
-
             String selectedType = typeSpinner.getSelectedItem().toString();
             String currentPlayer = playerList.get(currentPlayerIndex);
             playerSelections.put(currentPlayer, selectedType);
@@ -56,8 +53,12 @@ public class Mode1InputActivity extends AppCompatActivity {
 
             if (currentPlayerIndex < playerList.size()) {
                 updateTurnView();
-            } else {
+                // ★★★★★ 修正箇所 ★★★★★
+                // 次のプレイヤーのためにスピナーの選択をリセットします。
+                typeSpinner.setSelection(0);
+                // ★★★★★★★★★★★★★★
 
+            } else {
                 goToDiscussionScreen();
             }
         });
@@ -65,7 +66,6 @@ public class Mode1InputActivity extends AppCompatActivity {
 
     private void goToDiscussionScreen() {
         Toast.makeText(this, "全員の入力が完了しました！", Toast.LENGTH_SHORT).show();
-
 
         HashMap<String, GameRole> assignments = createAssignmentsFromSelections();
 
