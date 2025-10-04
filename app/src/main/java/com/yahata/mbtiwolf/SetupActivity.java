@@ -62,12 +62,22 @@ public class SetupActivity extends AppCompatActivity {
 
         // 「+」ボタンの処理
         plusButton.setOnClickListener(v -> {
-            // 人狼の数は「プレイヤー数 - 1」まで
-            if (playerList.size() < 2) {
+            // プレイヤーは3人以上
+            if (playerList.size() < 3) {
                 Toast.makeText(SetupActivity.this, "先にプレイヤーを追加してください", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (wolfCount < playerList.size() - 1) {
+
+            //人狼の
+            int playerCount = playerList.size();
+            int maxWolfCount;
+            if (playerCount % 2 == 0) {
+                maxWolfCount = (playerCount / 2) - 1;
+            } else {
+                maxWolfCount = playerCount / 2;
+            }
+
+            if (wolfCount < maxWolfCount ) {
                 wolfCount++;
                 wolfCountTextView.setText(String.valueOf(wolfCount));
             } else {
