@@ -30,23 +30,45 @@
         android:layout_marginTop="8dp"
         android:text="プレイヤーを追加" />
 
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="参加プレイヤー"-->
+<!--        android:textSize="18sp" />-->
+<!--    <TextView-->
+<!--        android:id="@+id/playerListTextView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:background="#F0F0F0"-->
+<!--        android:padding="8dp"-->
+<!--        android:minHeight="100dp"-->
+<!--        android:text=""-->
+<!--        android:textSize="16sp" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/wolfCountLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:visibility="gone"-->
+<!--        tools:visibility="visible">-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="参加プレイヤー"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/playerListTextView"
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/playerChipGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:background="#F0F0F0"
-        android:padding="8dp"
-        android:minHeight="100dp"
-        android:text=""
-        android:textSize="16sp" />
-
+        android:minHeight="100dp" />
     <LinearLayout
         android:id="@+id/wolfCountLayout"
         android:layout_width="match_parent"
@@ -56,7 +78,6 @@
         android:layout_marginTop="24dp"
         android:visibility="gone"
         tools:visibility="visible">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

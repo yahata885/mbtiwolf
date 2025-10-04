@@ -3413,7 +3413,7 @@ id peekHeight
 id percent
 id pin
 id playAgainButton
-id playerListTextView
+id playerChipGroup
 id playerNameEditText
 id playerNameTextView
 id playerTurnTextView

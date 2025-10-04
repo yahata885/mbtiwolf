@@ -28,7 +28,7 @@ id mode2Button
 id mode3Button
 id nextPlayerButton
 id playAgainButton
-id playerListTextView
+id playerChipGroup
 id playerNameEditText
 id playerNameTextView
 id playerTurnTextView
