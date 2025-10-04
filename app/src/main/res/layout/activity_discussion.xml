@@ -149,30 +149,140 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/roleExplanationCard"
-            android:layout_width="355dp"
-            android:layout_height="461dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_width="339dp"
+            android:layout_height="554dp"
+            android:layout_margin="32dp"
             android:background="@android:color/white"
-            android:orientation="vertical"
-            android:padding="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="40dp"
-                android:paddingBottom="40dp"
-                android:text="（ここに役職の説明文や画像が表示されます）"
-                android:textSize="16sp" />
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
 
-        </LinearLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/horizontal_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <LinearLayout
+                android:id="@+id/role1_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+                app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/role1_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職1"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role1_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role2_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/role2_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職2"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role2_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role3_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
+
+                <TextView
+                    android:id="@+id/role3_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role3_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/role4_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_guideline">
+
+                <TextView
+                    android:id="@+id/role4_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="役職4"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/role4_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="（ここに説明文）" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/closeRoleExplanationButton"
