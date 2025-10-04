@@ -48,16 +48,33 @@ public class SetupActivity extends AppCompatActivity {
 
         // --- ボタンのクリックリスナー設定 ---
 
-        // (変更なし) 名前入力処理
+        // (変更あり) 名前入力処理
         addPlayerButton.setOnClickListener(v -> {
             String playerName = playerNameEditText.getText().toString().trim();
-            if (!playerName.isEmpty()) {
-                playerList.add(playerName);
-                updatePlayerListView(playerListTextView);
-                playerNameEditText.setText("");
-            } else {
+
+            // 最初に名前が空でないかチェック
+            if (playerName.isEmpty()) {
                 Toast.makeText(SetupActivity.this, "名前を入力してください", Toast.LENGTH_SHORT).show();
+                return; // ここで処理を中断
             }
+
+            // ▼▼▼【変更点】名前の文字数チェックを追加 ▼▼▼
+            if (playerName.length() > 6) {
+                Toast.makeText(SetupActivity.this, "名前は6文字以内で入力してください", Toast.LENGTH_SHORT).show();
+                return; // ここで処理を中断
+            }
+            // ▲▲▲【変更点】ここまで ▲▲▲
+
+            // 名前の重複チェック
+            if (playerList.contains(playerName)) {
+                Toast.makeText(SetupActivity.this, "この名前は既に使用されています", Toast.LENGTH_SHORT).show();
+                return; // ここで処理を中断
+            }
+
+            // 全てのチェックをクリアしたらリストに追加
+            playerList.add(playerName);
+            updatePlayerListView(playerListTextView);
+            playerNameEditText.setText("");
         });
 
         // 「+」ボタンの処理
@@ -127,7 +144,6 @@ public class SetupActivity extends AppCompatActivity {
             intent.putExtra("GAME_MODE", mode);
             intent.putStringArrayListExtra("PLAYER_LIST", playerList);
             intent.putExtra("ROLE_LIST", new ArrayList<>(rolesToShow));
-            // ★★★ メンバ変数のwolfCountをIntentに追加 ★★★
             intent.putExtra("WOLF_COUNT", wolfCount);
             startActivity(intent);
         });
