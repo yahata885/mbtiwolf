@@ -175,10 +175,10 @@ public class Mode1InputActivity extends AppCompatActivity {
             displayImageResIds.put("探検家", R.drawable.mbti_explorer);
 
         } else { // LOVETYPEテーマ
-            displayDescriptions.put("L×C（主導×甘えたい）", "感情豊かで情熱的。愛と理想を追い求めます。");
-            displayDescriptions.put("L×A（主導×受け止めたい）", "地に足をつけて物事を考え、具体的な解決策を重視します。");
-            displayDescriptions.put("F×C（協調×甘えたい）", "献身的で面倒見が良い。他者の幸福を一番に考えます。");
-            displayDescriptions.put("F×A（協調×受け止めたい）", "束縛を嫌い、独自の感性で行動します。変化を恐れません。");
+            displayDescriptions.put("L×C（主導×甘えたい）", "外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
+            displayDescriptions.put("L×A（主導×受け止めたい）", "リーダーシップを発揮しつつ、相手の感情や立場を尊重できるため、信頼感を与えやすい");
+            displayDescriptions.put("F×C（協調×甘えたい）", "自分から引っ張るよりは相手にリードしてほしいと感じやすく、安心できる相手と出会うと素直に甘えられる");
+            displayDescriptions.put("F×A（協調×受け止めたい）", "聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
 
             // 画像リソースIDを直接指定
             displayImageResIds.put("L×C（主導×甘えたい）", R.drawable.lovetype_lc);
