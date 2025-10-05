@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random; // ★追加: Randomクラスをインポート
 
 public class GameLogic {
 
@@ -37,8 +38,10 @@ public class GameLogic {
         }
 
         // シャッフルしてランダム化
-        List<GameRole> shuffledRoles = new ArrayList<>(roles);
-        Collections.shuffle(shuffledRoles);
+//        List<GameRole> shuffledRoles = new ArrayList<>(roles);
+//        Collections.shuffle(shuffledRoles);
+        // GameLogic内でシャッフルされるrolesを直接操作しないようにコピーを作成
+        List<GameRole> baseCitizenRoles = new ArrayList<>(roles);
 
         List<String> shuffledPlayers = new ArrayList<>(players);
         Collections.shuffle(shuffledPlayers);
@@ -62,7 +65,9 @@ public class GameLogic {
 
         // Mode3 の場合：市民は同じ役職（ランダムに1つ選ぶ）を全員に割り当てる
         if (mode == 3) {
-            GameRole chosenCitizenRole = shuffledRoles.get(0); // シャッフル済みの先頭を採用
+//            GameRole chosenCitizenRole = shuffledRoles.get(0); // シャッフル済みの先頭を採用
+            Collections.shuffle(baseCitizenRoles); // Mode3でもシャッフルしてランダム性を高める
+            GameRole chosenCitizenRole = baseCitizenRoles.get(0);
             // GameRole がミュータブルならコピーして割り当てることを検討
             for (int i = 0; i < citizenCount; i++) {
                 String player = shuffledPlayers.get(wolfCount + i);
@@ -71,15 +76,28 @@ public class GameLogic {
             return assignments;
         }
 
-        // Mode3 以外：市民それぞれにランダムな役職を割り当てる（元の振る舞い）
-        if (shuffledRoles.size() < citizenCount) {
-            throw new IllegalArgumentException("役割の数がプレイヤー数に対して不足しています。");
-        }
+//        // Mode3 以外：市民それぞれにランダムな役職を割り当てる（元の振る舞い）
+//        if (shuffledRoles.size() < citizenCount) {
+//            throw new IllegalArgumentException("役割の数がプレイヤー数に対して不足しています。");
+//        }
+//        for (int i = 0; i < citizenCount; i++) {
+//            String player = shuffledPlayers.get(wolfCount + i);
+//            GameRole role = shuffledRoles.get(i);
+//            assignments.put(player, role);
+//        }
+
+        // Mode3 以外：市民それぞれにランダムな役職を割り当てる（重複を許容）
+        // ★★★ 変更点はこのブロック内 ★★★
+        Random random = new Random(); // ランダムなインデックスを生成するためのRandomオブジェクト
         for (int i = 0; i < citizenCount; i++) {
             String player = shuffledPlayers.get(wolfCount + i);
-            GameRole role = shuffledRoles.get(i);
+
+            // baseCitizenRolesリストからランダムなインデックスの役職を取得
+            GameRole role = baseCitizenRoles.get(random.nextInt(baseCitizenRoles.size())); // ★修正
+
             assignments.put(player, role);
         }
+        // ★★★ 変更点ここまで ★★★
 
         return assignments;
     }

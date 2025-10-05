@@ -2966,6 +2966,10 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable lovetype_fa
+drawable lovetype_fc
+drawable lovetype_la
+drawable lovetype_lc
 drawable m3_appbar_background
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -2988,6 +2992,10 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable mbti_analyst
+drawable mbti_diplomat
+drawable mbti_explorer
+drawable mbti_guard
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
