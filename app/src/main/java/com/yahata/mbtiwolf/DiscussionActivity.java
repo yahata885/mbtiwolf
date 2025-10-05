@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Collections;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.ImageView;
 
 public class DiscussionActivity extends AppCompatActivity {
 
@@ -35,6 +36,9 @@ public class DiscussionActivity extends AppCompatActivity {
     private Button hintButton1, hintButton2, hintButton3;
     private List<String> masterHintList = new ArrayList<>();
     private List<String> selectedHints = new ArrayList<>();
+
+    // 4分割エリアのImageView変数を追加
+    private ImageView role1_image, role2_image, role3_image, role4_image;
 
     // 4分割エリアのTextView変数を追加
     private TextView role1Title, role1Description;
@@ -97,13 +101,17 @@ public class DiscussionActivity extends AppCompatActivity {
 //        ArrayList<GameRole> roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
 //        displayRoleList(roleList);
 
-        // 変更箇所: 4分割エリアのTextViewを関連付け
+        // 変更箇所: 4分割エリアのImageView,TextViewを関連付け
+        role1_image = findViewById(R.id.role1_image);
         role1Title = findViewById(R.id.role1_title);
         role1Description = findViewById(R.id.role1_description);
+        role2_image = findViewById(R.id.role2_image);
         role2Title = findViewById(R.id.role2_title);
         role2Description = findViewById(R.id.role2_description);
+        role3_image = findViewById(R.id.role3_image);
         role3Title = findViewById(R.id.role3_title);
         role3Description = findViewById(R.id.role3_description);
+        role4_image = findViewById(R.id.role4_image);
         role4Title = findViewById(R.id.role4_title);
         role4Description = findViewById(R.id.role4_description);
 
@@ -203,31 +211,39 @@ public class DiscussionActivity extends AppCompatActivity {
     private void displayRoleExplanations() {
         if ("MBTI".equals(theme)) {
             // --- MBTIのテーマの場合 ---
+            role1_image.setImageResource(R.drawable.mbti_analyst);
             role1Title.setText("分析家");
             role1Description.setText("分析家は想像力が豊かで、知的好奇心が旺盛");
 
+            role2_image.setImageResource(R.drawable.mbti_diplomat);
             role2Title.setText("外交官");
             role2Description.setText("外交官は人と付き合うことが得意で、仲介役やリーダー役に進んで手を挙げる");
 
+            role3_image.setImageResource(R.drawable.mbti_guard);
             role3Title.setText("番人");
             role3Description.setText("番人は空想よりも事実にもとづいた思考を好む");
 
+            role4_image.setImageResource(R.drawable.mbti_explorer);
             role4Title.setText("探検家");
             role4Description.setText("探検家はエネルギッシュで、退屈することを極端に嫌う");
 
         } else {
             // --- LOVETYPEのテーマの場合 (後で追加する部分) ---
-            role1Title.setText("ラブタイプ1");
-            role1Description.setText("（ここにラブタイプ1の説明を追加）");
+            role1_image.setImageResource(R.drawable.lovetype_lc);
+            role1Title.setText("L×C（主導×甘えたい）");
+            role1Description.setText("外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
 
-            role2Title.setText("ラブタイプ2");
-            role2Description.setText("（ここにラブタイプ2の説明を追加）");
+            role2_image.setImageResource(R.drawable.lovetype_la);
+            role2Title.setText("L×A（主導×受け止めたい）");
+            role2Description.setText("リーダーシップを発揮しつつ、相手の感情や立場を尊重できるため、信頼感を与えやすい");
 
-            role3Title.setText("ラブタイプ3");
-            role3Description.setText("（ここにラブタイプ3の説明を追加）");
+            role3_image.setImageResource(R.drawable.lovetype_fc);
+            role3Title.setText("F×C（協調×甘えたい）");
+            role3Description.setText("自分から引っ張るよりは相手にリードしてほしいと感じやすく、安心できる相手と出会うと素直に甘えられる");
 
-            role4Title.setText("ラブタイプ4");
-            role4Description.setText("（ここにラブタイプ4の説明を追加）");
+            role4_image.setImageResource(R.drawable.lovetype_fa);
+            role4Title.setText("F×A（協調×受け止めたい）");
+            role4Description.setText("聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
         }
     }
 
@@ -238,7 +254,8 @@ public class DiscussionActivity extends AppCompatActivity {
             setupMasterHintList_mbti();
         }
         else{
-            setupMasterHintList_lovetype();}
+            setupMasterHintList_lovetype();
+        }
         selectRandomHints();
     }
 
