@@ -211,19 +211,19 @@ public class DiscussionActivity extends AppCompatActivity {
             // --- MBTIのテーマの場合 ---
             role1_image.setImageResource(R.drawable.mbti_analyst);
             role1Title.setText("分析家");
-            role1Description.setText("分析家は想像力が豊かで、知的好奇心が旺盛");
+            role1Description.setText("想像力が豊かで、知的好奇心が旺盛");
 
             role2_image.setImageResource(R.drawable.mbti_diplomat);
             role2Title.setText("外交官");
-            role2Description.setText("外交官は人と付き合うことが得意で、仲介役やリーダー役に進んで手を挙げる");
+            role2Description.setText("人と付き合うことが得意で、仲介役やリーダー役に進んで手を挙げる");
 
             role3_image.setImageResource(R.drawable.mbti_guardian);
             role3Title.setText("番人");
-            role3Description.setText("番人は空想よりも事実にもとづいた思考を好む");
+            role3Description.setText("空想よりも事実にもとづいた思考を好む");
 
             role4_image.setImageResource(R.drawable.mbti_explorer);
             role4Title.setText("探検家");
-            role4Description.setText("探検家はエネルギッシュで、退屈することを極端に嫌う");
+            role4Description.setText("エネルギッシュで、退屈することを極端に嫌う");
 
         } else {
             // --- LOVETYPEのテーマの場合 (後で追加する部分) ---
