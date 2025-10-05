@@ -11,8 +11,10 @@ drawable lovetype_lc
 drawable mbti_analyst
 drawable mbti_diplomat
 drawable mbti_explorer
-drawable mbti_guard
+drawable mbti_guardian
 drawable title_image
+id ImageView
+id RoleDescription
 id addMinuteButton
 id addPlayerButton
 id answerFieldsLayout

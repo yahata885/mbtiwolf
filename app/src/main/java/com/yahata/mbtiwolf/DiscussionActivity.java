@@ -1,6 +1,5 @@
 package com.yahata.mbtiwolf;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.EditText;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
@@ -219,7 +217,7 @@ public class DiscussionActivity extends AppCompatActivity {
             role2Title.setText("外交官");
             role2Description.setText("外交官は人と付き合うことが得意で、仲介役やリーダー役に進んで手を挙げる");
 
-            role3_image.setImageResource(R.drawable.mbti_guard);
+            role3_image.setImageResource(R.drawable.mbti_guardian);
             role3Title.setText("番人");
             role3Description.setText("番人は空想よりも事実にもとづいた思考を好む");
 

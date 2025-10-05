@@ -30,6 +30,26 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp" />
 
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/RoleDescription"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:gravity="center_horizontal"
+        android:text="（ここに説明文）"
+        android:maxLines="3" />
+
     <Button
         android:id="@+id/confirmTypeButton"
         android:layout_width="wrap_content"
