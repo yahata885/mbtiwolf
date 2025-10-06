@@ -96,8 +96,8 @@ public class Mode1InputActivity extends AppCompatActivity {
                 // 次のプレイヤーのためにスピナーの選択をリセットします。
                 typeSpinner.setSelection(0);
                 // ★変更点6: 画像と説明文を非表示に戻す ★
-                roleImageView.setVisibility(View.GONE);
-                roleDescriptionTextView.setVisibility(View.GONE);
+//                roleImageView.setVisibility(View.GONE);
+//                roleDescriptionTextView.setVisibility(View.GONE);
 
             } else {
                 goToDiscussionScreen();
