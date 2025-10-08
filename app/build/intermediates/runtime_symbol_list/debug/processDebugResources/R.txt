@@ -2967,6 +2967,7 @@ int drawable ic_mtrl_chip_close_circle 0x7f070093
 int drawable ic_search_black_24 0x7f070094
 int drawable lovetype_fa 0x7f070095
 int drawable lovetype_fc 0x7f070096
+int drawable lovetype_image 0x7f0700e9
 int drawable lovetype_la 0x7f070097
 int drawable lovetype_lc 0x7f070098
 int drawable m3_appbar_background 0x7f070099
@@ -2995,6 +2996,7 @@ int drawable mbti_analyst 0x7f0700af
 int drawable mbti_diplomat 0x7f0700b0
 int drawable mbti_explorer 0x7f0700b1
 int drawable mbti_guardian 0x7f0700b2
+int drawable mbti_image 0x7f0700ea
 int drawable mtrl_bottomsheet_drag_handle 0x7f0700b3
 int drawable mtrl_checkbox_button 0x7f0700b4
 int drawable mtrl_checkbox_button_checked_unchecked 0x7f0700b5
@@ -3046,7 +3048,6 @@ int drawable notification_template_icon_low_bg 0x7f0700e2
 int drawable notification_tile_bg 0x7f0700e3
 int drawable notify_panel_notification_icon_bg 0x7f0700e4
 int drawable test_level_drawable 0x7f0700e5
-int drawable title_image 0x7f0700e6
 int drawable tooltip_frame_dark 0x7f0700e7
 int drawable tooltip_frame_light 0x7f0700e8
 int id ALT 0x7f080000

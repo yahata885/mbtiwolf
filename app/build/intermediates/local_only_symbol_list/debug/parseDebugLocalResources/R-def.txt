@@ -6,13 +6,14 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable lovetype_fa
 drawable lovetype_fc
+drawable lovetype_image
 drawable lovetype_la
 drawable lovetype_lc
 drawable mbti_analyst
 drawable mbti_diplomat
 drawable mbti_explorer
 drawable mbti_guardian
-drawable title_image
+drawable mbti_image
 id ImageView
 id RoleDescription
 id addMinuteButton

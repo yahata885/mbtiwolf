@@ -2968,6 +2968,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable lovetype_fa
 drawable lovetype_fc
+drawable lovetype_image
 drawable lovetype_la
 drawable lovetype_lc
 drawable m3_appbar_background
@@ -2996,6 +2997,7 @@ drawable mbti_analyst
 drawable mbti_diplomat
 drawable mbti_explorer
 drawable mbti_guardian
+drawable mbti_image
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3047,7 +3049,6 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable test_level_drawable
-drawable title_image
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
