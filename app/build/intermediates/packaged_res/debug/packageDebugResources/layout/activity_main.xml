@@ -9,16 +9,6 @@
     android:padding="24dp"
     tools:context=".MainActivity">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/titleImageView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:layout_gravity="center_horizontal"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:contentDescription="タイトル画像"-->
-<!--        android:scaleType="fitCenter"-->
-<!--        android:src="@drawable/mbti_image" />-->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,34 +21,34 @@
         android:layout_height="150dp"
         android:layout_marginTop="8dp"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/themeTabLayout"
-        android:layout_width="12dp"
-        android:layout_height="6dp"
-        app:tabBackground="@drawable/tab_pager_selector"
-        app:tabGravity="center"
-        app:tabIndicatorHeight="0dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-<!--    <RadioGroup-->
-<!--        android:id="@+id/themeRadioGroup"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_marginTop="8dp">-->
+        <ImageView
+            android:id="@+id/indicatorLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/indicator_left_selected"/>
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/mbtiRadioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="MBTI"-->
-<!--            android:checked="true"/>-->
+        <ImageView
+            android:id="@+id/indicatorRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@drawable/indicator_right_default"/>
 
-<!--        <RadioButton-->
-<!--            android:id="@+id/loveTypeRadioButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="ラブタイプ"/>-->
-<!--    </RadioGroup>-->
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/themeNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="MBTI" />
 
     <TextView
         android:layout_width="wrap_content"

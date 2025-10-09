@@ -2995,6 +2995,10 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable indicator_left_default
+drawable indicator_left_selected
+drawable indicator_right_default
+drawable indicator_right_selected
 drawable lovetype_fa
 drawable lovetype_fc
 drawable lovetype_image
@@ -3076,9 +3080,6 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
-drawable tab_indicator_default
-drawable tab_indicator_selected
-drawable tab_pager_selector
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3322,6 +3323,8 @@ id image
 id immediateStop
 id included
 id indeterminate
+id indicatorLeft
+id indicatorRight
 id info
 id invisible
 id inward
@@ -3595,7 +3598,7 @@ id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
 id themeImageView
-id themeTabLayout
+id themeNameTextView
 id themeViewPager
 id time
 id timeButtonsLayout

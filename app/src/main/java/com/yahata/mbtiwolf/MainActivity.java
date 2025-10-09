@@ -5,7 +5,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -15,12 +17,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RadioGroup themeRadioGroup;
+//    private RadioGroup themeRadioGroup;
     private ViewPager2 themeViewPager;
     private TabLayout themeTabLayout;
     private final List<String> themeNames = Arrays.asList("MBTI", "LOVE_TYPE");
     private final List<Integer> themeImages = Arrays.asList(R.drawable.mbti_image, R.drawable.lovetype_image);
-
+    private ImageView indicatorLeft;
+    private ImageView indicatorRight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -29,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
 //        themeRadioGroup = findViewById(R.id.themeRadioGroup);
         themeViewPager = findViewById(R.id.themeViewPager);
-        themeTabLayout = findViewById(R.id.themeTabLayout);
+//        themeTabLayout = findViewById(R.id.themeTabLayout);
+        indicatorLeft = findViewById(R.id.indicatorLeft);
+        indicatorRight = findViewById(R.id.indicatorRight);
         Button mode1Button = findViewById(R.id.mode1Button);
         Button mode2Button = findViewById(R.id.mode2Button);
         Button mode3Button = findViewById(R.id.mode3Button);
@@ -38,11 +43,39 @@ public class MainActivity extends AppCompatActivity {
         ThemeAdapter adapter = new ThemeAdapter(themeImages);
         themeViewPager.setAdapter(adapter);
 
-        // TabLayoutとViewPager2を連携させる
-        new TabLayoutMediator(themeTabLayout, themeViewPager, (tab, position) -> {
-            // ここでタブのテキストなどを設定できるが、今回はインジケーターのみなので空でOK
-            tab.setText(themeNames.get(position));
-        }).attach();
+
+        //画像切り替え
+        indicatorLeft.setOnClickListener(v -> {
+            themeViewPager.setCurrentItem(0);
+        });
+        indicatorRight.setOnClickListener(v -> {
+            themeViewPager.setCurrentItem(1);
+        });
+
+        final TextView themeNameTextView = findViewById(R.id.themeNameTextView);
+
+        themeViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                themeNameTextView.setText(themeNames.get(position));
+
+                // --- ここでインジケーターの色を切り替える ---
+                if (position == 0) {
+                    // 1ページ目が選択された場合
+                    indicatorLeft.setImageResource(R.drawable.indicator_left_selected);
+                    indicatorRight.setImageResource(R.drawable.indicator_right_default);
+                } else {
+                    // 2ページ目が選択された場合
+                    indicatorLeft.setImageResource(R.drawable.indicator_left_default);
+                    indicatorRight.setImageResource(R.drawable.indicator_right_selected);
+                }
+            }
+        });
+
+        themeNameTextView.setText(themeNames.get(0));
+        indicatorLeft.setImageResource(R.drawable.indicator_left_selected);
+        indicatorRight.setImageResource(R.drawable.indicator_right_default);
 
         mode1Button.setOnClickListener(v -> startGame(1));
         mode2Button.setOnClickListener(v -> startGame(2));

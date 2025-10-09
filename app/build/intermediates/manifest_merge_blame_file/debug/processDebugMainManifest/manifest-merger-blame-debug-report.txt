@@ -71,9 +71,7 @@
 42        <activity android:name="com.yahata.mbtiwolf.DiscussionActivity" />
 42-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:26:9-56
 42-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:26:19-53
-43        <activity android:name="com.yahata.mbtiwolf.VoteActivity" />
-43-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:27:9-50
-43-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:27:19-47
+43        <!-- <activity android:name=".VoteActivity" /> -->
 44        <activity android:name="com.yahata.mbtiwolf.ResultMode1Activity" />
 44-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:28:9-57
 44-->/Users/yahatakensuke/Documents/mbtiwolf_1006/app/src/main/AndroidManifest.xml:28:19-54

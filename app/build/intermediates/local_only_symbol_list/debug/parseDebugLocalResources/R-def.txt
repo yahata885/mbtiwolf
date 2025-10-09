@@ -4,6 +4,10 @@ color black
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable indicator_left_default
+drawable indicator_left_selected
+drawable indicator_right_default
+drawable indicator_right_selected
 drawable lovetype_fa
 drawable lovetype_fc
 drawable lovetype_image
@@ -14,9 +18,6 @@ drawable mbti_diplomat
 drawable mbti_explorer
 drawable mbti_guardian
 drawable mbti_image
-drawable tab_indicator_default
-drawable tab_indicator_selected
-drawable tab_pager_selector
 id ImageView
 id RoleDescription
 id addMinuteButton
@@ -36,6 +37,8 @@ id hintButton3
 id hintButtonsLayout
 id hintTitle
 id horizontal_guideline
+id indicatorLeft
+id indicatorRight
 id minusButton
 id mode1Button
 id mode2Button
@@ -75,7 +78,7 @@ id rolesTextView
 id startButton
 id subtractMinuteButton
 id themeImageView
-id themeTabLayout
+id themeNameTextView
 id themeViewPager
 id timeButtonsLayout
 id timerTextView
