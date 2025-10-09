@@ -3175,6 +3175,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3225,6 +3226,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id creditButton
 id currentState
 id custom
 id customPanel
@@ -3291,6 +3293,8 @@ id fragment_container_view_tag
 id frost
 id fullscreen_header
 id gameResultTitle
+id gameexplanationButton
+id gamestartButton
 id ghost_view
 id ghost_view_holder
 id goToVoteButton
@@ -3768,6 +3772,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_answer_input
+layout activity_credit
 layout activity_discussion
 layout activity_main
 layout activity_mode1_input
@@ -3776,6 +3781,7 @@ layout activity_result_mode2
 layout activity_result_mode3
 layout activity_role_reveal
 layout activity_setup
+layout activity_title
 layout activity_vote
 layout custom_dialog
 layout design_bottom_navigation_item

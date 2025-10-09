@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".MainActivity"
+            android:name=".Title"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,11 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Creditactivity" />
         <activity android:name=".SetupActivity" />
         <activity android:name=".Mode1InputActivity" />
         <activity android:name=".Mode23InputActivity" />
         <activity android:name=".DiscussionActivity" />
-<!--        <activity android:name=".VoteActivity" />-->
         <activity android:name=".ResultMode1Activity" />
         <activity android:name=".ResultMode2Activity" />
         <activity android:name=".ResultMode3Activity" />

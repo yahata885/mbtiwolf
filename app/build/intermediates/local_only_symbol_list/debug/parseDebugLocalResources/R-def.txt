@@ -23,11 +23,15 @@ id RoleDescription
 id addMinuteButton
 id addPlayerButton
 id answerFieldsLayout
+id backButton
 id closeRoleExplanationButton
 id confirmAnswersButton
 id confirmButton
 id confirmTypeButton
+id creditButton
 id gameResultTitle
+id gameexplanationButton
+id gamestartButton
 id goToVoteButton
 id guesserNameTextView
 id helpButton
@@ -95,6 +99,7 @@ id wolfCountLayout
 id wolfCountTextView
 id wolfVoteResultTextView
 layout activity_answer_input
+layout activity_credit
 layout activity_discussion
 layout activity_main
 layout activity_mode1_input
@@ -103,6 +108,7 @@ layout activity_result_mode2
 layout activity_result_mode3
 layout activity_role_reveal
 layout activity_setup
+layout activity_title
 layout activity_vote
 layout item_theme
 mipmap ic_launcher
