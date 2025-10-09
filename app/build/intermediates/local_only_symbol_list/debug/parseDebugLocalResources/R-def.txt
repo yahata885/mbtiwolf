@@ -26,7 +26,10 @@ id closeRoleExplanationButton
 id confirmAnswersButton
 id confirmButton
 id confirmTypeButton
+id creditButton
 id gameResultTitle
+id gameexplanationButton
+id gamestartButton
 id goToVoteButton
 id guesserNameTextView
 id helpButton
@@ -100,6 +103,7 @@ layout activity_result_mode2
 layout activity_result_mode3
 layout activity_role_reveal
 layout activity_setup
+layout activity_title
 layout activity_vote
 layout item_theme
 mipmap ic_launcher

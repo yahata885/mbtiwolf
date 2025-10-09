@@ -3224,6 +3224,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id creditButton
 id currentState
 id custom
 id customPanel
@@ -3290,6 +3291,8 @@ id fragment_container_view_tag
 id frost
 id fullscreen_header
 id gameResultTitle
+id gameexplanationButton
+id gamestartButton
 id ghost_view
 id ghost_view_holder
 id goToVoteButton
@@ -3773,6 +3776,7 @@ layout activity_result_mode2
 layout activity_result_mode3
 layout activity_role_reveal
 layout activity_setup
+layout activity_title
 layout activity_vote
 layout custom_dialog
 layout design_bottom_navigation_item
