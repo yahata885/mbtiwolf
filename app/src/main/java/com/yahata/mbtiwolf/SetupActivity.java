@@ -119,10 +119,20 @@ public class SetupActivity extends AppCompatActivity {
 
         // 確定ボタンの処理
         confirmButton.setOnClickListener(v -> {
-            if (playerList.size() < 2) {
+            if (playerList.size() < 2 && mode == 1) {
                 Toast.makeText(SetupActivity.this, "プレイヤーを2人以上追加してください", Toast.LENGTH_SHORT).show();
                 return;
             }
+            else if (playerList.size() < 2 && mode == 2) {
+                Toast.makeText(SetupActivity.this, "プレイヤーを2人以上追加してください", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else if (playerList.size() < 3 && mode == 3) {
+                Toast.makeText(SetupActivity.this, "プレイヤーを3人以上追加してください", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
             // モード3の場合、プレイヤー数が人狼の数より多いか最終チェック
             if (mode == 3 && playerList.size() <= wolfCount) {
                 Toast.makeText(SetupActivity.this, "プレイヤー数が人狼の数より多くなるようにしてください", Toast.LENGTH_SHORT).show();
