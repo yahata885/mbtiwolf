@@ -28,7 +28,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.MyApplication" >
         <activity
-            android:name="com.yahata.mbtiwolf.MainActivity"
+            android:name="com.yahata.mbtiwolf.Title"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,11 +36,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.yahata.mbtiwolf.MainActivity" />
+        <activity android:name="com.yahata.mbtiwolf.Creditactivity" />
         <activity android:name="com.yahata.mbtiwolf.SetupActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode1InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode23InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.DiscussionActivity" />
-        <!-- <activity android:name=".VoteActivity" /> -->
         <activity android:name="com.yahata.mbtiwolf.ResultMode1Activity" />
         <activity android:name="com.yahata.mbtiwolf.ResultMode2Activity" />
         <activity android:name="com.yahata.mbtiwolf.ResultMode3Activity" />

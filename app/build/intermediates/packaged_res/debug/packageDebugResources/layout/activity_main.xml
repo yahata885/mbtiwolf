@@ -28,14 +28,14 @@
 
         <ImageView
             android:id="@+id/indicatorLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/indicator_left_selected"/>
 
         <ImageView
             android:id="@+id/indicatorRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/indicator_right_default"/>
 

@@ -18,10 +18,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 //    private RadioGroup themeRadioGroup;
-    private ViewPager2 themeViewPager;
-    private TabLayout themeTabLayout;
     private final List<String> themeNames = Arrays.asList("MBTI", "LOVE_TYPE");
+    private final List<String> themeDisplayNames = Arrays.asList("MBTI", "ラブタイプ");
     private final List<Integer> themeImages = Arrays.asList(R.drawable.mbti_image, R.drawable.lovetype_image);
+    private ViewPager2 themeViewPager;
+//    private TabLayout themeTabLayout;
     private ImageView indicatorLeft;
     private ImageView indicatorRight;
     @Override
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 themeNameTextView.setText(themeNames.get(position));
+                String displayText = "テーマ : " + themeDisplayNames.get(position);
+                themeNameTextView.setText(displayText);
 
                 // --- ここでインジケーターの色を切り替える ---
                 if (position == 0) {
@@ -73,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        themeNameTextView.setText(themeNames.get(0));
+        String initialDisplayText = "テーマ : " + themeDisplayNames.get(0);
+        themeNameTextView.setText(initialDisplayText);
+
+//        themeNameTextView.setText(themeNames.get(0));
         indicatorLeft.setImageResource(R.drawable.indicator_left_selected);
         indicatorRight.setImageResource(R.drawable.indicator_right_default);
 
