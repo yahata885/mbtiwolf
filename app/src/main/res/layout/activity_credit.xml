@@ -7,50 +7,58 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:padding="24dp"
+    android:background="@android:color/black"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="produsers"
+        android:text="PRODUCERS"
         android:textSize="40sp"
+        android:textColor="#32DE3D"
         android:layout_marginTop="32dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="insight leader:\nたっちゃん"
+        android:text="Insight Leader:たっちゃん"
         android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#32DE3D"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wonder child:\nてるてる"
+        android:text="Wonder Child:てるてる"
         android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#32DE3D"
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="power pointer:\nかわし"
+        android:text="Power Pointer:かわし"
         android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#32DE3D"
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="smile ambassador:\nけんけん"
+        android:text="Smile Ambassador:けんけん"
         android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textColor="#32DE3D"
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
         android:text="戻る"
-        android:textSize="15sp"
-        android:layout_marginTop="30dp"/>
+        android:textColor="@color/black"
+        app:backgroundTint="#32DE3D"
+        android:textSize="15sp" />
 
 
 
