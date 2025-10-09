@@ -3173,6 +3173,7 @@ int id auto 0x7f080058
 int id autoComplete 0x7f080059
 int id autoCompleteToEnd 0x7f08005a
 int id autoCompleteToStart 0x7f08005b
+int id backButton 0x7f08023b
 int id barrier 0x7f08005c
 int id baseline 0x7f08005d
 int id beginOnFirstDraw 0x7f08005e
@@ -3767,6 +3768,7 @@ int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
 int layout activity_answer_input 0x7f0b001c
+int layout activity_credit 0x7f0b0075
 int layout activity_discussion 0x7f0b001d
 int layout activity_main 0x7f0b001e
 int layout activity_mode1_input 0x7f0b001f

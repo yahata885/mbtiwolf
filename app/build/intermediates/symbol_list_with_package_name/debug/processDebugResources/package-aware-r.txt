@@ -3174,6 +3174,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backButton
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3768,6 +3769,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_answer_input
+layout activity_credit
 layout activity_discussion
 layout activity_main
 layout activity_mode1_input

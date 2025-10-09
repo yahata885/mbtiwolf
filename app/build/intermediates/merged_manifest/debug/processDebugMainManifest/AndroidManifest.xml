@@ -37,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.yahata.mbtiwolf.MainActivity" />
+        <activity android:name="com.yahata.mbtiwolf.Creditactivity" />
         <activity android:name="com.yahata.mbtiwolf.SetupActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode1InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode23InputActivity" />

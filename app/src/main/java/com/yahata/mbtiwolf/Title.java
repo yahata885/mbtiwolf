@@ -48,12 +48,13 @@ public class Title extends AppCompatActivity {
             }
         });
 
-        // 「クレジット」ボタンのリスナー（必要であれば）
+        // 「クレジット」ボタンのリスナー
         creditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // クレジット画面へ遷移、またはToastで仮表示
-                Toast.makeText(Title.this, "クレジット画面へ（必要であれば実装）", Toast.LENGTH_SHORT).show();
+                // クレジット画面（CreditActivity）へ遷移
+                Intent intent = new Intent(Title.this, Creditactivity.class);
+                startActivity(intent);
             }
         });
     }
