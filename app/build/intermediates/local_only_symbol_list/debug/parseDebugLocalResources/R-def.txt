@@ -14,6 +14,9 @@ drawable mbti_diplomat
 drawable mbti_explorer
 drawable mbti_guardian
 drawable mbti_image
+drawable tab_indicator_default
+drawable tab_indicator_selected
+drawable tab_pager_selector
 id ImageView
 id RoleDescription
 id addMinuteButton
@@ -33,8 +36,6 @@ id hintButton3
 id hintButtonsLayout
 id hintTitle
 id horizontal_guideline
-id loveTypeRadioButton
-id mbtiRadioButton
 id minusButton
 id mode1Button
 id mode2Button
@@ -73,10 +74,11 @@ id roleNameTextView
 id rolesTextView
 id startButton
 id subtractMinuteButton
-id themeRadioGroup
+id themeImageView
+id themeTabLayout
+id themeViewPager
 id timeButtonsLayout
 id timerTextView
-id titleImageView
 id titleTextView
 id topPlayerTextView
 id typeSpinner
@@ -99,6 +101,7 @@ layout activity_result_mode3
 layout activity_role_reveal
 layout activity_setup
 layout activity_vote
+layout item_theme
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
