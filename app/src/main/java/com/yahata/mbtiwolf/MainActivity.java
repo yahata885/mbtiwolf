@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.content.SharedPreferences;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -17,13 +18,14 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
 //    private RadioGroup themeRadioGroup;
     private final List<String> themeNames = Arrays.asList("MBTI", "LOVE_TYPE");
     private final List<String> themeDisplayNames = Arrays.asList("MBTI", "ラブタイプ");
     private final List<Integer> themeImages = Arrays.asList(R.drawable.mbti_image, R.drawable.lovetype_image);
     private ViewPager2 themeViewPager;
+    private View mainActivityLayout;
 //    private TabLayout themeTabLayout;
     private ImageButton buttonPrevious;
     private ImageButton buttonNext;
@@ -37,11 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
 //        themeRadioGroup = findViewById(R.id.themeRadioGroup);
         themeViewPager = findViewById(R.id.themeViewPager);
-//        themeTabLayout = findViewById(R.id.themeTabLayout);
-//        indicatorLeft = findViewById(R.id.indicatorLeft);
-//        indicatorRight = findViewById(R.id.indicatorRight);
         buttonPrevious = findViewById(R.id.buttonPrevious);
         buttonNext = findViewById(R.id.buttonNext);
+
+        mainActivityLayout = findViewById(R.id.main_activity_layout);
 
         Button mode1Button = findViewById(R.id.mode1Button);
         Button mode2Button = findViewById(R.id.mode2Button);
@@ -53,12 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         //画像切り替え
-//        indicatorLeft.setOnClickListener(v -> {
-//            themeViewPager.setCurrentItem(0);
-//        });
-//        indicatorRight.setOnClickListener(v -> {
-//            themeViewPager.setCurrentItem(1);
-//        });
         buttonNext.setOnClickListener(v -> {
             themeViewPager.setCurrentItem(1); // 2ページ目へ
         });
@@ -79,16 +74,20 @@ public class MainActivity extends AppCompatActivity {
                 // --- ここでインジケーターの色を切り替える ---
                 if (position == 0) {
                     // 1ページ目が選択された場合
+                    mainActivityLayout.setBackgroundResource(R.drawable.background_mbti);
                     buttonNext.setVisibility(View.VISIBLE);
                     buttonPrevious.setVisibility(View.GONE);
                 } else {
                     // 2ページ目が選択された場合
+                    mainActivityLayout.setBackgroundResource(R.drawable.background_lovetype);
                     buttonNext.setVisibility(View.GONE);
                     buttonPrevious.setVisibility(View.VISIBLE);
                 }
             }
         });
 
+        //初期設定
+        mainActivityLayout.setBackgroundResource(R.drawable.background_mbti);
         String initialDisplayText = "テーマ : " + themeDisplayNames.get(0);
         themeNameTextView.setText(initialDisplayText);
 
@@ -110,6 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
         // ページの番号に対応するテーマ名をリストから取得
         String selectedTheme = themeNames.get(currentPosition);
+
+        SharedPreferences prefs = getSharedPreferences("app_theme_prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("selected_theme", selectedTheme);
+        editor.apply();
 
         Intent intent = new Intent(MainActivity.this, SetupActivity.class);
         intent.putExtra("GAME_THEME", selectedTheme);

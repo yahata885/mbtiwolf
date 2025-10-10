@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Mode1InputActivity extends AppCompatActivity {
+public class Mode1InputActivity extends BaseActivity {
 
     private TextView playerTurnTextView;
     private Spinner typeSpinner;

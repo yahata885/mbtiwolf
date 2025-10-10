@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
-public class AnswerInputActivity extends AppCompatActivity {
+public class AnswerInputActivity extends BaseActivity {
 
     // ▼▼▼【変更】タイトル用のTextViewを2つに変更 ▼▼▼
     private TextView playerNameTitleView;
@@ -42,6 +42,7 @@ public class AnswerInputActivity extends AppCompatActivity {
     private int mode;
     private String theme;
     private int wolfCount;
+
 
     private int currentPlayerIndex = 0;
     private List<Spinner> currentSpinnersForMode1 = new ArrayList<>();

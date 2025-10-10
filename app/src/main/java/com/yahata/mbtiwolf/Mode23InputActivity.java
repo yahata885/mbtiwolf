@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mode23InputActivity extends AppCompatActivity {
+public class Mode23InputActivity extends BaseActivity {
 
     private TextView playerNameTextView, roleNameTextView, roleDescriptionTextView;
     private Button revealButton, nextPlayerButton;

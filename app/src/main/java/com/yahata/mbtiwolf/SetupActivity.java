@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-public class SetupActivity extends AppCompatActivity {
+public class SetupActivity extends BaseActivity {
 
     private final ArrayList<String> playerList = new ArrayList<>();
     // 人狼の人数を管理する変数。モード3のデフォルトは1人

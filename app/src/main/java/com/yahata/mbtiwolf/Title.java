@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast; // 必要に応じて追加
 
-public class Title extends AppCompatActivity {
+public class Title extends BaseActivity {
 
     private Button gamestartButton;
     private Button gameexplanationButton;
@@ -17,6 +17,7 @@ public class Title extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_title); // ★変更: activity_title.xml を読み込む
+        findViewById(android.R.id.content).getRootView().setBackgroundResource(R.drawable.background_title);
 
         // UI要素の取得
         gamestartButton = findViewById(R.id.gamestartButton);

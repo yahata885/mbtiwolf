@@ -21,7 +21,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import android.widget.ImageView;
 
-public class DiscussionActivity extends AppCompatActivity {
+public class DiscussionActivity extends BaseActivity {
 
     //時間入力用UI
     private Button addMinuteButton;

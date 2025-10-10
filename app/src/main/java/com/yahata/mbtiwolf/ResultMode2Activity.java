@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ResultMode2Activity extends AppCompatActivity {
+public class ResultMode2Activity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
