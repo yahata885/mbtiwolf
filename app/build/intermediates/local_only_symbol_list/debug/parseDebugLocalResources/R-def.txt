@@ -35,7 +35,6 @@ id gameResultTitle
 id gameexplanationButton
 id gamestartButton
 id goToVoteButton
-id guesserNameTextView
 id helpButton
 id hintButton1
 id hintButton2
@@ -52,6 +51,8 @@ id playAgainButton
 id playerChipGroup
 id playerNameEditText
 id playerNameTextView
+id playerNameTitleView
+id playerSubTitleView
 id playerTurnTextView
 id plusButton
 id resultsLayout

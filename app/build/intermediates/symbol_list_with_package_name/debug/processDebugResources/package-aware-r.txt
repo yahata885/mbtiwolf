@@ -3306,7 +3306,6 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
-id guesserNameTextView
 id header_title
 id helpButton
 id hideable
@@ -3465,6 +3464,8 @@ id playAgainButton
 id playerChipGroup
 id playerNameEditText
 id playerNameTextView
+id playerNameTitleView
+id playerSubTitleView
 id playerTurnTextView
 id plusButton
 id position
