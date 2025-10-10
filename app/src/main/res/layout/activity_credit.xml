@@ -16,7 +16,8 @@
         android:text="PRODUCERS"
         android:textSize="40sp"
         android:textColor="#32DE3D"
-        android:layout_marginTop="32dp"/>
+        android:fontFamily="sans-serif-black"
+        android:layout_marginTop="100dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,6 +25,8 @@
         android:text="Insight Leader:たっちゃん"
         android:textSize="20sp"
         android:textColor="#32DE3D"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
         android:layout_marginTop="20dp"/>
 
     <TextView
@@ -32,6 +35,8 @@
         android:text="Wonder Child:てるてる"
         android:textSize="20sp"
         android:textColor="#32DE3D"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"/>
 
     <TextView
@@ -40,6 +45,8 @@
         android:text="Power Pointer:かわし"
         android:textSize="20sp"
         android:textColor="#32DE3D"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"/>
 
     <TextView
@@ -48,16 +55,20 @@
         android:text="Smile Ambassador:けんけん"
         android:textSize="20sp"
         android:textColor="#32DE3D"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
         android:layout_marginTop="8dp"/>
 
     <Button
         android:id="@+id/backButton"
         android:layout_width="80dp"
         android:layout_height="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:text="戻る"
         android:textColor="@color/black"
         app:backgroundTint="#32DE3D"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
         android:textSize="15sp" />
 
 
