@@ -79,6 +79,8 @@ public class DiscussionActivity extends AppCompatActivity {
                 Toast.makeText(DiscussionActivity.this, "議論終了！", Toast.LENGTH_SHORT).show();
 //                goToVoteButton.setEnabled(true); // 投票ボタンを有効化
 //                startButton.setEnabled(false); // 開始ボタンを無効化
+                addMinuteButton.setEnabled(false);
+                subtractMinuteButton.setEnabled(false);
             }
         }
     };
