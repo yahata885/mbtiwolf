@@ -35,16 +35,14 @@ public class Title extends AppCompatActivity {
             }
         });
 
+        // ★★★ ここを修正します ★★★
         // 「ゲーム説明」ボタンのリスナー
         gameexplanationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // ゲーム説明画面（GameExplanationActivity）へ遷移
-                // GameExplanationActivityはまだ存在しないため、Toastで仮表示
-                Toast.makeText(Title.this, "ゲーム説明画面へ（まだ作成していません）", Toast.LENGTH_SHORT).show();
-                // 実際には以下のように遷移
-                // Intent intent = new Intent(Title.this, GameExplanationActivity.class);
-                // startActivity(intent);
+                // ゲーム説明画面（ModeExplanationActivity）へ遷移
+                Intent intent = new Intent(Title.this, ModeExplanation_Activity.class); // ModeExplanationActivityを指定
+                startActivity(intent);
             }
         });
 
