@@ -25,18 +25,6 @@
                 android:textStyle="bold"
                 tools:text="回答入力" />
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/helpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="#808080"
-                android:contentDescription="役職説明"
-                android:text="役職説明"
-                android:textColor="@android:color/white" />
-
             <LinearLayout
                 android:id="@+id/answerFieldsLayout"
                 android:layout_width="match_parent"
@@ -52,6 +40,20 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/helpButton"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#808080"
+        android:contentDescription="役職説明"
+        android:text="役職説明"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/roleExplanationOverlayLayout"
