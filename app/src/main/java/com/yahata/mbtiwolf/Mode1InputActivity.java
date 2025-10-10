@@ -11,7 +11,7 @@ import android.widget.ImageView; // ★追加: ImageViewをインポート
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -169,10 +169,10 @@ public class Mode1InputActivity extends AppCompatActivity {
             displayDescriptions.put("探検家", "エネルギッシュで、退屈することを極端に嫌う");
 
             // 画像リソースIDを直接指定
-            displayImageResIds.put("分析家", R.drawable.mbti_analyst); // ★res/drawable/mbti_analyst.pngが存在することを前提
-            displayImageResIds.put("外交官", R.drawable.mbti_diplomat);
-            displayImageResIds.put("番人", R.drawable.mbti_guardian);
-            displayImageResIds.put("探検家", R.drawable.mbti_explorer);
+            displayImageResIds.put("分析家", R.drawable.mbti_analyst1); // ★res/drawable/mbti_analyst.pngが存在することを前提
+            displayImageResIds.put("外交官", R.drawable.mbti_diplomat1);
+            displayImageResIds.put("番人", R.drawable.mbti_guardian1);
+            displayImageResIds.put("探検家", R.drawable.mbti_explorer1);
 
         } else { // LOVETYPEテーマ
             displayDescriptions.put("L×C（主導×甘えたい）", "外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
