@@ -3187,7 +3187,9 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id buttonNext
 id buttonPanel
+id buttonPrevious
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3327,8 +3329,6 @@ id image
 id immediateStop
 id included
 id indeterminate
-id indicatorLeft
-id indicatorRight
 id info
 id invisible
 id inward
@@ -3592,6 +3592,8 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id textViewModeTitle
+id textViewThemeTitle
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon

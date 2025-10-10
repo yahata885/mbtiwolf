@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private final List<Integer> themeImages = Arrays.asList(R.drawable.mbti_image, R.drawable.lovetype_image);
     private ViewPager2 themeViewPager;
 //    private TabLayout themeTabLayout;
-    private ImageView indicatorLeft;
-    private ImageView indicatorRight;
+    private ImageButton buttonPrevious;
+    private ImageButton buttonNext;
+//    private ImageView indicatorLeft;
+//    private ImageView indicatorRight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,8 +38,11 @@ public class MainActivity extends AppCompatActivity {
 //        themeRadioGroup = findViewById(R.id.themeRadioGroup);
         themeViewPager = findViewById(R.id.themeViewPager);
 //        themeTabLayout = findViewById(R.id.themeTabLayout);
-        indicatorLeft = findViewById(R.id.indicatorLeft);
-        indicatorRight = findViewById(R.id.indicatorRight);
+//        indicatorLeft = findViewById(R.id.indicatorLeft);
+//        indicatorRight = findViewById(R.id.indicatorRight);
+        buttonPrevious = findViewById(R.id.buttonPrevious);
+        buttonNext = findViewById(R.id.buttonNext);
+
         Button mode1Button = findViewById(R.id.mode1Button);
         Button mode2Button = findViewById(R.id.mode2Button);
         Button mode3Button = findViewById(R.id.mode3Button);
@@ -46,11 +53,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //画像切り替え
-        indicatorLeft.setOnClickListener(v -> {
-            themeViewPager.setCurrentItem(0);
+//        indicatorLeft.setOnClickListener(v -> {
+//            themeViewPager.setCurrentItem(0);
+//        });
+//        indicatorRight.setOnClickListener(v -> {
+//            themeViewPager.setCurrentItem(1);
+//        });
+        buttonNext.setOnClickListener(v -> {
+            themeViewPager.setCurrentItem(1); // 2ページ目へ
         });
-        indicatorRight.setOnClickListener(v -> {
-            themeViewPager.setCurrentItem(1);
+        buttonPrevious.setOnClickListener(v -> {
+            themeViewPager.setCurrentItem(0); // 1ページ目へ
         });
 
         final TextView themeNameTextView = findViewById(R.id.themeNameTextView);
@@ -66,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
                 // --- ここでインジケーターの色を切り替える ---
                 if (position == 0) {
                     // 1ページ目が選択された場合
-                    indicatorLeft.setImageResource(R.drawable.indicator_left_selected);
-                    indicatorRight.setImageResource(R.drawable.indicator_right_default);
+                    buttonNext.setVisibility(View.VISIBLE);
+                    buttonPrevious.setVisibility(View.GONE);
                 } else {
                     // 2ページ目が選択された場合
-                    indicatorLeft.setImageResource(R.drawable.indicator_left_default);
-                    indicatorRight.setImageResource(R.drawable.indicator_right_selected);
+                    buttonNext.setVisibility(View.GONE);
+                    buttonPrevious.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -80,8 +93,8 @@ public class MainActivity extends AppCompatActivity {
         themeNameTextView.setText(initialDisplayText);
 
 //        themeNameTextView.setText(themeNames.get(0));
-        indicatorLeft.setImageResource(R.drawable.indicator_left_selected);
-        indicatorRight.setImageResource(R.drawable.indicator_right_default);
+        buttonNext.setVisibility(View.VISIBLE);
+        buttonPrevious.setVisibility(View.GONE);
 
         mode1Button.setOnClickListener(v -> startGame(1));
         mode2Button.setOnClickListener(v -> startGame(2));

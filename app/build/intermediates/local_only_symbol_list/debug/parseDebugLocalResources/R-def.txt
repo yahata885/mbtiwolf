@@ -24,6 +24,8 @@ id addMinuteButton
 id addPlayerButton
 id answerFieldsLayout
 id backButton
+id buttonNext
+id buttonPrevious
 id closeRoleExplanationButton
 id confirmAnswersButton
 id confirmButton
@@ -41,8 +43,6 @@ id hintButton3
 id hintButtonsLayout
 id hintTitle
 id horizontal_guideline
-id indicatorLeft
-id indicatorRight
 id minusButton
 id mode1Button
 id mode2Button
@@ -81,6 +81,8 @@ id roleNameTextView
 id rolesTextView
 id startButton
 id subtractMinuteButton
+id textViewModeTitle
+id textViewThemeTitle
 id themeImageView
 id themeNameTextView
 id themeViewPager

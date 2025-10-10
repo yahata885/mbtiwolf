@@ -44,6 +44,7 @@ public class AnswerInputActivity extends AppCompatActivity {
     private int mode;
     private String theme;
     private int wolfCount;
+
     // --- モード1で使う変数 ---
     private int currentPlayerIndex = 0;
     private List<Spinner> currentSpinnersForMode1 = new ArrayList<>();

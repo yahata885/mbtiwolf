@@ -3186,7 +3186,9 @@ int id bounce 0x7f080064
 int id bounceBoth 0x7f080065
 int id bounceEnd 0x7f080066
 int id bounceStart 0x7f080067
+int id buttonNext 0x7f08023e
 int id buttonPanel 0x7f080068
+int id buttonPrevious 0x7f08023f
 int id cache_measures 0x7f080069
 int id callMeasure 0x7f08006a
 int id cancel_button 0x7f08006b
@@ -3326,8 +3328,6 @@ int id image 0x7f0800f0
 int id immediateStop 0x7f0800f1
 int id included 0x7f0800f2
 int id indeterminate 0x7f0800f3
-int id indicatorLeft 0x7f0800f4
-int id indicatorRight 0x7f0800f5
 int id info 0x7f0800f6
 int id invisible 0x7f0800f7
 int id inward 0x7f0800f8
@@ -3591,6 +3591,8 @@ int id textSpacerNoButtons 0x7f0801f9
 int id textSpacerNoTitle 0x7f0801fa
 int id textStart 0x7f0801fb
 int id textTop 0x7f0801fc
+int id textViewModeTitle 0x7f080240
+int id textViewThemeTitle 0x7f080241
 int id text_input_end_icon 0x7f0801fd
 int id text_input_error_icon 0x7f0801fe
 int id text_input_start_icon 0x7f0801ff
