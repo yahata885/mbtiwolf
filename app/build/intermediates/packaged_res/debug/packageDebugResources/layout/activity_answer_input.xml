@@ -16,33 +16,43 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/guesserNameTextView"
-                android:layout_width="wrap_content"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                tools:text="回答入力" />
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                app:cardUseCompatPadding="true">
 
-            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                android:id="@+id/helpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="#808080"
-                android:contentDescription="役職説明"
-                android:text="役職説明"
-                android:textColor="@android:color/white"
-                app:icon="@android:drawable/ic_menu_help"
-                app:iconTint="@android:color/white" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
 
+                    <TextView
+                        android:id="@+id/playerNameTitleView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        tools:text="プレイヤー1" />
+
+                    <TextView
+                        android:id="@+id/playerSubTitleView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:text="さんの回答" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
             <LinearLayout
                 android:id="@+id/answerFieldsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical" />
 
             <Button
@@ -54,6 +64,20 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/helpButton"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="#808080"
+        android:contentDescription="役職説明"
+        android:text="役職説明"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/roleExplanationOverlayLayout"
