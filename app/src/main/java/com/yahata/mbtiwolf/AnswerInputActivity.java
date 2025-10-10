@@ -245,19 +245,19 @@ public class AnswerInputActivity extends AppCompatActivity {
             role4Description.setText("エネルギッシュで、退屈することを極端に嫌う");
 
         } else {
-            role1_image.setImageResource(R.drawable.lovetype_lc1);
+            role1_image.setImageResource(R.drawable.lovetype_lc);
             role1Title.setText("L×C（主導×甘えたい）");
             role1Description.setText("外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
 
-            role2_image.setImageResource(R.drawable.lovetype_la1);
+            role2_image.setImageResource(R.drawable.lovetype_la);
             role2Title.setText("L×A（主導×受け止めたい）");
             role2Description.setText("リーダーシップを発揮しつつ、相手の感情や立場を尊重できるため、信頼感を与えやすい");
 
-            role3_image.setImageResource(R.drawable.lovetype_fc1);
+            role3_image.setImageResource(R.drawable.lovetype_fc);
             role3Title.setText("F×C（協調×甘えたい）");
             role3Description.setText("自分から引っ張るよりは相手にリードしてほしいと感じやすく、安心できる相手と出会うと素直に甘えられる");
 
-            role4_image.setImageResource(R.drawable.lovetype_fa1);
+            role4_image.setImageResource(R.drawable.lovetype_fa);
             role4Title.setText("F×A（協調×受け止めたい）");
             role4Description.setText("聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
         }

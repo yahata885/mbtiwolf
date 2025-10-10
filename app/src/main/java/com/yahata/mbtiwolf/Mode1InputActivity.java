@@ -181,10 +181,10 @@ public class Mode1InputActivity extends AppCompatActivity {
             displayDescriptions.put("F×A（協調×受け止めたい）", "聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
 
             // 画像リソースIDを直接指定
-            displayImageResIds.put("L×C（主導×甘えたい）", R.drawable.lovetype_lc1);
-            displayImageResIds.put("L×A（主導×受け止めたい）", R.drawable.lovetype_la1);
-            displayImageResIds.put("F×C（協調×甘えたい）", R.drawable.lovetype_fc1);
-            displayImageResIds.put("F×A（協調×受け止めたい）", R.drawable.lovetype_fa1);
+            displayImageResIds.put("L×C（主導×甘えたい）", R.drawable.lovetype_lc);
+            displayImageResIds.put("L×A（主導×受け止めたい）", R.drawable.lovetype_la);
+            displayImageResIds.put("F×C（協調×甘えたい）", R.drawable.lovetype_fc);
+            displayImageResIds.put("F×A（協調×受け止めたい）", R.drawable.lovetype_fa);
         }
         // 人狼の役割はスピナーに表示されないため、ここでは画像・説明文は不要。
         // 必要であれば追加。
