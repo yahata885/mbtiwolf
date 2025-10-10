@@ -163,7 +163,7 @@ public class AnswerInputActivity extends AppCompatActivity {
         if (currentPlayerIndex < playerList.size()) {
             setupTurnForMode1();
         } else {
-            goToResultScreen();
+            showConfirmationScreen();
         }
     }
 
@@ -178,6 +178,22 @@ public class AnswerInputActivity extends AppCompatActivity {
             currentGuesses.put(targetPlayer, guess);
         }
         allAnswers.put(currentGuesser, currentGuesses);
+    }
+    private void showConfirmationScreen() {
+        // 画面のタイトルを更新
+        guesserNameTextView.setText("全員の入力が完了しました");
+
+        // 入力欄をすべて削除して非表示にする
+        answerFieldsLayout.removeAllViews();
+        answerFieldsLayout.setVisibility(View.GONE);
+
+        // 役職説明ボタン（？）を非表示にする
+        helpButton.setVisibility(View.GONE);
+
+        // 確認ボタンのテキストを「結果を確認する」に変更
+        confirmAnswersButton.setText("結果を確認する");
+        // ボタンがクリックされたときの処理を、結果画面に遷移する処理に差し替える
+        confirmAnswersButton.setOnClickListener(v -> goToResultScreen());
     }
 
     // =================================================================
