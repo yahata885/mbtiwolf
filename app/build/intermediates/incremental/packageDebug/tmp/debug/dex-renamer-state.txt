@@ -1,7 +1,7 @@
-#Sat Oct 11 01:11:05 JST 2025
-base.0=/Users/yahatakensuke/Documents/mbtiwolf_1010ver2/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/Users/yahatakensuke/Documents/mbtiwolf_1010ver2/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/Users/yahatakensuke/Documents/mbtiwolf_1010ver2/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
+#Sat Oct 11 01:43:17 JST 2025
+base.0=/Users/yahatakensuke/Documents/mbtiwolf_1011/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/Users/yahatakensuke/Documents/mbtiwolf_1011/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/Users/yahatakensuke/Documents/mbtiwolf_1011/app/build/intermediates/dex/debug/mergeProjectDexDebug/14/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex
