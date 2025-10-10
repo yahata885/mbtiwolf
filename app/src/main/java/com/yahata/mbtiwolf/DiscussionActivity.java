@@ -17,7 +17,8 @@ import java.util.Locale;
 import java.util.List;
 import java.util.Collections;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+// ▼▼▼【変更】import文を変更 ▼▼▼
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import android.widget.ImageView;
 
 public class DiscussionActivity extends AppCompatActivity {
@@ -46,7 +47,8 @@ public class DiscussionActivity extends AppCompatActivity {
     private String theme;
 
     // --- 役職説明画面 ---
-    private FloatingActionButton helpButton; // 「?」ボタン
+    // ▼▼▼【変更】変数の型をExtendedFloatingActionButtonに変更 ▼▼▼
+    private ExtendedFloatingActionButton helpButton; // 「?」ボタン
     private ConstraintLayout roleExplanationOverlayLayout; // 役職説明画面の全体
     private TextView closeRoleExplanationButton; // 役職説明画面の「✖」ボタン
 
