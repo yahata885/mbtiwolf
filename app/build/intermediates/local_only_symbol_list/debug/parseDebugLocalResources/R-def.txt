@@ -36,6 +36,7 @@ id addMinuteButton
 id addPlayerButton
 id answerFieldsLayout
 id backButton
+id backToTitleButton
 id buttonNext
 id buttonPrevious
 id closeRoleExplanationButton
@@ -73,8 +74,8 @@ id mode3ExplanationBlock
 id mode3ImageView1_1
 id mode3ImageView1_2
 id mode3ImageView1_3
-id mode3ImageView2_1
-id mode3ImageView2_2
+id mode3ImageView_citizen
+id mode3ImageView_wolf
 id mode3RadioButton
 id mode3TextView1
 id mode3TextView2
