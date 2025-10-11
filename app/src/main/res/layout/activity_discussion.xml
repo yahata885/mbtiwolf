@@ -7,6 +7,139 @@
     android:padding="16dp"
     tools:context=".DiscussionActivity">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/timerCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/helpButton">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="議論時間"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/timerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="03:00"
+                android:textSize="56sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+            <LinearLayout
+                android:id="@+id/timeButtonsLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timerTextView">
+
+                <Button
+                    android:id="@+id/subtractMinuteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-1分" />
+
+                <Button
+                    android:id="@+id/startButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="議論開始" />
+
+                <Button
+                    android:id="@+id/addMinuteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="+1分" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hintCardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/goToVoteButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerCardView"
+        app:layout_constraintVertical_bias="0.3">
+
+        <LinearLayout
+            android:id="@+id/hintButtonsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/hintButton1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="ヒント1を表示" />
+
+            <Button
+                android:id="@+id/hintButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="ヒント2を表示" />
+
+            <Button
+                android:id="@+id/hintButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:text="ヒント3を表示" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/goToVoteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="投票へ進む"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/helpButton"
         android:layout_width="110dp"
@@ -19,130 +152,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="議論時間"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/timerTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="03:00"
-        android:textSize="56sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
-
-    <LinearLayout
-        android:id="@+id/timeButtonsLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timerTextView">
-
-        <Button
-            android:id="@+id/subtractMinuteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-1分" />
-
-        <Button
-            android:id="@+id/addMinuteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="+1分" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="議論開始"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeButtonsLayout" />
-
-    <TextView
-        android:id="@+id/hintTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="ヒント"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startButton" />
-
-    <LinearLayout
-        android:id="@+id/hintButtonsLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/goToVoteButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hintTitle">
-
-        <Button
-            android:id="@+id/hintButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#4CAF50"
-            android:text="ヒント1を表示" />
-
-        <Button
-            android:id="@+id/hintButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#4CAF50"
-            android:text="ヒント2を表示" />
-
-        <Button
-            android:id="@+id/hintButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#4CAF50"
-            android:text="ヒント3を表示" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/goToVoteButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="投票へ進む"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/roleExplanationOverlayLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6000000"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="gone"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,6 +175,7 @@
             android:layout_margin="32dp"
             android:background="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,4:5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -178,19 +198,19 @@
                 android:layout_width="1dp"
                 android:layout_height="0dp"
                 android:background="#CCCCCC"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/vertical_guideline"
                 app:layout_constraintStart_toStartOf="@id/vertical_guideline"
-                app:layout_constraintEnd_toEndOf="@id/vertical_guideline" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:background="#CCCCCC"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/horizontal_guideline"
-                app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"
+                app:layout_constraintTop_toTopOf="@id/horizontal_guideline" />
 
             <LinearLayout
                 android:id="@+id/role1_layout"
@@ -199,6 +219,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
                 app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -214,19 +235,19 @@
 
                 <TextView
                     android:id="@+id/role1_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職1"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role1_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -237,6 +258,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
@@ -252,19 +274,19 @@
 
                 <TextView
                     android:id="@+id/role2_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職2"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role2_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -275,6 +297,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -290,19 +313,19 @@
 
                 <TextView
                     android:id="@+id/role3_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職3"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role3_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -313,6 +336,7 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
@@ -328,19 +352,19 @@
 
                 <TextView
                     android:id="@+id/role4_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職4"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role4_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -359,4 +383,5 @@
             app:layout_constraintTop_toTopOf="@id/roleExplanationCard" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
