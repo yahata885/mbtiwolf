@@ -20,6 +20,7 @@ public class ModeExplanation_Activity extends BaseActivity { // クラス名もM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode_explanation);
 
+        findViewById(android.R.id.content).getRootView().setBackgroundResource(R.drawable.background_title);
         // UI要素の取得
         modeSelectionRadioGroup = findViewById(R.id.modeSelectionRadioGroup);
         mode12ExplanationBlock = findViewById(R.id.mode12ExplanationBlock);
