@@ -30,7 +30,8 @@
                 android:layout_height="wrap_content"
                 android:text="〇〇さんの番です"
                 android:textSize="28sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="wrap_content"

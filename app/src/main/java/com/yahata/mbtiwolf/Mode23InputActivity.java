@@ -101,7 +101,7 @@ public class Mode23InputActivity extends BaseActivity {
         roleNameTextView.setVisibility(View.INVISIBLE);
         roleDescriptionTextView.setVisibility(View.INVISIBLE);
         roleImageView.setVisibility(View.INVISIBLE);
-        playerNameTextView.setText(playerList.get(currentPlayerIndex) + "さんの番です");
+        playerNameTextView.setText(playerList.get(currentPlayerIndex) + "\nさんの番です");
 
         if (currentPlayerIndex == playerList.size() - 1) {
             nextPlayerButton.setText("確認完了（議論を開始）");

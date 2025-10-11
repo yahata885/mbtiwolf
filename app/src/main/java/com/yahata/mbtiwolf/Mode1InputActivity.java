@@ -151,7 +151,7 @@ public class Mode1InputActivity extends BaseActivity {
     }
 
     private void updateTurnView() {
-        playerTurnTextView.setText(playerList.get(currentPlayerIndex) + "さんの番です");
+        playerTurnTextView.setText(playerList.get(currentPlayerIndex) + "\nさんの番です");
         if (currentPlayerIndex == playerList.size() - 1) {
             confirmTypeButton.setText("決定して議論を開始");
         }
