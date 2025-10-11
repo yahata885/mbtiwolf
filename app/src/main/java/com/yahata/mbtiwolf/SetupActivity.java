@@ -17,9 +17,10 @@ import java.util.ArrayList;
 public class SetupActivity extends BaseActivity {
 
     private final ArrayList<String> playerList = new ArrayList<>();
-    // 人狼の人数を管理する変数。モード3のデフォルトは1人
     private int wolfCount = 1;
     private ChipGroup playerChipGroup;
+    private androidx.cardview.widget.CardView wolfCountCardView; // ★追加：CardViewの参照を追加
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,11 +29,13 @@ public class SetupActivity extends BaseActivity {
         // --- UI要素の取得 ---
         EditText playerNameEditText = findViewById(R.id.playerNameEditText);
         Button addPlayerButton = findViewById(R.id.addPlayerButton);
-        //TextView playerListTextView = findViewById(R.id.playerListTextView);
         Button confirmButton = findViewById(R.id.confirmButton);
         playerChipGroup = findViewById(R.id.playerChipGroup);
-        // 新しいUI要素を取得
-        LinearLayout wolfCountLayout = findViewById(R.id.wolfCountLayout);
+
+        // ★★★ ここに wolfCountCardView の初期化を追加 ★★★
+        wolfCountCardView = findViewById(R.id.wolfCountCardView);
+
+        // CardViewの中の要素を取得
         Button minusButton = findViewById(R.id.minusButton);
         Button plusButton = findViewById(R.id.plusButton);
         TextView wolfCountTextView = findViewById(R.id.wolfCountTextView);
@@ -40,9 +43,9 @@ public class SetupActivity extends BaseActivity {
         // --- モードに応じて人狼設定UIの表示を切り替え ---
         int mode = getIntent().getIntExtra("GAME_MODE", 1);
         if (mode == 3) {
-            wolfCountLayout.setVisibility(View.VISIBLE);
+            wolfCountCardView.setVisibility(View.VISIBLE); // ★変更点2: CardViewの表示を制御
         } else {
-            wolfCountLayout.setVisibility(View.GONE);
+            wolfCountCardView.setVisibility(View.GONE);    // ★変更点3: CardViewの非表示を制御
             wolfCount = 0; // モード3以外は人狼0人で確定
         }
 
