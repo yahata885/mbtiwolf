@@ -102,33 +102,66 @@ public class AnswerInputActivity extends BaseActivity {
 
     private void setupTurnForMode1() {
         String currentGuesser = playerList.get(currentPlayerIndex);
-        // ▼▼▼【変更】2つのTextViewに分けてテキストを設定 ▼▼▼
         playerNameTitleView.setText(currentGuesser);
         playerSubTitleView.setText("さんの回答");
-        // サブタイトルを表示状態に戻す（確認画面から戻ってきた場合のため）
         playerSubTitleView.setVisibility(View.VISIBLE);
-
 
         answerFieldsLayout.removeAllViews();
         currentSpinnersForMode1.clear();
         List<String> roleNames = getRoleOptions();
 
+        // ★★★ このforループの中身を変更します ★★★
         for (String targetPlayer : playerList) {
             if (targetPlayer.equals(currentGuesser)) continue;
 
-            TextView targetPlayerTextView = new TextView(this);
-            targetPlayerTextView.setText(targetPlayer);
-            targetPlayerTextView.setTextSize(18);
+            // 各プレイヤーの行をまとめるための水平LinearLayoutを作成
+            LinearLayout rowLayout = new LinearLayout(this);
+            rowLayout.setOrientation(LinearLayout.HORIZONTAL);
+            rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
+            rowLayout.setGravity(android.view.Gravity.CENTER_VERTICAL);
+            rowLayout.setPadding(0, 16, 0, 16);
 
+            // プレイヤー名を表示するTextView
+            TextView targetPlayerTextView = new TextView(this);
+            targetPlayerTextView.setText(targetPlayer + " さん"); // ここに " さん" を追加
+            targetPlayerTextView.setTextSize(18);
+            targetPlayerTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                    0, // width
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    1.0f // weight
+            ));
+
+            targetPlayerTextView.setPadding(16, 0, 0, 0); // 左側に16dpのパディングを追加
+
+            // 区切り用の矢印などを表示するTextView
+            TextView arrowTextView = new TextView(this);
+            arrowTextView.setText("→");
+            arrowTextView.setTextSize(24);
+            arrowTextView.setPadding(16, 0, 16, 0);
+
+            // 役割を選択するSpinner
             Spinner roleSpinner = new Spinner(this);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             roleSpinner.setAdapter(adapter);
+            roleSpinner.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            ));
 
-            answerFieldsLayout.addView(targetPlayerTextView);
-            answerFieldsLayout.addView(roleSpinner);
+            // 作成したUI要素を行レイアウトに追加
+            rowLayout.addView(targetPlayerTextView);
+            rowLayout.addView(arrowTextView);
+            rowLayout.addView(roleSpinner);
+
+            // 行レイアウトをメインのレイアウトに追加
+            answerFieldsLayout.addView(rowLayout);
             currentSpinnersForMode1.add(roleSpinner);
         }
+        // ★★★ 変更はここまで ★★★
 
         if (currentPlayerIndex == playerList.size() - 1) {
             confirmAnswersButton.setText("全員の回答を確定し結果を見る");
