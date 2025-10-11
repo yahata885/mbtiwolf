@@ -65,7 +65,7 @@
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="gone">
 
                     <TextView
                         android:id="@+id/mode12TextView1"
@@ -93,56 +93,74 @@
                         android:text="会話を通して\nほかの人の性格を予想しよう"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        android:gravity="center_horizontal"
+                        android:layout_marginBottom="16dp"/>
 
-                    <TextView
-                        android:id="@+id/mode1TextView1"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="モード1:協力　の場合"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:layout_marginTop="30dp"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal"/>
+                        android:orientation="vertical"
+                        android:background="#E1F5FE"
+                        android:padding="12dp"
+                        android:layout_marginTop="8dp">
 
-                    <TextView
-                        android:id="@+id/mode1TextView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="自身の性格を意識しながら会話しよう"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        <TextView
+                            android:id="@+id/mode1TextView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="「協力」の場合"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"/>
 
-                    <TextView
-                        android:id="@+id/mode2TextView1"
+                        <TextView
+                            android:id="@+id/mode1TextView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="自身の性格を意識しながら会話しよう"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="モード2:演じて　の場合"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:layout_marginTop="30dp"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal"/>
-                    <TextView
-                        android:id="@+id/mode2TextView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="想像力を膨らませながら指定された性格になりきって会話しよう"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        android:orientation="vertical"
+                        android:background="#E1F5FE"
+                        android:padding="12dp"
+                        android:layout_marginTop="16dp">
+
+                        <TextView
+                            android:id="@+id/mode2TextView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="「演じて」の場合"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"/>
+
+                        <TextView
+                            android:id="@+id/mode2TextView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="想像力を膨らませながら指定された性格になりきって会話しよう"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:gravity="center_horizontal"/>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/mode3ExplanationBlock"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
                     android:visibility="gone"
-                    tools:visibility="gone">
+                    tools:visibility="visible">
 
                     <TextView
                         android:id="@+id/mode3TextView1"
@@ -159,32 +177,34 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="40dp"
                         android:layout_marginBottom="8dp">
 
                         <ImageView
                             android:id="@+id/mode3ImageView1_1"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
                             android:layout_marginEnd="4dp"
                             android:src="@drawable/gutspose"
                             android:contentDescription="モード3の画像1-1" />
+
                         <ImageView
                             android:id="@+id/mode3ImageView1_2"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
                             android:layout_marginStart="4dp"
                             android:layout_marginEnd="4dp"
                             android:src="@drawable/vs"
                             android:contentDescription="モード3の画像1-2" />
+
                         <ImageView
                             android:id="@+id/mode3ImageView1_3"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
                             android:layout_marginStart="4dp"
@@ -192,17 +212,21 @@
                             android:contentDescription="モード3の画像1-3" />
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginTop="60dp"
+                        android:padding="12dp"
+                        android:background="#E3F2FD">
 
                         <ImageView
                             android:id="@+id/mode3ImageView_citizen"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
                             android:layout_marginEnd="8dp"
@@ -212,7 +236,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:orientation="vertical">
                             <TextView
                                 android:id="@+id/mode3TextView2"
@@ -229,23 +253,26 @@
                                 android:layout_height="wrap_content"
                                 android:text="指定された性格を\n演じながら人狼を探します"
                                 android:textColor="@android:color/black"
-                                android:textSize="16sp"
+                                android:textSize="15sp"
                                 android:gravity="center_horizontal"/>
                         </LinearLayout>
-
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:layout_marginTop="20dp">
+                        android:layout_marginTop="16dp"
+                        android:padding="12dp"
+                        android:background="#FFEBEE">
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="1.5"
                             android:orientation="vertical">
                             <TextView
                                 android:id="@+id/mode3TextView4"
@@ -262,20 +289,19 @@
                                 android:layout_height="wrap_content"
                                 android:text="市民の性格を予想しながら演じます"
                                 android:textColor="@android:color/black"
-                                android:textSize="16sp"
+                                android:textSize="15sp"
                                 android:gravity="center_horizontal"/>
                         </LinearLayout>
 
                         <ImageView
                             android:id="@+id/mode3ImageView_wolf"
                             android:layout_width="0dp"
-                            android:layout_height="100dp"
+                            android:layout_height="80dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
                             android:layout_marginStart="8dp"
                             android:src="@drawable/faker"
                             android:contentDescription="人狼側の画像" />
-
                     </LinearLayout>
                 </LinearLayout>
 
