@@ -2886,6 +2886,9 @@ int dimen tooltip_precise_anchor_threshold 0x7f060318
 int dimen tooltip_vertical_padding 0x7f060319
 int dimen tooltip_y_offset_non_touch 0x7f06031a
 int dimen tooltip_y_offset_touch 0x7f06031b
+int drawable a1 0x7f0700f9
+int drawable a2 0x7f0700fa
+int drawable a3 0x7f0700fb
 int drawable abc_ab_share_pack_mtrl_alpha 0x7f070029
 int drawable abc_action_bar_item_background_material 0x7f07002a
 int drawable abc_btn_borderless_material 0x7f07002b
@@ -3688,6 +3691,7 @@ int id winnerTextView 0x7f08024e
 int id withText 0x7f08024f
 int id with_icon 0x7f080250
 int id withinBounds 0x7f080251
+int id wolfCountCardView 0x7f08025a
 int id wolfCountLayout 0x7f080252
 int id wolfCountTextView 0x7f080253
 int id wolfVoteResultTextView 0x7f080254

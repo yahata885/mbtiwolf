@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 // import android.widget.RadioButton; // RadioButtonを直接参照する場合にインポート
 
-public class ModeExplanation_Activity extends AppCompatActivity { // クラス名もModeExplanationActivityに修正
+public class ModeExplanation_Activity extends BaseActivity { // クラス名もModeExplanationActivityに修正
 
     private RadioGroup modeSelectionRadioGroup;
     private LinearLayout mode12ExplanationBlock;

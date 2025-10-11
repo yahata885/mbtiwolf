@@ -174,8 +174,8 @@ public class AnswerInputActivity extends BaseActivity {
 
     private void setupSingleVoteScreenForMode3() {
         // ▼▼▼【変更】投票画面のタイトル表示を更新 ▼▼▼
-        playerNameTitleView.setText("人狼だと思う人に投票");
-        playerSubTitleView.setText(String.format("全員で相談して%d名選択してください", wolfCount));
+        playerNameTitleView.setText("人狼に投票");
+        playerSubTitleView.setText(String.format("全員で相談して選択してください"));
         playerSubTitleView.setVisibility(View.VISIBLE);
 
         confirmAnswersButton.setText("投票を確定し結果を見る");

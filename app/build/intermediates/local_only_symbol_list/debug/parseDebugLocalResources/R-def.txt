@@ -2,6 +2,9 @@ R_DEF: Internal format may change without notice
 local
 color black
 color white
+drawable a1
+drawable a2
+drawable a3
 drawable background_lovetype
 drawable background_mbti
 drawable background_title
@@ -135,6 +138,7 @@ id voteCountsTextView
 id votedPlayerTextView
 id voterNameTextView
 id winnerTextView
+id wolfCountCardView
 id wolfCountLayout
 id wolfCountTextView
 id wolfVoteResultTextView

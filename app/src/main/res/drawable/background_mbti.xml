@@ -4,7 +4,7 @@
         <color android:color="#E3F2FD" /> </item>
     <item>
         <bitmap
-            android:src="@drawable/grid_tile_blue"
+            android:src="@drawable/a3"
             android:tileMode="repeat" />
     </item>
 </layer-list>
