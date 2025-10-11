@@ -63,7 +63,8 @@
                 android:textSize="22sp"
                 android:visibility="invisible"
                 tools:text="あなたは【ENTP】です"
-                tools:visibility="visible" />
+                tools:visibility="visible"
+                android:gravity="center"/>
 
             <ImageView
                 android:id="@+id/roleImageView"

@@ -144,14 +144,38 @@ public class Mode23InputActivity extends BaseActivity {
         GameRole assignedRole = assignments.get(currentPlayerName);
 
         if (assignedRole != null) {
-            String roleName = assignedRole.getName();
-            roleNameTextView.setText("あなたの役割は【" + assignedRole.getName() + "】です");
+            String roleName = assignedRole.getName(); // 例: 分析家
+            String prefix = "あなたの役割は\n";
+            String roleText = "【" + assignedRole.getName() + "】"; // 例: 【分析家】
+            // String suffix = "です"; // もし「です」などを追加するなら
+
+            SpannableStringBuilder ssb = new SpannableStringBuilder();
+
+            // 1. 「あなたの役割は」の部分を小さく追加
+            int startPrefix = ssb.length();
+            ssb.append(prefix);
+            int endPrefix = ssb.length();
+            ssb.setSpan(new RelativeSizeSpan(0.7f), startPrefix, endPrefix, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE); // 例: 70%のサイズ
+
+            // 2. 役割名を太字で追加
+            int startRoleText = ssb.length();
+            ssb.append(roleText);
+            int endRoleText = ssb.length();
+            ssb.setSpan(new StyleSpan(Typeface.BOLD), startRoleText, endRoleText, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            // もし「です」などを追加するなら
+            // ssb.append(suffix);
+
+            roleNameTextView.setText(ssb); // 設定
+
             roleDescriptionTextView.setText(assignedRole.getDescription());
 
             Integer imageResId = roleImageMap.get(roleName);
             if (imageResId != null) {
                 roleImageView.setImageResource(imageResId);
                 roleImageView.setVisibility(View.VISIBLE);
+            } else {
+                roleImageView.setVisibility(View.GONE); // 画像がない場合は非表示
             }
 
             roleNameTextView.setVisibility(View.VISIBLE);
