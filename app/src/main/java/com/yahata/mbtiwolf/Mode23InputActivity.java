@@ -91,7 +91,7 @@ public class Mode23InputActivity extends BaseActivity {
         roleImageMap.put("F×A（協調×受け止めたい）", R.drawable.lovetype_fa);
 
         // 【共通の役職】
-//        roleImageMap.put("人狼", R.drawable.wolf_image); // 例えば wolf_image.png がある場合
+        roleImageMap.put("人狼", R.drawable.wolf_image); // 例えば wolf_image.png がある場合
         // 他にも市民など共通の役職があれば追加
     }
 
