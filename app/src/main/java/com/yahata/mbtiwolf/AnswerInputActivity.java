@@ -1,6 +1,7 @@
 package com.yahata.mbtiwolf;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,9 +21,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
+
 public class AnswerInputActivity extends BaseActivity {
 
-    // ▼▼▼【変更】タイトル用のTextViewを2つに変更 ▼▼▼
     private TextView playerNameTitleView;
     private TextView playerSubTitleView;
     private LinearLayout answerFieldsLayout;
@@ -43,7 +44,6 @@ public class AnswerInputActivity extends BaseActivity {
     private String theme;
     private int wolfCount;
 
-
     private int currentPlayerIndex = 0;
     private List<Spinner> currentSpinnersForMode1 = new ArrayList<>();
     private final List<Spinner> allSpinnersForMode3 = new ArrayList<>();
@@ -54,7 +54,6 @@ public class AnswerInputActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_input);
 
-        // ▼▼▼【変更】UI要素の紐付けを更新 ▼▼▼
         playerNameTitleView = findViewById(R.id.playerNameTitleView);
         playerSubTitleView = findViewById(R.id.playerSubTitleView);
         answerFieldsLayout = findViewById(R.id.answerFieldsLayout);
@@ -99,7 +98,6 @@ public class AnswerInputActivity extends BaseActivity {
         });
     }
 
-
     private void setupTurnForMode1() {
         String currentGuesser = playerList.get(currentPlayerIndex);
         playerNameTitleView.setText(currentGuesser);
@@ -110,73 +108,101 @@ public class AnswerInputActivity extends BaseActivity {
         currentSpinnersForMode1.clear();
         List<String> roleNames = getRoleOptions();
 
-        // ★★★ このforループの中身を変更します ★★★
-        boolean isFirst = true; // 最初の要素かどうかを判定するフラグ
+        boolean isFirst = true;
         for (String targetPlayer : playerList) {
             if (targetPlayer.equals(currentGuesser)) continue;
 
-            // 最初の要素でなければ、区切り線を追加
             if (!isFirst) {
                 View divider = new View(this);
                 LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        1 // 線の高さ (1dp)
-                );
-                params.setMargins(0, 16, 0, 16); // 上下のマージン
+                        LinearLayout.LayoutParams.MATCH_PARENT, 1);
+                params.setMargins(0, 16, 0, 16);
                 divider.setLayoutParams(params);
-                divider.setBackgroundColor(0xFFCCCCCC); // 線の色 (薄いグレー)
+                divider.setBackgroundColor(0xFFCCCCCC);
                 answerFieldsLayout.addView(divider);
             }
 
-            // 各プレイヤーの行をまとめるための水平LinearLayoutを作成
-            LinearLayout rowLayout = new LinearLayout(this);
-            rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-            rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
-            rowLayout.setGravity(android.view.Gravity.CENTER_VERTICAL);
-            // rowLayout.setPadding(0, 16, 0, 16); // パディングは削除（区切り線でスペースを確保するため）
+            // ★★★ この分岐ロジックを再確認・修正 ★★★
+            if ("LOVE_TYPE".equals(theme)) {
+                // --- LOVETYPEテーマ用の2行レイアウト ---
+                LinearLayout verticalLayout = new LinearLayout(this);
+                verticalLayout.setOrientation(LinearLayout.VERTICAL);
+                verticalLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
 
-            // プレイヤー名を表示するTextView
-            TextView targetPlayerTextView = new TextView(this);
-            targetPlayerTextView.setText(targetPlayer + " さん");
-            targetPlayerTextView.setTextSize(18);
-            targetPlayerTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                    0, // width
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    1.0f // weight
-            ));
-            targetPlayerTextView.setPadding(16, 0, 0, 0);
+                // 1行目: プレイヤー名
+                TextView targetPlayerTextView = new TextView(this);
+                targetPlayerTextView.setText(targetPlayer + " さん");
+                targetPlayerTextView.setTextSize(18);
+                targetPlayerTextView.setPadding(16, 0, 16, 0); // 左右にパディング
+                targetPlayerTextView.setGravity(android.view.Gravity.START); // テキストを左寄せ
 
-            // 区切り用の矢印などを表示するTextView
-            TextView arrowTextView = new TextView(this);
-            arrowTextView.setText("→");
-            arrowTextView.setTextSize(24);
-            arrowTextView.setPadding(16, 0, 16, 0);
+                // 2行目: 矢印とスピナー
+                LinearLayout spinnerRowLayout = new LinearLayout(this);
+                spinnerRowLayout.setOrientation(LinearLayout.HORIZONTAL);
+                spinnerRowLayout.setGravity(android.view.Gravity.END | android.view.Gravity.CENTER_VERTICAL); // 中身を右寄せ
+                LinearLayout.LayoutParams spinnerRowParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, // 幅は親に合わせる
+                        LinearLayout.LayoutParams.WRAP_CONTENT);
+                spinnerRowParams.topMargin = 8;
+                spinnerRowLayout.setLayoutParams(spinnerRowParams);
 
-            // 役割を選択するSpinner
-            Spinner roleSpinner = new Spinner(this);
-            ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            roleSpinner.setAdapter(adapter);
-            roleSpinner.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            ));
+                TextView arrowTextView = new TextView(this);
+                arrowTextView.setText("→");
+                arrowTextView.setTextSize(24);
+                arrowTextView.setPadding(0, 0, 16, 0);
 
-            // 作成したUI要素を行レイアウトに追加
-            rowLayout.addView(targetPlayerTextView);
-            rowLayout.addView(arrowTextView);
-            rowLayout.addView(roleSpinner);
+                Spinner roleSpinner = new Spinner(this);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                roleSpinner.setAdapter(adapter);
 
-            // 行レイアウトをメインのレイアウトに追加
-            answerFieldsLayout.addView(rowLayout);
-            currentSpinnersForMode1.add(roleSpinner);
+                spinnerRowLayout.addView(arrowTextView);
+                spinnerRowLayout.addView(roleSpinner);
 
-            isFirst = false; // 最初の要素の処理が終わったのでフラグをfalseに
+                verticalLayout.addView(targetPlayerTextView);
+                verticalLayout.addView(spinnerRowLayout);
+
+                answerFieldsLayout.addView(verticalLayout);
+                currentSpinnersForMode1.add(roleSpinner);
+
+            } else {
+                // --- MBTIテーマ用の1行レイアウト ---
+                LinearLayout rowLayout = new LinearLayout(this);
+                rowLayout.setOrientation(LinearLayout.HORIZONTAL);
+                rowLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                rowLayout.setGravity(android.view.Gravity.CENTER_VERTICAL);
+
+                TextView targetPlayerTextView = new TextView(this);
+                targetPlayerTextView.setText(targetPlayer + " さん");
+                targetPlayerTextView.setTextSize(18);
+                targetPlayerTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                        0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
+                targetPlayerTextView.setPadding(16, 0, 0, 0);
+
+                TextView arrowTextView = new TextView(this);
+                arrowTextView.setText("→");
+                arrowTextView.setTextSize(24);
+                arrowTextView.setPadding(16, 0, 16, 0);
+
+                Spinner roleSpinner = new Spinner(this);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, roleNames);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                roleSpinner.setAdapter(adapter);
+
+                rowLayout.addView(targetPlayerTextView);
+                rowLayout.addView(arrowTextView);
+                rowLayout.addView(roleSpinner);
+
+                answerFieldsLayout.addView(rowLayout);
+                currentSpinnersForMode1.add(roleSpinner);
+            }
+
+            isFirst = false;
         }
-        // ★★★ 変更はここまで ★★★
 
         if (currentPlayerIndex == playerList.size() - 1) {
             confirmAnswersButton.setText("全員の回答を確定し結果を見る");

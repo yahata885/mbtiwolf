@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".AnswerInputActivity">
 
     <ScrollView
@@ -79,16 +80,15 @@
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/helpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp" android:layout_marginEnd="16dp" android:text="役職説明"
-        android:textColor="@android:color/white"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
         android:backgroundTint="#808080"
-        app:icon="@android:drawable/ic_menu_help"
-        app:iconTint="@android:color/white"
+        android:contentDescription="役職説明"
+        android:text="役職説明"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,12 +96,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#A6000000"
+        android:clickable="true"
+        android:focusable="true"
         android:visibility="gone"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="gone">
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/roleExplanationCard"
@@ -110,6 +113,7 @@
             android:layout_margin="32dp"
             android:background="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="W,4:5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -128,13 +132,32 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.5" />
 
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="#CCCCCC"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/vertical_guideline"
+                app:layout_constraintStart_toStartOf="@id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/horizontal_guideline"
+                app:layout_constraintTop_toTopOf="@id/horizontal_guideline" />
+
             <LinearLayout
                 android:id="@+id/role1_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
                 app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -150,19 +173,19 @@
 
                 <TextView
                     android:id="@+id/role1_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職1"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role1_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -170,9 +193,10 @@
                 android:id="@+id/role2_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
@@ -188,19 +212,19 @@
 
                 <TextView
                     android:id="@+id/role2_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職2"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role2_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -208,9 +232,10 @@
                 android:id="@+id/role3_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/vertical_guideline"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,19 +251,19 @@
 
                 <TextView
                     android:id="@+id/role3_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職3"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role3_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
@@ -246,9 +271,10 @@
                 android:id="@+id/role4_layout"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:gravity="center"
+                android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="8dp"
+                android:padding="28dp"
+                android:paddingTop="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/vertical_guideline"
@@ -264,19 +290,19 @@
 
                 <TextView
                     android:id="@+id/role4_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="役職4"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/role4_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginTop="8dp"
+                    android:layout_weight="1"
                     android:gravity="center_horizontal"
-                    android:maxLines="5"
                     android:text="（ここに説明文）" />
             </LinearLayout>
 
