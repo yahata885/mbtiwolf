@@ -103,7 +103,7 @@ public class AnswerInputActivity extends BaseActivity {
     private void setupTurnForMode1() {
         String currentGuesser = playerList.get(currentPlayerIndex);
         playerNameTitleView.setText(currentGuesser);
-        playerSubTitleView.setText("さんの回答");
+        playerSubTitleView.setText(" さんの回答");
         playerSubTitleView.setVisibility(View.VISIBLE);
 
         answerFieldsLayout.removeAllViews();
@@ -111,8 +111,22 @@ public class AnswerInputActivity extends BaseActivity {
         List<String> roleNames = getRoleOptions();
 
         // ★★★ このforループの中身を変更します ★★★
+        boolean isFirst = true; // 最初の要素かどうかを判定するフラグ
         for (String targetPlayer : playerList) {
             if (targetPlayer.equals(currentGuesser)) continue;
+
+            // 最初の要素でなければ、区切り線を追加
+            if (!isFirst) {
+                View divider = new View(this);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        1 // 線の高さ (1dp)
+                );
+                params.setMargins(0, 16, 0, 16); // 上下のマージン
+                divider.setLayoutParams(params);
+                divider.setBackgroundColor(0xFFCCCCCC); // 線の色 (薄いグレー)
+                answerFieldsLayout.addView(divider);
+            }
 
             // 各プレイヤーの行をまとめるための水平LinearLayoutを作成
             LinearLayout rowLayout = new LinearLayout(this);
@@ -122,19 +136,18 @@ public class AnswerInputActivity extends BaseActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
             rowLayout.setGravity(android.view.Gravity.CENTER_VERTICAL);
-            rowLayout.setPadding(0, 16, 0, 16);
+            // rowLayout.setPadding(0, 16, 0, 16); // パディングは削除（区切り線でスペースを確保するため）
 
             // プレイヤー名を表示するTextView
             TextView targetPlayerTextView = new TextView(this);
-            targetPlayerTextView.setText(targetPlayer + " さん"); // ここに " さん" を追加
+            targetPlayerTextView.setText(targetPlayer + " さん");
             targetPlayerTextView.setTextSize(18);
             targetPlayerTextView.setLayoutParams(new LinearLayout.LayoutParams(
                     0, // width
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     1.0f // weight
             ));
-
-            targetPlayerTextView.setPadding(16, 0, 0, 0); // 左側に16dpのパディングを追加
+            targetPlayerTextView.setPadding(16, 0, 0, 0);
 
             // 区切り用の矢印などを表示するTextView
             TextView arrowTextView = new TextView(this);
@@ -160,6 +173,8 @@ public class AnswerInputActivity extends BaseActivity {
             // 行レイアウトをメインのレイアウトに追加
             answerFieldsLayout.addView(rowLayout);
             currentSpinnersForMode1.add(roleSpinner);
+
+            isFirst = false; // 最初の要素の処理が終わったのでフラグをfalseに
         }
         // ★★★ 変更はここまで ★★★
 
