@@ -8,110 +8,135 @@
     android:padding="24dp"
     tools:context=".MainActivity">
 
-    <!-- 「テーマを選択」タイトル -->
-    <TextView
-        android:id="@+id/textViewThemeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="テーマを選択"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- テーマ画像を表示するViewPager -->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/themeViewPager"
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textViewThemeTitle"
-        app:layout_constraintStart_toEndOf="@+id/buttonPrevious"
-        app:layout_constraintEnd_toStartOf="@+id/buttonNext"
-        app:layout_constraintWidth_percent="0.7" /> <!-- 横幅を70%に制限 -->
-
-    <!-- 左矢印ボタン (◀︎) -->
-    <ImageButton
-        android:id="@+id/buttonPrevious"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/indicator_left_default"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="前のテーマへ"
-        android:visibility="gone"
-        tools:visibility="visible"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"         app:cardElevation="4dp"         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/themeViewPager"
-        app:layout_constraintTop_toTopOf="@id/themeViewPager"
-        app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
-        app:tint="?attr/colorOnSurface" />
-
-    <!-- 右矢印ボタン (▶︎) -->
-    <ImageButton
-        android:id="@+id/buttonNext"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/indicator_right_default"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="次のテーマへ"
-        app:layout_constraintStart_toEndOf="@id/themeViewPager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/themeViewPager"
-        app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
-        app:tint="?attr/colorOnSurface" />
-
-    <!-- テーマ名表示 -->
-    <TextView
-        android:id="@+id/themeNameTextView"
-        android:layout_width="wrap_content"
+        app:layout_constraintWidth_percent="0.9">         <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="テーマ : MBTI"
-        app:layout_constraintTop_toBottomOf="@+id/themeViewPager"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <!-- 「モードを選択」タイトル -->
-    <TextView
-        android:id="@+id/textViewModeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="モードを選択"
-        android:textSize="20sp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/themeNameTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- モード選択ボタン -->
-    <Button
-        android:id="@+id/mode1Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="モード1: 協力"
-        app:layout_constraintTop_toBottomOf="@+id/textViewModeTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/themeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/mode2Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="モード2: 演じて"
-        app:layout_constraintTop_toBottomOf="@+id/mode1Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/textViewThemeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="テーマを選択"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/mode3Button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="モード3: 人狼"
-        app:layout_constraintTop_toBottomOf="@+id/mode2Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/themeViewPager"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/textViewThemeTitle"
+                app:layout_constraintWidth_percent="0.7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageButton
+                android:id="@+id/buttonPrevious"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/indicator_left_default"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="前のテーマへ"
+                app:layout_constraintEnd_toStartOf="@id/themeViewPager"
+                app:layout_constraintTop_toTopOf="@id/themeViewPager"
+                app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
+                app:tint="?attr/colorOnSurface" />
+
+            <ImageButton
+                android:id="@+id/buttonNext"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/indicator_right_default"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="次のテーマへ"
+                app:layout_constraintStart_toEndOf="@id/themeViewPager"
+                app:layout_constraintTop_toTopOf="@id/themeViewPager"
+                app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
+                app:tint="?attr/colorOnSurface" />
+
+            <TextView
+                android:id="@+id/themeNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="テーマ : MBTI"
+                app:layout_constraintTop_toBottomOf="@+id/themeViewPager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/modeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp">
+
+            <TextView
+                android:id="@+id/textViewModeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="モードを選択"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/mode1Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="モード1: 協力"
+                app:layout_constraintTop_toBottomOf="@+id/textViewModeTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/mode2Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="モード2: 演じて"
+                app:layout_constraintTop_toBottomOf="@+id/mode1Button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/mode3Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="モード3: 人狼"
+                app:layout_constraintTop_toBottomOf="@+id/mode2Button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

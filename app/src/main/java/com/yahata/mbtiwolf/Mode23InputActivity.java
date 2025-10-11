@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+// ★追加: Spannable関連のimport文
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
+import android.graphics.Typeface;
+import android.text.style.RelativeSizeSpan;
+
 public class Mode23InputActivity extends BaseActivity {
 
     private TextView playerNameTextView, roleNameTextView, roleDescriptionTextView;
@@ -43,7 +50,7 @@ public class Mode23InputActivity extends BaseActivity {
         roleList = (ArrayList<GameRole>) getIntent().getSerializableExtra("ROLE_LIST");
 
         // SetupActivityから渡された人狼の人数を受け取る (デフォルトは0人)
-        int wolfCount = getIntent().getIntExtra("WOLF_COUNT", 0);
+        wolfCount = getIntent().getIntExtra("WOLF_COUNT", 0); // private変数に代入
 
         initializeRoleImages();
 
@@ -52,8 +59,6 @@ public class Mode23InputActivity extends BaseActivity {
         updateTurnView();
 
         revealButton.setOnClickListener(v -> showRole());
-
-
 
         nextPlayerButton.setOnClickListener(v -> {
             currentPlayerIndex++;
@@ -101,7 +106,31 @@ public class Mode23InputActivity extends BaseActivity {
         roleNameTextView.setVisibility(View.INVISIBLE);
         roleDescriptionTextView.setVisibility(View.INVISIBLE);
         roleImageView.setVisibility(View.INVISIBLE);
-        playerNameTextView.setText(playerList.get(currentPlayerIndex) + "\nさんの番です");
+
+        // ★★★ 修正箇所: ここから ★★★
+        String playerName = playerList.get(currentPlayerIndex);
+        String message = "\nさんの番です";
+
+        SpannableStringBuilder ssb = new SpannableStringBuilder(playerName + message);
+
+        // 1. playerNameの部分に太字スタイルを適用
+        ssb.setSpan(
+                new StyleSpan(Typeface.BOLD),
+                0,
+                playerName.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        // 2. messageの部分にRelativeSizeSpanを適用して文字を小さくする
+        ssb.setSpan(
+                new RelativeSizeSpan(0.6f), // 元のサイズの70%の大きさに設定
+                playerName.length(),
+                ssb.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+
+        playerNameTextView.setText(ssb);
+        // ★★★ 修正箇所: ここまで ★★★
 
         if (currentPlayerIndex == playerList.size() - 1) {
             nextPlayerButton.setText("確認完了（議論を開始）");
