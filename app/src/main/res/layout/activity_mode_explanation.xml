@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="center_horizontal"
-    tools:context=".ModeExplanationActivity">
+    tools:context=".ModeExplanation_Activity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                         android:id="@+id/mode12TextView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="ほかの人の性格を\n当たるゲームモード"
+                        android:text="ほかの人の性格を\n当てるゲームモード"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:gravity="center_horizontal"/>
@@ -99,10 +99,10 @@
                         android:id="@+id/mode1TextView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="「協力」の場合"
+                        android:text="モード1:協力　の場合"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="30dp"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 
@@ -119,10 +119,10 @@
                         android:id="@+id/mode2TextView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="「演じて」の場合"
+                        android:text="モード2:演じて　の場合"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="30dp"
                         android:textStyle="bold"
                         android:gravity="center_horizontal"/>
                     <TextView
@@ -159,6 +159,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
+                        android:layout_marginTop="20dp"
                         android:layout_marginBottom="8dp">
 
                         <ImageView
@@ -170,7 +171,6 @@
                             android:layout_marginEnd="4dp"
                             android:src="@drawable/gutspose"
                             android:contentDescription="モード3の画像1-1" />
-
                         <ImageView
                             android:id="@+id/mode3ImageView1_2"
                             android:layout_width="0dp"
@@ -181,7 +181,6 @@
                             android:layout_marginEnd="4dp"
                             android:src="@drawable/vs"
                             android:contentDescription="モード3の画像1-2" />
-
                         <ImageView
                             android:id="@+id/mode3ImageView1_3"
                             android:layout_width="0dp"
@@ -193,77 +192,102 @@
                             android:contentDescription="モード3の画像1-3" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/mode3TextView2"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="市民側"
-                        android:textColor="@android:color/black"
-                        android:textStyle="bold"
-                        android:layout_marginTop="30dp"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="20dp">
 
-                    <TextView
-                        android:id="@+id/mode3TextView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="指定された性格を\n演じながら人狼を探します"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        <ImageView
+                            android:id="@+id/mode3ImageView_citizen"
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:scaleType="fitCenter"
+                            android:layout_marginEnd="8dp"
+                            android:src="@drawable/badeye"
+                            android:contentDescription="市民側の画像" />
 
-                    <TextView
-                        android:id="@+id/mode3TextView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="人狼側"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/black"
-                        android:layout_marginTop="16dp"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/mode3TextView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="市民側"
+                                android:textColor="@android:color/black"
+                                android:textStyle="bold"
+                                android:textSize="20sp"
+                                android:gravity="center_horizontal"/>
+                            <TextView
+                                android:id="@+id/mode3TextView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="指定された性格を\n演じながら人狼を探します"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:gravity="center_horizontal"/>
+                        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/mode3TextView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="市民の性格を予想しながら演じます"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:gravity="center_horizontal"
-                        android:layout_marginBottom="8dp"/>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="20dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/mode3TextView4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="人狼側"
+                                android:textStyle="bold"
+                                android:textColor="@android:color/black"
+                                android:textSize="20sp"
+                                android:gravity="center_horizontal"/>
+                            <TextView
+                                android:id="@+id/mode3TextView5"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="市民の性格を予想しながら演じます"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:gravity="center_horizontal"/>
+                        </LinearLayout>
 
                         <ImageView
-                            android:id="@+id/mode3ImageView2_1"
+                            android:id="@+id/mode3ImageView_wolf"
                             android:layout_width="0dp"
                             android:layout_height="100dp"
                             android:layout_weight="1"
                             android:scaleType="fitCenter"
-                            android:layout_marginEnd="4dp"
-                            android:src="@drawable/badeye"
-                            android:contentDescription="モード3の画像2-1" />
-
-                        <ImageView
-                            android:id="@+id/mode3ImageView2_2"
-                            android:layout_width="0dp"
-                            android:layout_height="100dp"
-                            android:layout_weight="1"
-                            android:scaleType="fitCenter"
-                            android:layout_marginStart="4dp"
+                            android:layout_marginStart="8dp"
                             android:src="@drawable/faker"
-                            android:contentDescription="モード3の画像2-2" />
+                            android:contentDescription="人狼側の画像" />
+
                     </LinearLayout>
                 </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
     </FrameLayout>
+
+    <Button
+        android:id="@+id/backToTitleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="戻る"
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>
