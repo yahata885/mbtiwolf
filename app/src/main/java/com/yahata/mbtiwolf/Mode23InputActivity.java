@@ -1,6 +1,7 @@
 package com.yahata.mbtiwolf;
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,8 @@ public class Mode23InputActivity extends BaseActivity {
     private ArrayList<String> playerList;
     private int currentPlayerIndex = 0;
     private ArrayList<GameRole> roleList;
+    private ImageView roleImageView;
+    private Map<String, Integer> roleImageMap = new HashMap<>();
     private int wolfCount;
 
     @Override
@@ -32,6 +35,7 @@ public class Mode23InputActivity extends BaseActivity {
         roleDescriptionTextView = findViewById(R.id.roleDescriptionTextView);
         revealButton = findViewById(R.id.revealButton);
         nextPlayerButton = findViewById(R.id.nextPlayerButton);
+        roleImageView = findViewById(R.id.roleImageView);
 
         playerList = getIntent().getStringArrayListExtra("PLAYER_LIST");
         String theme = getIntent().getStringExtra("GAME_THEME");
@@ -41,11 +45,15 @@ public class Mode23InputActivity extends BaseActivity {
         // SetupActivityから渡された人狼の人数を受け取る (デフォルトは0人)
         int wolfCount = getIntent().getIntExtra("WOLF_COUNT", 0);
 
+        initializeRoleImages();
+
         assignments = GameLogic.assignRoles(playerList, theme, wolfCount, mode);
 
         updateTurnView();
 
         revealButton.setOnClickListener(v -> showRole());
+
+
 
         nextPlayerButton.setOnClickListener(v -> {
             currentPlayerIndex++;
@@ -66,6 +74,25 @@ public class Mode23InputActivity extends BaseActivity {
                 finish();
             }
         });
+
+    }
+
+    private void initializeRoleImages() {
+
+        roleImageMap.put("分析家", R.drawable.mbti_analyst);
+        roleImageMap.put("外交官", R.drawable.mbti_diplomat);
+        roleImageMap.put("番人", R.drawable.mbti_guardian);
+        roleImageMap.put("探検家", R.drawable.mbti_explorer);
+
+        // 【ラブタイプテーマ】
+        roleImageMap.put("L×C（主導×甘えたい）", R.drawable.lovetype_lc);
+        roleImageMap.put("L×A（主導×受け止めたい）", R.drawable.lovetype_la);
+        roleImageMap.put("F×C（協調×甘えたい）", R.drawable.lovetype_fc);
+        roleImageMap.put("F×A（協調×受け止めたい）", R.drawable.lovetype_fa);
+
+        // 【共通の役職】
+//        roleImageMap.put("人狼", R.drawable.wolf_image); // 例えば wolf_image.png がある場合
+        // 他にも市民など共通の役職があれば追加
     }
 
     private void updateTurnView() {
@@ -73,6 +100,7 @@ public class Mode23InputActivity extends BaseActivity {
         nextPlayerButton.setVisibility(View.GONE);
         roleNameTextView.setVisibility(View.INVISIBLE);
         roleDescriptionTextView.setVisibility(View.INVISIBLE);
+        roleImageView.setVisibility(View.INVISIBLE);
         playerNameTextView.setText(playerList.get(currentPlayerIndex) + "さんの番です");
 
         if (currentPlayerIndex == playerList.size() - 1) {
@@ -87,8 +115,16 @@ public class Mode23InputActivity extends BaseActivity {
         GameRole assignedRole = assignments.get(currentPlayerName);
 
         if (assignedRole != null) {
+            String roleName = assignedRole.getName();
             roleNameTextView.setText("あなたの役割は【" + assignedRole.getName() + "】です");
             roleDescriptionTextView.setText(assignedRole.getDescription());
+
+            Integer imageResId = roleImageMap.get(roleName);
+            if (imageResId != null) {
+                roleImageView.setImageResource(imageResId);
+                roleImageView.setVisibility(View.VISIBLE);
+            }
+
             roleNameTextView.setVisibility(View.VISIBLE);
             roleDescriptionTextView.setVisibility(View.VISIBLE);
             revealButton.setVisibility(View.GONE);
