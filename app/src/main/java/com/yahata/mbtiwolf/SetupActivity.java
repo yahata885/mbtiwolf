@@ -65,7 +65,7 @@ public class SetupActivity extends BaseActivity {
             }
 
             // ▼▼▼【変更点】名前の文字数チェックを追加 ▼▼▼
-            if (playerName.length() > 6) {
+            if (playerName.length() > 5) {
                 Toast.makeText(SetupActivity.this, "名前は6文字以内で入力してください", Toast.LENGTH_SHORT).show();
                 return; // ここで処理を中断
             }
