@@ -73,7 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                tools:text="回答を確定" />
+                tools:text="回答を確定"
+                app:backgroundTint = "#6F004E"/>
 
         </LinearLayout>
     </ScrollView>

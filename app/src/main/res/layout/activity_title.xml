@@ -53,7 +53,8 @@
                 android:text="ゲームスタート"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/logoImageView"/>
+                app:layout_constraintTop_toBottomOf="@id/logoImageView"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/gameexplanationButton"
@@ -62,7 +63,8 @@
                 android:text="ゲーム説明"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gamestartButton"/>
+                app:layout_constraintTop_toBottomOf="@id/gamestartButton"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/creditButton"
@@ -71,7 +73,8 @@
                 android:text="クレジット"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gameexplanationButton"/>
+                app:layout_constraintTop_toBottomOf="@id/gameexplanationButton"
+                app:backgroundTint = "#6F004E"/>
 
 
 

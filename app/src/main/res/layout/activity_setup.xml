@@ -47,7 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="プレイヤーを追加" />
+                android:text="プレイヤーを追加"
+                app:backgroundTint = "#6F004E"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -127,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:text="-"
                     android:textSize="24sp"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    app:backgroundTint = "#6F004E"/>
 
                 <TextView
                     android:id="@+id/wolfCountTextView"
@@ -145,7 +147,8 @@
                     android:layout_height="wrap_content"
                     android:text="+"
                     android:textSize="24sp"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white"
+                    app:backgroundTint = "#6F004E"/>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -156,6 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="メンバーを確定してゲーム開始"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:backgroundTint = "#6F004E"/>
 
 </LinearLayout>

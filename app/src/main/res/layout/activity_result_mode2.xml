@@ -111,6 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="タイトルに戻る"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:backgroundTint = "#6F004E"/>
 
 </LinearLayout>
