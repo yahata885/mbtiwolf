@@ -53,7 +53,7 @@ public class DiscussionActivity extends BaseActivity {
     private TextView closeRoleExplanationButton; // 役職説明画面の「✖」ボタン
 
 
-
+    private LinearLayout timeButtonsLayout;
     private TextView timerTextView;
     private TextView playerListTextView;
     private Button goToVoteButton;
@@ -81,6 +81,7 @@ public class DiscussionActivity extends BaseActivity {
 //                startButton.setEnabled(false); // 開始ボタンを無効化
                 addMinuteButton.setEnabled(false);
                 subtractMinuteButton.setEnabled(false);
+                timeButtonsLayout.setVisibility(View.GONE);
             }
         }
     };
@@ -95,6 +96,7 @@ public class DiscussionActivity extends BaseActivity {
         subtractMinuteButton = findViewById(R.id.subtractMinuteButton);
         startButton = findViewById(R.id.startButton);
         timerTextView = findViewById(R.id.timerTextView);
+        timeButtonsLayout = findViewById(R.id.timeButtonsLayout);
 //        playerListTextView = findViewById(R.id.playerListTextView);
         goToVoteButton = findViewById(R.id.goToVoteButton);
 
@@ -191,6 +193,8 @@ public class DiscussionActivity extends BaseActivity {
 
             // 開始後は時間調整ボタンを無効化
             startButton.setEnabled(false);
+            startButton.setVisibility(View.GONE);
+//            timeButtonsLayout.setVisibility(View.GONE);
 //            addMinuteButton.setEnabled(false);
 //            subtractMinuteButton.setEnabled(false);
         });
