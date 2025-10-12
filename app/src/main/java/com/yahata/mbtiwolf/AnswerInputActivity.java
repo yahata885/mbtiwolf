@@ -259,7 +259,12 @@ public class AnswerInputActivity extends BaseActivity {
 
         for (int i = 0; i < wolfCount; i++) {
             TextView questionTextView = new TextView(this);
-            questionTextView.setText(String.format("人狼だと思うのは誰？ (%d人目)", i + 1));
+            if (wolfCount == 1) {
+                questionTextView.setText("人狼だと思うのは誰？");
+            } else {
+                questionTextView.setText(String.format("人狼だと思うのは誰？ (%d人目)", i + 1));
+            }
+//            questionTextView.setText(String.format("人狼だと思うのは誰？ (%d人目)", i + 1));
             questionTextView.setTextSize(20);
             answerFieldsLayout.addView(questionTextView);
 
