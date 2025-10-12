@@ -196,8 +196,8 @@ public class Mode1InputActivity extends BaseActivity {
         } else { // LOVETYPEテーマ
             displayDescriptions.put("L×C（主導×甘えたい）", "外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
             displayDescriptions.put("L×A（主導×受け止めたい）", "リーダーシップを発揮しつつ、相手の感情や立場を尊重できるため、信頼感を与えやすい");
-            displayDescriptions.put("F×C（協調×甘えたい）", "自分から引っ張るよりは相手にリードしてほしいと感じやすく、安心できる相手と出会うと素直に甘えられる");
-            displayDescriptions.put("F×A（協調×受け止めたい）", "聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
+            displayDescriptions.put("F×C（協調×甘えたい）", "リードされたい気持ちが強く、安心できる相手には素直に甘えられる");
+            displayDescriptions.put("F×A（協調×受け止めたい）", "聞き役になることが多く、誠実で安心感のある関係を築きやすい");
 
 
             displayImageResIds.put("L×C（主導×甘えたい）", R.drawable.lovetype_lc);

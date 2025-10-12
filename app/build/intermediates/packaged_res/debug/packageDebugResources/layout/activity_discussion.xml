@@ -64,21 +64,24 @@
                     android:id="@+id/subtractMinuteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="-1分" />
+                    android:text="-1分"
+                    app:backgroundTint = "#6F004E"/>
 
                 <Button
                     android:id="@+id/startButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="議論開始" />
+                    android:text="議論開始"
+                    app:backgroundTint = "#6F004E"/>
 
                 <Button
                     android:id="@+id/addMinuteButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="+1分" />
+                    android:text="+1分"
+                    app:backgroundTint = "#6F004E"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -111,14 +114,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="ヒント1を表示" />
+                android:text="ヒント1を表示"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/hintButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="ヒント2を表示" />
+                android:text="ヒント2を表示"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/hintButton3"
@@ -126,7 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp"
-                android:text="ヒント3を表示" />
+                android:text="ヒント3を表示"
+                app:backgroundTint = "#6F004E"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -138,7 +144,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:backgroundTint = "#6F004E"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/helpButton"

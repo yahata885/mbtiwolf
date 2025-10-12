@@ -97,7 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="役割を確認する" />
+        android:text="役割を確認する"
+        app:backgroundTint = "#6F004E"/>
 
     <Button
         android:id="@+id/nextPlayerButton"
@@ -106,6 +107,7 @@
         android:layout_marginTop="8dp"
         android:text="確認しました（次の人へ）"
         android:visibility="gone"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        app:backgroundTint = "#6F004E"/>
 
 </LinearLayout>

@@ -94,6 +94,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="決定して次の人へ" />
+        android:text="決定して次の人へ"
+        app:backgroundTint = "#6F004E"/>
+
 
 </LinearLayout>

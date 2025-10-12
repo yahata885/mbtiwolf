@@ -60,7 +60,8 @@
                 app:layout_constraintEnd_toStartOf="@id/themeViewPager"
                 app:layout_constraintTop_toTopOf="@id/themeViewPager"
                 app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
-                app:tint="?attr/colorOnSurface" />
+                app:tint="?attr/colorOnSurface"
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <ImageButton
                 android:id="@+id/buttonNext"
@@ -69,10 +70,11 @@
                 android:src="@drawable/indicator_right_default"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="次のテーマへ"
-                app:layout_constraintStart_toEndOf="@id/themeViewPager"
                 app:layout_constraintTop_toTopOf="@id/themeViewPager"
                 app:layout_constraintBottom_toBottomOf="@id/themeViewPager"
-                app:tint="?attr/colorOnSurface" />
+                app:tint="?attr/colorOnSurface"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/themeViewPager"/>
 
             <TextView
                 android:id="@+id/themeNameTextView"
@@ -114,7 +116,8 @@
                 android:text="モード1: 協力"
                 app:layout_constraintTop_toBottomOf="@+id/textViewModeTitle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/mode2Button"
@@ -123,7 +126,8 @@
                 android:text="モード2: 演じて"
                 app:layout_constraintTop_toBottomOf="@+id/mode1Button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:backgroundTint = "#6F004E"/>
 
             <Button
                 android:id="@+id/mode3Button"
@@ -132,7 +136,8 @@
                 android:text="モード3: 人狼"
                 app:layout_constraintTop_toBottomOf="@+id/mode2Button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:backgroundTint = "#6F004E"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
