@@ -1,16 +1,31 @@
 package com.yahata.mbtiwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ResultMode3Activity extends BaseActivity {
 
@@ -19,30 +34,17 @@ public class ResultMode3Activity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_mode3);
 
-        // Find views
         TextView wolfVoteResultTextView = findViewById(R.id.wolfVoteResultTextView);
         TextView winnerTextView = findViewById(R.id.winnerTextView);
         LinearLayout roleGuessResultsLayout = findViewById(R.id.roleGuessResultsLayout);
         Button playAgainButton = findViewById(R.id.playAgainButton);
 
-        // Get data from Intent
-        ArrayList<String> playerList = (ArrayList<String>) getIntent().getSerializableExtra("PLAYER_LIST");
         HashMap<String, GameRole> assignments = (HashMap<String, GameRole>) getIntent().getSerializableExtra("ASSIGNMENTS");
         HashMap<String, HashMap<String, String>> allAnswers = (HashMap<String, HashMap<String, String>>) getIntent().getSerializableExtra("ALL_ANSWERS");
 
-        // Part 1: Determine werewolf result and display winner
         determineWinner(wolfVoteResultTextView, winnerTextView, assignments, allAnswers);
-
-        // Part 2: Display ALL roles
         displayFinalRoles(roleGuessResultsLayout, assignments);
 
-//        // Part 1: Determine werewolf result
-//        determineWolfResult(wolfVoteResultTextView, winnerTextView, assignments, allAnswers);
-//
-//        // Part 2: Display role guess results
-//        displayRoleGuessResults(roleGuessResultsLayout, playerList, assignments, allAnswers);
-
-        // "Play Again" button
         playAgainButton.setOnClickListener(v -> {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -51,158 +53,155 @@ public class ResultMode3Activity extends BaseActivity {
         });
     }
 
-    // 変更点1：メソッド名を変更し、勝敗判定のみに特化
     private void determineWinner(TextView voteResultView, TextView winnerView, HashMap<String, GameRole> assignments, HashMap<String, HashMap<String, String>> allAnswers) {
+        AnimationSet winnerAnimation = new AnimationSet(true);
+        ScaleAnimation scale = new ScaleAnimation(
+                0.8f, 1.0f, 0.8f, 1.0f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f
+        );
+        scale.setDuration(600);
+        winnerAnimation.addAnimation(scale);
+        AlphaAnimation alpha = new AlphaAnimation(0.0f, 1.0f);
+        alpha.setDuration(400);
+        winnerAnimation.addAnimation(alpha);
+
         HashMap<String, String> finalVote = null;
         if (allAnswers != null && !allAnswers.isEmpty()) {
-            // AnswerInputActivity.javaの修正で、全員の回答は一つのエントリーに集約されているはず
-            finalVote = allAnswers.get(allAnswers.keySet().iterator().next());
+            finalVote = allAnswers.values().iterator().next();
         }
 
-        if (finalVote == null) {
-            // 投票データがない場合は人狼チームの勝利とみなす
+        if (finalVote == null || finalVote.isEmpty()) {
             voteResultView.setText("投票が行われませんでした。");
-            winnerView.setText("人狼チームの勝利！");
+            winnerView.setText("🏆 人狼チームの勝利！ 🏆");
+            winnerView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
+            winnerView.startAnimation(winnerAnimation);
             return;
         }
 
         boolean wasWolfFound = false;
-        // 投票結果を検証
         for (Map.Entry<String, String> entry : finalVote.entrySet()) {
             String suspectedPlayer = entry.getKey();
             String guess = entry.getValue();
-            GameRole role = assignments.get(suspectedPlayer);
+            GameRole actualRole = assignments.get(suspectedPlayer);
 
-            if (role != null && role.getName().equals("人狼") && guess.equals("人狼")) {
+            if (actualRole != null && actualRole.getName().equals("人狼") && guess.equals("人狼")) {
                 wasWolfFound = true;
                 break;
             }
         }
 
-        // 変更点2：勝敗判定の表示ロジックを変更
         if (wasWolfFound) {
             voteResultView.setText("市民チームは人狼を正しく特定しました。");
-            winnerView.setText("市民チームの勝利！");
+            winnerView.setText("🏆 市民チームの勝利！ 🏆");
+            winnerView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_blue_dark));
         } else {
             voteResultView.setText("市民チームは人狼を特定できませんでした。");
-            winnerView.setText("人狼チームの勝利！");
+            winnerView.setText("🏆 人狼チームの勝利！ 🏆");
+            winnerView.setTextColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
         }
+        winnerView.startAnimation(winnerAnimation);
     }
 
     private void displayFinalRoles(LinearLayout layout, HashMap<String, GameRole> assignments) {
-        // 既存の子ビューをすべて削除
         layout.removeAllViews();
+        layout.setGravity(Gravity.TOP);
 
-        TextView header = new TextView(this);
-        header.setText("【最終的な役割】");
-        header.setTextSize(24);
-        header.setPadding(0, 48, 0, 16);
-        layout.addView(header);
-
+        Map<String, List<String>> rolesMap = new LinkedHashMap<>();
         for (Map.Entry<String, GameRole> entry : assignments.entrySet()) {
             String playerName = entry.getKey();
-            GameRole role = entry.getValue();
+            String roleName = entry.getValue().getName();
+            rolesMap.computeIfAbsent(roleName, k -> new ArrayList<>()).add(playerName);
+        }
 
-            TextView roleLine = new TextView(this);
-            String roleText = "・" + playerName + "さん: " + role.getName();
-            roleLine.setText(roleText);
-            roleLine.setTextSize(20);
-            roleLine.setPadding(0, 8, 0, 0);
-            layout.addView(roleLine);
+        for (Map.Entry<String, List<String>> entry : rolesMap.entrySet()) {
+            String roleName = entry.getKey();
+            List<String> playerNames = entry.getValue();
+            String cardTitle;
+
+            if (roleName.equals("人狼")) {
+                cardTitle = "人狼チーム";
+            } else {
+                // ここを変更: 区切り文字を | に変更
+                cardTitle = "市民チーム | " + roleName;
+            }
+
+            Map<String, List<String>> singleRoleMap = new LinkedHashMap<>();
+            singleRoleMap.put(roleName, playerNames);
+
+            createTeamCard(layout, cardTitle, singleRoleMap);
         }
     }
 
-//    private void determineWolfResult(TextView voteResultView, TextView winnerView, HashMap<String, GameRole> assignments, HashMap<String, HashMap<String, String>> allAnswers) {
-//        HashMap<String, Integer> wolfVoteCounts = new HashMap<>();
-//
-//        // Count votes for "Werewolf"
-//        for (HashMap<String, String> guesses : allAnswers.values()) {
-//            for (Map.Entry<String, String> entry : guesses.entrySet()) {
-//                if (entry.getValue().equals("人狼")) {
-//                    String suspectedPlayer = entry.getKey();
-//                    int count = wolfVoteCounts.getOrDefault(suspectedPlayer, 0);
-//                    wolfVoteCounts.put(suspectedPlayer, count + 1);
-//                }
-//            }
-//        }
-//
-//        // Find the player(s) with the most votes
-//        int maxVotes = wolfVoteCounts.values().stream()
-//                .mapToInt(Integer::intValue)
-//                .max()
-//                .orElse(0);
-//
-//        // 投票が全くない場合は人狼の勝利
-//        if (maxVotes == 0) {
-//            voteResultView.setText("誰も人狼だと疑われませんでした。");
-//            winnerView.setText("人狼チームの勝利！");
-//            return;
-//        }
-//
-//        // 最多票を獲得したプレイヤーをすべて取得
-//        List<String> mostSuspectedPlayers = wolfVoteCounts.entrySet().stream()
-//                .filter(entry -> entry.getValue() == maxVotes)
-//                .map(Map.Entry::getKey)
-//                .collect(Collectors.toList());
-//
-//        // 勝敗判定ロジック
-//        boolean wasWolfFound = false;
-//        for (String player : mostSuspectedPlayers) {
-//            GameRole role = assignments.get(player);
-//            if (role != null && role.getName().equals("人狼")) {
-//                wasWolfFound = true;
-//                break;
-//            }
-//        }
-//
-//        // 結果表示
-//        if (mostSuspectedPlayers.size() > 1) {
-//            String playersText = String.join("さん、", mostSuspectedPlayers) + "さん";
-//            voteResultView.setText("最も疑われたのは " + playersText + " でした。\nその中に人狼は" + (wasWolfFound ? "いました" : "いませんでした") + "！");
-//        } else {
-//            String mostSuspectedPlayer = mostSuspectedPlayers.get(0);
-//            voteResultView.setText("最も疑われたのは " + mostSuspectedPlayer + " さんでした。\nその正体は... " + (wasWolfFound ? "人狼" : "市民") + "！");
-//        }
-//
-//        if (wasWolfFound) {
-//            winnerView.setText("市民チームの勝利！");
-//        } else {
-//            winnerView.setText("人狼チームの勝利！");
-//        }
-//    }
-//
-//    private void displayRoleGuessResults(LinearLayout layout, ArrayList<String> playerList, HashMap<String, GameRole> assignments, HashMap<String, HashMap<String, String>> allAnswers) {
-//        for (String guesser : playerList) {
-//            TextView guesserTitle = new TextView(this);
-//            guesserTitle.setText("▼ " + guesser + "さんの回答結果");
-//            guesserTitle.setTextSize(20);
-//            guesserTitle.setPadding(0, 24, 0, 8);
-//            layout.addView(guesserTitle);
-//
-//            int score = 0;
-//            HashMap<String, String> guesses = allAnswers.get(guesser);
-//
-//            for (Map.Entry<String, String> entry : guesses.entrySet()) {
-//                String target = entry.getKey();
-//                String guess = entry.getValue();
-//                String correctAnswer = assignments.get(target).getName();
-//
-//                // Don't score the guess for the werewolf
-//                if (correctAnswer.equals("人狼")) continue;
-//
-//                TextView resultLine = new TextView(this);
-//                String resultText;
-//                if (guess.equals(correctAnswer)) {
-//                    score++;
-//                    resultText = "✅ " + target + "さん: 「" + guess + "」で正解！";
-//                } else {
-//                    resultText = "❌ " + target + "さん: 「" + guess + "」 (正解: " + correctAnswer + ")";
-//                }
-//                resultLine.setText(resultText);
-//                resultLine.setTextSize(16);
-//                layout.addView(resultLine);
-//            }
-//        }
-//    }
+    private void createTeamCard(LinearLayout parentLayout, String teamTitle, Map<String, List<String>> rolesMap) {
+        int padding_16dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 16, getResources().getDisplayMetrics());
+        int margin_8dp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
 
+        CardView cardView = new CardView(this);
+        LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        cardParams.setMargins(margin_8dp, margin_8dp, margin_8dp, margin_8dp);
+        cardView.setLayoutParams(cardParams);
+        cardView.setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics()));
+        cardView.setCardElevation(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+
+        LinearLayout innerLayout = new LinearLayout(this);
+        innerLayout.setOrientation(LinearLayout.VERTICAL);
+        innerLayout.setPadding(padding_16dp, padding_16dp, padding_16dp, padding_16dp);
+
+        if (teamTitle != null && !teamTitle.isEmpty()) {
+            TextView titleView = new TextView(this);
+            titleView.setText(teamTitle);
+            titleView.setTextSize(14);
+            titleView.setTextColor(Color.WHITE);
+            titleView.setTypeface(null, Typeface.BOLD);
+
+            GradientDrawable chipBackground = new GradientDrawable();
+            chipBackground.setShape(GradientDrawable.RECTANGLE);
+
+            if (teamTitle.startsWith("人狼")) {
+                chipBackground.setColor(ContextCompat.getColor(this, android.R.color.holo_red_dark));
+            } else {
+                chipBackground.setColor(ContextCompat.getColor(this, android.R.color.holo_blue_dark));
+            }
+            chipBackground.setCornerRadius(50f);
+            titleView.setBackground(chipBackground);
+
+            int paddingHorizontal = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics());
+            int paddingVertical = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
+            titleView.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical);
+
+            LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+            );
+            titleParams.setMargins(0, 0, 0, padding_16dp);
+            titleView.setLayoutParams(titleParams);
+
+            innerLayout.addView(titleView);
+        }
+
+        for (Map.Entry<String, List<String>> entry : rolesMap.entrySet()) {
+            List<String> playerNames = entry.getValue();
+            for (String playerName : playerNames) {
+                TextView playerLine = new TextView(this);
+                String text = "・" + playerName + " さん"; // ここにスペースを追加しました
+
+                // SpannableStringを使って部分的にスタイルを適用
+                SpannableString spannable = new SpannableString(text);
+                // "・" の次の文字から、プレイヤー名の長さ分だけを太字にする
+                spannable.setSpan(new StyleSpan(Typeface.BOLD), 1, 1 + playerName.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                playerLine.setText(spannable);
+                playerLine.setTextSize(18);
+                playerLine.setPadding(padding_16dp, 0, 0, margin_8dp);
+                innerLayout.addView(playerLine);
+            }
+        }
+
+        cardView.addView(innerLayout);
+        parentLayout.addView(cardView);
+    }
 }
