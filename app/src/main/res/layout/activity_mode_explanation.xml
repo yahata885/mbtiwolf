@@ -646,7 +646,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="L×C\n（主導×甘えたい）"
+                                android:text="L×C（主導×甘えたい）"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -689,7 +689,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="L×A\n（主導×受け止めたい）"
+                                android:text="L×A（主導×受け止めたい）"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -732,7 +732,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="F×C\n（協調×甘えたい）"
+                                android:text="F×C（協調×甘えたい）"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -742,7 +742,7 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="相手にリードしてほしいと感じやすく、安心できる相手には素直に甘えられる"
+                                android:text="リードされたい気持ちが強く、安心できる相手には素直に甘えられる"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -775,7 +775,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="F×A\n（協調×受け止めたい）"
+                                android:text="F×A（協調×受け止めたい）"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -785,7 +785,7 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_weight="1"
                                 android:gravity="center_horizontal"
-                                android:text="聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい"
+                                android:text="聞き役になることが多く、誠実で安心感のある関係を築きやすい"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
