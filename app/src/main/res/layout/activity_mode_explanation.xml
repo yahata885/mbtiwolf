@@ -31,13 +31,24 @@
             android:layout_height="wrap_content"
             android:text="協力/演じて"
             android:checked="true"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp"
+            app:buttonTint="#6F004E"/>
 
         <RadioButton
             android:id="@+id/mode3RadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="人狼" />
+            android:text="人狼"
+            android:layout_marginEnd="16dp"
+            app:buttonTint="#6F004E"/>
+
+        <RadioButton
+            android:id="@+id/roleExplanationRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="役割説明"
+            app:buttonTint="#6F004E"
+            />
     </RadioGroup>
 
     <FrameLayout
@@ -45,280 +56,743 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="0dp"> <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:padding="0dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp" app:cardElevation="4dp"   app:cardUseCompatPadding="true" android:layout_margin="8dp" app:cardBackgroundColor="@android:color/white" > <LinearLayout
-                android:id="@+id/mode12ExplanationBlock"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:padding="16dp" android:visibility="gone"
-                tools:visibility="visible"> <TextView
-                android:id="@+id/mode12TextView1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ほかの人の性格を\n当てるゲームモード"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal">
 
-                <ImageView
-                    android:id="@+id/mode12ImageView"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:scaleType="centerCrop"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:src="@drawable/discussion"
-                    android:contentDescription="モード1の画像" />
-
-                <TextView
-                    android:id="@+id/mode12TextView2"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="会話を通して\nほかの人の性格を予想しよう"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:gravity="center_horizontal"
-                    android:layout_marginBottom="16dp"/>
-
-                <LinearLayout
+                    app:cardCornerRadius="8dp" app:cardElevation="4dp"   app:cardUseCompatPadding="true" android:layout_margin="8dp" app:cardBackgroundColor="@android:color/white" > <LinearLayout
+                    android:id="@+id/mode12ExplanationBlock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:background="#D9D9D9"
-                    android:padding="12dp"
-                    android:layout_marginTop="8dp">
+                    android:gravity="center_horizontal"
+                    android:padding="16dp" android:visibility="gone"
+                    tools:visibility="gone">
 
                     <TextView
-                        android:id="@+id/mode1TextView1"
+                        android:id="@+id/mode12TextView1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="モード1:「協力」の場合"
+                        android:text="ほかの人の性格を当てるゲームモード"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"
                         android:gravity="center_horizontal"/>
 
-                    <TextView
-                        android:id="@+id/mode1TextView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="自身の性格を意識しながら\n会話しよう"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="#D9D9D9"
-                    android:padding="12dp"
-                    android:layout_marginTop="16dp">
-
-                    <TextView
-                        android:id="@+id/mode2TextView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="モード2:「演じて」の場合"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal"/>
-
-                    <TextView
-                        android:id="@+id/mode2TextView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="想像力を膨らませながら指定された性格になりきって会話しよう"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:gravity="center_horizontal"/>
-                </LinearLayout>
-            </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                android:layout_margin="8dp"
-                app:cardBackgroundColor="@android:color/white" >
-
-                <LinearLayout
-                    android:id="@+id/mode3ExplanationBlock"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-                    <TextView
-                        android:id="@+id/mode3TextView1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/mode12ImageView"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="8dp"
+                        android:src="@drawable/discussion"
+                        android:contentDescription="モード1の画像" />
+
+                    <TextView
+                        android:id="@+id/mode12TextView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="会話を通してほかの人の性格を予想しよう"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
                         android:gravity="center_horizontal"
-                        android:text="市民側と人狼側に分かれて\n相手陣営を予想するゲームモード"
-                        android:textColor="@android:color/black"
-                        android:textSize="20sp" />
+                        android:layout_marginBottom="16dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginBottom="8dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:background="#D9D9D9"
+                        android:padding="12dp"
+                        android:layout_marginTop="8dp">
 
-                        <ImageView
-                            android:id="@+id/mode3ImageView1_1"
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="2"
-                            android:contentDescription="モード3の画像1-1"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/gutspose" />
+                        <TextView
+                            android:id="@+id/mode1TextView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="モード1:「協力」の場合"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"/>
 
-                        <ImageView
-                            android:id="@+id/mode3ImageView1_2"
-                            android:layout_width="0dp"
-                            android:layout_height="60dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginEnd="4dp"
-                            android:layout_weight="1"
-                            android:contentDescription="モード3の画像1-2"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/vs" />
-
-                        <ImageView
-                            android:id="@+id/mode3ImageView1_3"
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="2"
-                            android:contentDescription="モード3の画像1-3"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/wolf" />
+                        <TextView
+                            android:id="@+id/mode1TextView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="自身の性格を意識しながら会話しよう"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:gravity="center_horizontal"/>
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_weight="1"
-                        android:background="#E3F2FD"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="12dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="#D9D9D9"
+                        android:padding="12dp"
+                        android:layout_marginTop="16dp">
 
-                        <ImageView
-                            android:id="@+id/mode3ImageView_citizen"
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_weight="1"
-                            android:contentDescription="市民側の画像"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/badeye" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/mode2TextView1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:orientation="vertical">
+                            android:text="モード2:「演じて」の場合"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:gravity="center_horizontal"/>
 
-                            <TextView
-                                android:id="@+id/mode3TextView2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
-                                android:text="市民側"
-                                android:textColor="@android:color/black"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/mode3TextView3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
-                                android:text="指定された性格を演じ\nながら人狼を探します"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_weight="1"
-                        android:background="#FFEBEE"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="12dp">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/mode2TextView2"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1.5"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/mode3TextView4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
-                                android:text="人狼側"
-                                android:textColor="@android:color/black"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/mode3TextView5"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
-                                android:text="市民の性格を予想しながら演じます"
-                                android:textColor="@android:color/black"
-                                android:textSize="15sp" />
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/mode3ImageView_wolf"
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_weight="1"
-                            android:contentDescription="人狼側の画像"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/faker" />
+                            android:text="想像力を膨らませながら指定された性格になりきって会話しよう"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:gravity="center_horizontal"/>
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@android:color/white" >
+
+                    <LinearLayout
+                        android:id="@+id/mode3ExplanationBlock"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:visibility="gone"
+                        tools:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/mode3TextView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_horizontal"
+                            android:text="市民側と人狼側に分かれて相手陣営を予想するゲームモード"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="8dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/mode3ImageView1_1"
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="2"
+                                android:contentDescription="モード3の画像1-1"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/gutspose" />
+
+                            <ImageView
+                                android:id="@+id/mode3ImageView1_2"
+                                android:layout_width="0dp"
+                                android:layout_height="60dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="1"
+                                android:contentDescription="モード3の画像1-2"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/vs" />
+
+                            <ImageView
+                                android:id="@+id/mode3ImageView1_3"
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="2"
+                                android:contentDescription="モード3の画像1-3"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/wolf" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_weight="1"
+                            android:background="#E3F2FD"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <ImageView
+                                android:id="@+id/mode3ImageView_citizen"
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="1"
+                                android:contentDescription="市民側の画像"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/badeye" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/mode3TextView2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="市民側"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/mode3TextView3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="指定された性格を演じながら人狼を探します"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="#FFEBEE"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:padding="12dp">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/mode3TextView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="人狼側"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/mode3TextView5"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="市民の性格を予想しながら演じます"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:id="@+id/mode3ImageView_wolf"
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:contentDescription="人狼側の画像"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/faker" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mbtiExplanationCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@android:color/white" >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp" > <TextView
+                        android:id="@+id/mbtiTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MBTI役割説明"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/mbti_vertical_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.5" />
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/mbti_horizontal_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.5" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="#CCCCCC"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/mbtiTitle" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:background="#CCCCCC"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@id/mbti_horizontal_guideline"
+                            app:layout_constraintTop_toTopOf="@id/mbti_horizontal_guideline" />
+
+                        <LinearLayout
+                            android:id="@+id/mbti_role1_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="40dp"
+                            app:layout_constraintBottom_toTopOf="@id/mbti_horizontal_guideline"
+                            app:layout_constraintEnd_toStartOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/mbtiTitle">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/mbti_role1_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mbti_analyst" />
+
+                            <TextView
+                                android:id="@+id/mbti_role1_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="分析官"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/mbti_role1_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="分析家は想像力が豊かで、知的好奇心が旺盛"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mbti_role2_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toTopOf="@id/mbti_horizontal_guideline"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/mbtiTitle">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/mbti_role2_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mbti_diplomat" />
+
+                            <TextView
+                                android:id="@+id/mbti_role2_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="外交官"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/mbti_role2_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="人と付き合うことが得意で、仲介役やリーダー役に進んで手を挙げる"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mbti_role3_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/mbti_horizontal_guideline">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/mbti_role3_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mbti_guardian" />
+
+                            <TextView
+                                android:id="@+id/mbti_role3_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="番人"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/mbti_role3_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="空想よりも事実にもとづいた思考を好む"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/mbti_role4_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/mbti_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/mbti_horizontal_guideline">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/mbti_role4_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mbti_explorer" />
+
+                            <TextView
+                                android:id="@+id/mbti_role4_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="探検家"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/mbti_role4_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="エネルギッシュで、退屈することを極端に嫌う"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/lovetypeExplanationCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="@android:color/white" >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp" > <TextView
+                        android:id="@+id/lovetypeTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOVE_TYPE役割説明"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/lovetype_vertical_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.5" />
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/lovetype_horizontal_guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_percent="0.5" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="0dp"
+                            android:background="#CCCCCC"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/lovetypeTitle" />
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:background="#CCCCCC"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@id/lovetype_horizontal_guideline"
+                            app:layout_constraintTop_toTopOf="@id/lovetype_horizontal_guideline" />
+
+                        <LinearLayout
+                            android:id="@+id/lovetype_role1_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toTopOf="@id/lovetype_horizontal_guideline"
+                            app:layout_constraintEnd_toStartOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/lovetypeTitle">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/lovetype_role1_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/lovetype_lc" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role1_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="L×C\n（主導×甘えたい）"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role1_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="外向的で頼れるが、実は安心感や愛情を求めやすい"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lovetype_role2_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toTopOf="@id/lovetype_horizontal_guideline"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/lovetypeTitle">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/lovetype_role2_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/lovetype_la" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role2_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="L×A\n（主導×受け止めたい）"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role2_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="リーダーシップがあり、相手の感情や立場を尊重できる"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lovetype_role3_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/lovetype_horizontal_guideline">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/lovetype_role3_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/lovetype_fc" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role3_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="F×C\n（協調×甘えたい）"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role3_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="相手にリードしてほしいと感じやすく、安心できる相手には素直に甘えられる"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lovetype_role4_layout"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:padding="8dp"
+                            android:paddingTop="24dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/lovetype_vertical_guideline"
+                            app:layout_constraintTop_toBottomOf="@id/lovetype_horizontal_guideline">
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="24dp" />
+                            <ImageView
+                                android:id="@+id/lovetype_role4_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="4dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/lovetype_fa" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role4_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="F×A\n（協調×受け止めたい）"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/lovetype_role4_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
     </FrameLayout>
 
     <Button
@@ -326,6 +800,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="戻る"
+        app:backgroundTint="#6F004E"
         android:layout_marginTop="16dp" />
 
 </LinearLayout>
