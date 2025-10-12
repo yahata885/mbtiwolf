@@ -65,57 +65,49 @@ public class ResultMode2Activity extends BaseActivity {
                 // ★★★ このforループの中身を修正します ★★★
                 for (Map.Entry<String, String> entry : guesses.entrySet()) {
                     String target = entry.getKey();
-                    String guess = entry.getValue();
+                    String guess = entry.getValue(); // これが予想した役割名
                     String correctAnswer = assignments.get(target).getName();
 
-                    // 1行をまとめるための水平LinearLayoutを作成
-                    LinearLayout row = new LinearLayout(this);
-                    row.setOrientation(LinearLayout.HORIZONTAL);
-                    row.setPadding(0, 4, 0, 4);
-                    row.setGravity(Gravity.CENTER_VERTICAL);
+                    // 一つのSpannableStringBuilderで全ての情報を構築
+                    SpannableStringBuilder resultLineSpannable = new SpannableStringBuilder();
 
-                    // 1. 〇✖マークを表示するTextView
-                    TextView symbolTextView = new TextView(this);
+                    // 1. 〇✖マークと色付け
                     if (guess.equals(correctAnswer)) {
                         score++;
-                        symbolTextView.setText("〇");
-                        symbolTextView.setTextColor(Color.RED);
+                        resultLineSpannable.append("〇 ");
+                        resultLineSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     } else {
-                        symbolTextView.setText("✖");
-                        symbolTextView.setTextColor(Color.BLUE);
+                        resultLineSpannable.append("✖ ");
+                        resultLineSpannable.setSpan(new ForegroundColorSpan(Color.BLUE), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     }
-                    symbolTextView.setTextSize(20);
-                    // マークの幅はコンテンツに合わせる
-                    LinearLayout.LayoutParams symbolParams = new LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT);
-                    symbolParams.setMarginEnd(8); // 右側に少しマージン
-                    symbolTextView.setLayoutParams(symbolParams);
-                    row.addView(symbolTextView);
 
-                    // 2. 「ターゲット名さん」を表示するTextView
-                    SpannableStringBuilder targetSpannable = new SpannableStringBuilder(target + " さん");
-                    targetSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, target.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    TextView targetTextView = new TextView(this);
-                    targetTextView.setText(targetSpannable);
-                    targetTextView.setTextSize(16);
-                    // プレイヤー名側のweightを1.0fに設定
-                    LinearLayout.LayoutParams targetParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-                    targetTextView.setLayoutParams(targetParams);
-                    row.addView(targetTextView);
+                    // 2. ターゲット名を太字で追加（スペースを空けずに「さん」と結合）
+                    int targetNameStart = resultLineSpannable.length();
+                    resultLineSpannable.append(target);
+                    int targetNameEnd = resultLineSpannable.length();
+                    resultLineSpannable.setSpan(new StyleSpan(Typeface.BOLD), targetNameStart, targetNameEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                    // 3. 「予想した役職」を表示するTextView
-                    TextView guessTextView = new TextView(this);
-                    guessTextView.setText("「" + guess + "」");
-                    guessTextView.setTextSize(16);
-                    guessTextView.setGravity(Gravity.END); // 右寄せ
-                    // 役職名側のweightを1.5fに設定
-                    LinearLayout.LayoutParams guessParams = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.5f);
-                    guessTextView.setLayoutParams(guessParams);
-                    row.addView(guessTextView);
+                    // 3. 「さん」と「役割名」を続けて追加
+                    // ここで「さん」と「役割名」の間に空白を入れるかどうか調整できます
+                    resultLineSpannable.append("さん「" + guess + "」"); // 「さん」と「役割名」の間に半角スペース1つ
 
-                    // 組み立てた行をresultsLayoutに追加
-                    resultsLayout.addView(row);
+                    // 全てを一つのTextViewにセット
+                    TextView resultLine = new TextView(this);
+                    resultLine.setText(resultLineSpannable);
+                    resultLine.setTextSize(16);
+
+                    // レイアウトパラメータを設定（親の幅いっぱいに広げる）
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.MATCH_PARENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    resultLine.setLayoutParams(params);
+
+                    // 必要であれば、TextView全体のパディングを調整
+                    // 例: resultLine.setPadding(0, 4, 0, 4); // 上下に少しパディング
+                    resultLine.setPadding(0, 0, 0, 0); // 完全にパディングなし
+
+                    resultsLayout.addView(resultLine);
                 }
             }
             playerScores.put(guesser, score);

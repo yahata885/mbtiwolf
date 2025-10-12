@@ -94,6 +94,7 @@ id playerChipGroup
 id playerNameEditText
 id playerNameTextView
 id playerNameTitleView
+id playerRolesLayout
 id playerSubTitleView
 id playerTitleCard
 id playerTurnTextView
