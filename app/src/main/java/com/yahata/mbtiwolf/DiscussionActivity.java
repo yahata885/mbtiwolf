@@ -233,19 +233,19 @@ public class DiscussionActivity extends BaseActivity {
             // --- LOVETYPEのテーマの場合 (後で追加する部分) ---
             role1_image.setImageResource(R.drawable.lovetype_lc);
             role1Title.setText("L×C（主導×甘えたい）");
-            role1Description.setText("外向的で頼れる印象を与えながら、実はパートナーに安心感や愛情を求めやすい");
+            role1Description.setText("外向的で頼れるが、実は安心感や愛情を求めやすい");
 
             role2_image.setImageResource(R.drawable.lovetype_la);
             role2Title.setText("L×A（主導×受け止めたい）");
-            role2Description.setText("リーダーシップを発揮しつつ、相手の感情や立場を尊重できるため、信頼感を与えやすい");
+            role2Description.setText("リーダーシップがあり、相手の感情や立場を尊重できる");
 
             role3_image.setImageResource(R.drawable.lovetype_fc);
             role3Title.setText("F×C（協調×甘えたい）");
-            role3Description.setText("自分から引っ張るよりは相手にリードしてほしいと感じやすく、安心できる相手と出会うと素直に甘えられる");
+            role3Description.setText("リードされたい気持ちが強く、安心できる相手には素直に甘えられる");
 
             role4_image.setImageResource(R.drawable.lovetype_fa);
             role4Title.setText("F×A（協調×受け止めたい）");
-            role4Description.setText("聞き役やサポート役になることが多く、誠実で安心感のある関係を築きやすい");
+            role4Description.setText("聞き役になることが多く、誠実で安心感のある関係を築きやすい");
         }
     }
 
@@ -262,23 +262,33 @@ public class DiscussionActivity extends BaseActivity {
     }
 
     private void setupMasterHintList_mbti() {
-        masterHintList.add("ウルフは嘘をついている可能性が高い。");
-        masterHintList.add("議論にあまり参加しない人は怪しいかもしれない。");
-        masterHintList.add("誰かを不自然にかばっている人はいないか？");
-        masterHintList.add("MBTIタイプだけで判断するのは危険だ。");
-        masterHintList.add("最初のテーマと話題がズレてきていないか注意しよう。");
-        masterHintList.add("他の人の意見にすぐに便乗する人は、自分の意見がないのかもしれない。");
-        masterHintList.add("矛盾した発言をしている人はいないか、よく思い出そう。");
+        masterHintList.add("人生で一番大変だったことは？");
+        masterHintList.add("趣味や特技は？");
+        masterHintList.add("アウトドア派？インドア派？");
+        masterHintList.add("好きな教科は？");
+        masterHintList.add("部活、サークルは何してた？");
+        masterHintList.add("ストレス解消法は？");
+        masterHintList.add("1番の大喧嘩は？");
+        masterHintList.add("友達は広く浅く？狭く深く？");
+        masterHintList.add("自己紹介をしてみよう！");
+        masterHintList.add("自分の長所と短所は？");
+        masterHintList.add("休みの日は何してる？");
+        masterHintList.add("最近楽しかったことは？");
+        masterHintList.add("YouTubeでどんな動画を見る？");
+        masterHintList.add("尊敬する人はどんな人？");
     }
 
     private void setupMasterHintList_lovetype() {
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
-        masterHintList.add("過去の大失敗は？");
+        masterHintList.add("過去の大失恋は？");
+        masterHintList.add("どういう人がタイプ？");
+        masterHintList.add("初恋は？");
+        masterHintList.add("どんな別れ方をした？");
+        masterHintList.add("理想の初デートは？");
+        masterHintList.add("キュンとするシチュエーションは？");
+        masterHintList.add("この中で付き合うとしたら誰を選ぶ？");
+        masterHintList.add("告白する派？される派？");
+        masterHintList.add("異性の友人ってどう思う？");
+        masterHintList.add("冷めてしまうのはどんな時？");
     }
 
     private void selectRandomHints() {
