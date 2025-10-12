@@ -9,6 +9,12 @@
     android:padding="24dp"
     tools:context=".MainActivity">
 
+<!--    <ImageView-->
+<!--        android:id="@+id/logoImageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="300dp"-->
+<!--        android:src="@drawable/title_image"/>-->
+<!--    -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +22,12 @@
         android:textSize="50sp"
         android:fontFamily="sans-serif-black"
         android:layout_marginTop="32dp"/>
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/title_image"/>
 
     <Button
         android:id="@+id/gamestartButton"
