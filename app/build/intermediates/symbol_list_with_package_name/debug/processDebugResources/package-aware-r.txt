@@ -3009,9 +3009,7 @@ drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
 drawable indicator_left_default
-drawable indicator_left_selected
 drawable indicator_right_default
-drawable indicator_right_selected
 drawable lovetype_fa
 drawable lovetype_fc
 drawable lovetype_image
@@ -3094,10 +3092,12 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable test_level_drawable
+drawable title_image
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable vs
 drawable wolf
+drawable wolf_image
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -3330,7 +3330,7 @@ id hintButton1
 id hintButton2
 id hintButton3
 id hintButtonsLayout
-id hintTitle
+id hintCardView
 id home
 id homeAsUp
 id honorRequest
@@ -3362,6 +3362,7 @@ id line3
 id linear
 id listMode
 id list_item
+id logoImageView
 id m3_side_sheet
 id main_activity_layout
 id marquee
@@ -3417,6 +3418,7 @@ id mode3TextView2
 id mode3TextView3
 id mode3TextView4
 id mode3TextView5
+id modeContainer
 id modeSelectionRadioGroup
 id month_grid
 id month_navigation_bar
@@ -3506,6 +3508,7 @@ id playerNameEditText
 id playerNameTextView
 id playerNameTitleView
 id playerSubTitleView
+id playerTitleCard
 id playerTurnTextView
 id plusButton
 id position
@@ -3545,6 +3548,7 @@ id roleDescriptionTextView
 id roleExplanationCard
 id roleExplanationOverlayLayout
 id roleGuessResultsLayout
+id roleImageView
 id roleNameTextView
 id rolesTextView
 id rounded
@@ -3644,11 +3648,13 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id themeContainer
 id themeImageView
 id themeNameTextView
 id themeViewPager
 id time
 id timeButtonsLayout
+id timerCardView
 id timerTextView
 id title
 id titleDividerNoCustom
@@ -3907,6 +3913,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description

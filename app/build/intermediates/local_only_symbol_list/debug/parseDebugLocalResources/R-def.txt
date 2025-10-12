@@ -18,9 +18,7 @@ drawable gutspose
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable indicator_left_default
-drawable indicator_left_selected
 drawable indicator_right_default
-drawable indicator_right_selected
 drawable lovetype_fa
 drawable lovetype_fc
 drawable lovetype_image
@@ -31,8 +29,10 @@ drawable mbti_diplomat
 drawable mbti_explorer
 drawable mbti_guardian
 drawable mbti_image
+drawable title_image
 drawable vs
 drawable wolf
+drawable wolf_image
 id ImageView
 id RoleDescription
 id addMinuteButton
@@ -57,8 +57,9 @@ id hintButton1
 id hintButton2
 id hintButton3
 id hintButtonsLayout
-id hintTitle
+id hintCardView
 id horizontal_guideline
+id logoImageView
 id main_activity_layout
 id minusButton
 id mode12ExplanationBlock
@@ -85,6 +86,7 @@ id mode3TextView2
 id mode3TextView3
 id mode3TextView4
 id mode3TextView5
+id modeContainer
 id modeSelectionRadioGroup
 id nextPlayerButton
 id playAgainButton
@@ -93,6 +95,7 @@ id playerNameEditText
 id playerNameTextView
 id playerNameTitleView
 id playerSubTitleView
+id playerTitleCard
 id playerTurnTextView
 id plusButton
 id resultsLayout
@@ -118,16 +121,19 @@ id roleDescriptionTextView
 id roleExplanationCard
 id roleExplanationOverlayLayout
 id roleGuessResultsLayout
+id roleImageView
 id roleNameTextView
 id rolesTextView
 id startButton
 id subtractMinuteButton
 id textViewModeTitle
 id textViewThemeTitle
+id themeContainer
 id themeImageView
 id themeNameTextView
 id themeViewPager
 id timeButtonsLayout
+id timerCardView
 id timerTextView
 id titleTextView
 id topPlayerTextView
@@ -157,6 +163,7 @@ layout activity_title
 layout activity_vote
 layout item_theme
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 string app_name
 style Base.Theme.MyApplication

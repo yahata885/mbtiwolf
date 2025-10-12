@@ -22,7 +22,7 @@
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="MBTI人狼"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:testOnly="true"
@@ -39,7 +39,10 @@
         <activity android:name="com.yahata.mbtiwolf.MainActivity" />
         <activity android:name="com.yahata.mbtiwolf.ModeExplanation_Activity" />
         <activity android:name="com.yahata.mbtiwolf.Creditactivity" />
-        <activity android:name="com.yahata.mbtiwolf.SetupActivity" />
+        <activity
+            android:name="com.yahata.mbtiwolf.SetupActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.yahata.mbtiwolf.Mode1InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.Mode23InputActivity" />
         <activity android:name="com.yahata.mbtiwolf.DiscussionActivity" />
